@@ -1,158 +1,385 @@
-@import "../../scss/mixins";
+@import '../../scss/mixins';
+
+$primary-color: #ffcc00; // Define your primary color here
+$dark-bg-color: #121212;
+$dark-element-bg-color: #333;
+$light-font-color: #ffffff;
+$base-font-family: 'La Belle Aurore', cursive;
+$font-size-large: 1.8rem;
+$font-size-medium: 1.4rem;
+$font-size-small: 1.2rem;
+
+body.dark-mode {
+	background-color: $dark-bg-color;
+	color: $light-font-color;
+}
 
 .contact {
-    display: flex;
-    animation: fadeIn 1s forwards;
-    height: 100vh;
+	display: flex;
+	animation: fadeIn 1s forwards;
+	height: 100vh;
+	font-family: 'Arial, sans-serif';
 
-    @include respond(tab-port) {
-        flex-direction: column;
-    }
+	@include respond(tab-port) {
+		flex-direction: column;
+	}
 
-    @include respond(phone) {
-        flex-direction: column;
-    }
+	@include respond(phone) {
+		flex-direction: column;
+	}
 
-    &__left {
-        flex: 0 0 50%;
-        padding: 2rem 5rem;
-    }
+	&.dark {
+		background-color: $dark-bg-color;
+		color: $light-font-color;
 
-    &__right {
-        flex: 1;
-        width: 100%;
+		.form__input,
+		.form__label {
+			background-color: $dark-element-bg-color;
+			color: $light-font-color;
+		}
 
-        @include respond(phone) {
-            display: none;
-        }
-    }
+		.toggle-dark-mode {
+			background-color: $dark-element-bg-color;
+			color: $light-font-color;
+		}
 
-    &__description {
-        color: var(--lightest-slate);
-        font-size: 1.4rem;
-        width: 90%;
-        margin-top: 3rem;
+		.location__button,
+		.back__home {
+			background-color: $dark-element-bg-color;
+			color: $light-font-color;
+		}
+	}
 
-        &::before {
-            content: "<p>";
-            font-size: 1.8rem;
-            font-family: 'La Belle Aurore', cursive;
-            color: #ffd700;
-            opacity: 0.7;
-            font-weight: 500;
-            position: absolute;
-            margin-top: -2rem;
-        }
+	&__left {
+		flex: 0 0 50%;
+		padding: 2rem 5rem;
 
-        &::after {
-            content: "</p>";
-            font-size: 1.8rem;
-            font-family: 'La Belle Aurore', cursive;
-            color: #ffd700;
-            opacity: 0.7;
-            font-weight: 500;
-            animation: fadeIn 1s 1.7s backwards;
-        }
-    }
+		@include respond(phone) {
+			padding: 1rem 2rem;
+		}
+	}
+
+	&__right {
+		flex: 1;
+		width: 100%;
+
+		@include respond(phone) {
+			display: none;
+		}
+	}
+
+	&__description {
+		color: var(--lightest-slate);
+		font-size: $font-size-medium;
+		width: 90%;
+		margin-top: 3rem;
+		position: relative;
+
+		&::before,
+		&::after {
+			font-size: $font-size-large;
+			font-family: $base-font-family;
+			color: $primary-color;
+			opacity: 0.7;
+			font-weight: 500;
+			position: absolute;
+		}
+
+		&::before {
+			content: '<p>';
+			margin-top: -2rem;
+		}
+
+		&::after {
+			content: '</p>';
+			animation: fadeIn 1s 1.7s backwards;
+		}
+	}
 }
 
 textarea {
-    resize: none;
-    width: 90% !important;
+	resize: none;
+	width: 90% !important;
 
-    @include respond(phone) {
-        width: 100% !important;
-    }
+	@include respond(phone) {
+		width: 100% !important;
+	}
 }
 
 .form {
+	margin-top: 3rem;
 
-    &::before {
-        content: "<form>";
-        font-size: 1.8rem;
-        font-family: 'La Belle Aurore', cursive;
-        color: #ffd700;
-        opacity: 0.7;
-        font-weight: 500;
-        position: absolute;
-        margin-top: -2rem;
-    }
+	&::before,
+	&::after {
+		font-size: $font-size-large;
+		font-family: $base-font-family;
+		color: $primary-color;
+		opacity: 0.7;
+		font-weight: 500;
+		position: absolute;
+	}
 
-    &::after {
-        content: "</form>";
-        font-size: 1.8rem;
-        font-family: 'La Belle Aurore', cursive;
-        color: #ffd700;
-        opacity: 0.7;
-        font-weight: 500;
-        animation: fadeIn 1s 1.7s backwards;
-    }
+	&::before {
+		content: '<form>';
+		margin-top: -2rem;
+	}
 
-    margin-top: 3rem;
+	&::after {
+		content: '</form>';
+		animation: fadeIn 1s 1.7s backwards;
+	}
 
-    &__group:not(:last-child) {
-        margin-bottom: 1rem;
-    }
+	&__group:not(:last-child) {
+		margin-bottom: 1rem;
+	}
 
-    &__input {
-        padding: 1.5rem 2rem;
-        font-family: inherit;
-        color: inherit;
-        font-size: 1.5rem;
-        border-radius: 2px;
-        background-color: #112240;
-        border: none;
-        width: 90%;
-        display: block;
-        border-bottom: 3px solid transparent;
-        transition: all 0.3s ease-in-out;
+	&__input {
+		padding: 1.5rem 2rem;
+		font-family: inherit;
+		color: inherit;
+		font-size: $font-size-medium;
+		border-radius: 2px;
+		background-color: #112240;
+		border: none;
+		width: 90%;
+		display: block;
+		border-bottom: 3px solid transparent;
+		transition: all 0.3s ease-in-out;
 
-        @include respond(phone) {
-            width: 100%;
-        }
+		@include respond(phone) {
+			width: 100%;
+		}
 
+		&:focus {
+			outline: none;
+			box-shadow: 0 1rem 2rem rgba(#000, 0.1);
+			border-bottom: 3px solid $primary-color;
+		}
 
-        &:focus {
-            outline: none;
-            box-shadow: 0 1rem 2rem rgba(#000, $alpha: 0.1);
-            border-bottom: 3px solid var(--primary);
-        }
+		&:focus:invalid {
+			border-bottom: 3px solid $primary-color;
+		}
 
-        &:focus:invalid {
-            border-bottom: 3px solid var(--primary);
-        }
+		&::-webkit-input-placeholder {
+			color: var(--lightest-slate);
+		}
+	}
 
-        &::-webkit-input-placeholder {
-            // in safari and chrome
-            color: var(--lightest-slate)
-        }
-    }
+	&__label {
+		font-size: $font-size-small;
+		font-weight: 700;
+		margin-left: 2rem;
+		margin-top: 0.7rem;
+		display: block;
+		transition: all 0.3s ease-in-out;
+		color: $primary-color;
+	}
 
-    &__label {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-left: 2rem;
-        margin-top: 0.7rem;
-        display: block;
-        transition: all .3s ease-in-out;
-        color: var(--primary);
-    }
-
-    &__input:placeholder-shown+&__label {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-4rem);
-    }
-
-
+	&__input:placeholder-shown + &__label {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-4rem);
+	}
 }
 
 .map {
-    &__button {
-        background: none;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        animation: fadeIn 4s forwards;
-    }
+	&__button {
+		background: none;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		animation: fadeIn 4s forwards;
+	}
+}
+
+.location__button,
+.back__home {
+	display: inline-block;
+	margin-top: 2rem;
+	padding: 0.5rem 1.5rem;
+	background-color: $primary-color;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+	text-decoration: none;
+	font-size: $font-size-medium;
+	margin-right: 1rem;
+
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
+}
+
+.distance {
+	margin-top: 1rem;
+	font-size: $font-size-small;
+	color: var(--lightest-slate);
+}
+
+.buttons {
+	display: flex;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.toggle-dark-mode {
+	margin-bottom: 2rem;
+	padding: 0.5rem 1.5rem;
+	background-color: $primary-color;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+	font-size: $font-size-medium;
+
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
+}
+
+.chat-widget {
+	margin-top: 3.5rem;
+	background: #f9f9f9;
+	border-radius: 8px;
+	padding: 1rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+	&.dark {
+		background: $dark-element-bg-color;
+		color: $light-font-color;
+	}
+
+	h3 {
+		color: #004085;
+		margin-bottom: 0.5rem;
+		font-size: 2.3rem; // Increased font size
+	}
+
+	.chat-description {
+		font-size: $font-size-medium; // Increased font size
+		margin-bottom: 1rem;
+		color: cadetblue;
+	}
+
+	.chat-messages {
+		max-height: 200px;
+		overflow-y: auto;
+		margin-bottom: 1rem;
+	}
+
+	.chat-message {
+		padding: 0.5rem;
+		background: #e1e1e1;
+		border-radius: 4px;
+		margin-bottom: 0.5rem;
+
+		&.ai-message {
+			background: #cce5ff;
+			color: #004085;
+		}
+
+		&.user-message {
+			background: #d4edda;
+			color: #155724;
+		}
+	}
+
+	.chat-form {
+		display: flex;
+		gap: 0.5rem;
+
+		.chat-input {
+			flex: 1;
+			padding: 0.5rem;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		.chat-send {
+			padding: 0.5rem 1rem;
+			background: $primary-color;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background 0.3s;
+
+			&:hover {
+				background: darken($primary-color, 10%);
+			}
+		}
+	}
+}
+
+.clear-chat {
+	margin-top: 1rem;
+	padding: 0.5rem 1.5rem;
+	background-color: $primary-color;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+	font-size: $font-size-medium;
+
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
+}
+
+.schedule-meeting {
+	margin-top: 2rem;
+
+	h3 {
+		margin-bottom: 1rem;
+	}
+
+	.meeting-form {
+		display: flex;
+		gap: 0.5rem;
+
+		.meeting-input {
+			flex: 1;
+			padding: 0.5rem;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		.meeting-submit {
+			padding: 0.5rem 1rem;
+			background: $primary-color;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background 0.3s;
+
+			&:hover {
+				background: darken($primary-color, 10%);
+			}
+		}
+	}
+}
+
+.success-animation {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: $primary-color;
+	padding: 2rem;
+	border-radius: 50%;
+	animation: pop-in 0.5s ease-out;
+
+	@keyframes pop-in {
+		0% {
+			transform: scale(0);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
 }
