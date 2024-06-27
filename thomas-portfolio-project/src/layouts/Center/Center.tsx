@@ -6,6 +6,7 @@ import LazyLoad from 'react-lazyload';
 import Project from '@components/Projects/Projects';
 import OtherProjects from '@components/OtherProjects/OtherProjects';
 import Touch from '@components/Touch/Touch';
+import CommunityAndAchievements from '@components/CommunityAchievments/CommunityAndAchievements';
 
 const Center = () => (
 	<div>
@@ -18,12 +19,14 @@ const Center = () => (
 			<Project />
 		</LazyLoad>
 		<LazyLoad once height={566}>
+			<CommunityAndAchievements />
+		</LazyLoad>
+		<LazyLoad once height={566}>
 			<OtherProjects />
 		</LazyLoad>
 		<LazyLoad once height={566}>
 			<Touch />
 		</LazyLoad>
-
 		<span className='tag'>&lt;/body&gt;</span>
 	</div>
 );
