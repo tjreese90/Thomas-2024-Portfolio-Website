@@ -12,7 +12,7 @@ const LeftSideBar = () => (
 						rel='noreferrer'
 					>
 						<svg className='left__icon'>
-							<use href='icons/symbol-defs.svg#icon-youtube' />
+							<use href='icons/symbol-defs.svg#icon-tradingview' />
 						</svg>
 					</a>
 				</li>
