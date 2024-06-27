@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -8,7 +8,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './touch.scss';
-
+//TODO: Fix description and flip logic
 const workExperience = [
 	{
 		company: 'Credit Karma',
@@ -16,8 +16,7 @@ const workExperience = [
 		duration: 'Jan 2020 - Dec 2021',
 		icon: 'fas fa-briefcase',
 		techStack: 'React, Node.js, AWS',
-		description:
-			'Credit Karma offers free credit scores, reports, and insights.',
+		description: '',
 	},
 	{
 		company: 'Sprout Social',
@@ -25,7 +24,7 @@ const workExperience = [
 		duration: 'Jan 2019 - Dec 2019',
 		icon: 'fas fa-code',
 		techStack: 'JavaScript, HTML, CSS',
-		description: 'Sprout Social provides social media management tools.',
+		description: '',
 	},
 	{
 		company: 'Google',
@@ -33,8 +32,7 @@ const workExperience = [
 		duration: 'Jun 2018 - Aug 2018',
 		icon: 'fas fa-graduation-cap',
 		techStack: 'Python, BigQuery, Kubernetes',
-		description:
-			'Google is a multinational technology company specializing in Internet-related services.',
+		description: '',
 	},
 ];
 

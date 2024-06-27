@@ -29,7 +29,7 @@ const Introduction = () => {
 					<AnimatedLetters
 						letterClass={letterClass}
 						strArray={nameArray}
-						idx={15}
+						idx={25}
 					/>
 					<br />
 					<img
@@ -40,7 +40,7 @@ const Introduction = () => {
 					<AnimatedLetters
 						letterClass={letterClass}
 						strArray={jobArray}
-						idx={19}
+						idx={25}
 					/>
 				</h1>
 				<h2 className='intro__headingSecondary'>

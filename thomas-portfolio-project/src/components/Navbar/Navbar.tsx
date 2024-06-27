@@ -37,7 +37,7 @@ const Navbar = () => (
 				<li className='navbar__items'>
 					<HashLink to='/#community-achievements' className='navbar__itemsLink'>
 						<span className='navbar__itemsLinkNumeric'>04.</span>
-						Community Impact
+						Impact
 					</HashLink>
 				</li>
 				<li className='navbar__items'>
