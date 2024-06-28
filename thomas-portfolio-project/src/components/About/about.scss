@@ -161,10 +161,11 @@
 		position: relative;
 		cursor: pointer;
 		transition: color 0.3s;
-		text-decoration: underline;
+		text-decoration: none;
 
 		&:hover {
 			color: var(--lightest-slate);
+			text-decoration: underline;
 		}
 	}
 
