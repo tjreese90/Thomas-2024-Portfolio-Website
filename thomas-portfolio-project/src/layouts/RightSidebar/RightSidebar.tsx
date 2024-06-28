@@ -7,7 +7,7 @@ const RightSideBar = () => (
 		<main className='right__main'>
 			<div>
 				<Link to='/contact' className='right__email'>
-					thomasreesecareers@gmail.com
+					ThomasReeseCareers@gmail.com
 				</Link>
 			</div>
 			<div className='right__line' />

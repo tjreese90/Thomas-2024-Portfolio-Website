@@ -57,6 +57,40 @@ const About = () => {
 		visible: { opacity: 1, y: 0 },
 	};
 
+	const skillsContainerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+			},
+		},
+	};
+
+	const skillsItemVariants = {
+		hidden: { opacity: 0, y: 20 },
+		visible: { opacity: 1, y: 0 },
+		whileHover: {
+			scale: 1.2,
+			rotate: 5,
+			color: '#ff8c00',
+			transition: { type: 'spring', stiffness: 300 },
+		},
+	};
+
+	const continuousAnimation = {
+		animate: {
+			y: [0, -10, 0],
+			transition: {
+				y: {
+					repeat: Infinity,
+					repeatType: 'mirror',
+					duration: 2,
+				},
+			},
+		},
+	};
+
 	return (
 		<section className='about' id='about' aria-labelledby='about-heading'>
 			<div className='about__left'>
@@ -76,15 +110,10 @@ const About = () => {
 						transition={{ duration: 0.6 }}
 					>
 						Hello! My name is{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Thomas&nbsp;Reese
-						</motion.span>
-						, a Front-End Developer based in Lisle, Illinois. I am passionate
-						about creating intuitive and dynamic user experiences through
-						captivating UI effects and animations.
+						<span className='highlight'>Thomas&nbsp;Reese</span>, a Front-End
+						Developer based in Lisle, Illinois. I am passionate about creating
+						intuitive and dynamic user experiences through captivating UI
+						effects and animations.
 					</motion.p>
 					<motion.p
 						initial='hidden'
@@ -92,43 +121,18 @@ const About = () => {
 						variants={paragraphVariants}
 						transition={{ duration: 0.6, delay: 0.2 }}
 					>
-						I hold a{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
+						I graduated from{' '}
+						<span className='highlight'>Dominican University</span> in 2022 with
+						a{' '}
+						<span className='highlight'>
 							Bachelor of Science in Computer Science
-						</motion.span>{' '}
-						from Dominican University, where I graduated with a GPA of 3.8. My
-						coursework included{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Object-Oriented Programming
-						</motion.span>
-						,{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Data Structures and Algorithms
-						</motion.span>
-						,{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Database Systems
-						</motion.span>
-						,{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Advanced Artificial Intelligence
-						</motion.span>
-						, and more.
+						</span>
+						. My coursework included{' '}
+						<span className='highlight'>Object-Oriented Programming</span>,{' '}
+						<span className='highlight'>Data Structures and Algorithms</span>,{' '}
+						<span className='highlight'>Database Systems</span>,{' '}
+						<span className='highlight'>Advanced Artificial Intelligence</span>,
+						and more.
 					</motion.p>
 					<motion.p
 						initial='hidden'
@@ -137,31 +141,17 @@ const About = () => {
 						transition={{ duration: 0.6, delay: 0.4 }}
 					>
 						Professionally, I have experience as an{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Infrastructure Engineer
-						</motion.span>{' '}
-						and
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
+						<span className='highlight'>Infrastructure Engineer</span> and
+						<span className='highlight'>
 							{' '}
 							Front-End Software Developer Intern
-						</motion.span>{' '}
+						</span>{' '}
 						at Credit Karma, where I developed React functions, improved
 						documentation accessibility, and applied Agile methodologies. I also
 						worked as a{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Front-End Web Developer
-						</motion.span>{' '}
-						at Sprout Social, where I enhanced performance and reduced frontend
-						errors by integrating RESTful APIs.
+						<span className='highlight'>Front-End Web Developer</span> at Sprout
+						Social, where I enhanced performance and reduced frontend errors by
+						integrating RESTful APIs.
 					</motion.p>
 					<motion.p
 						initial='hidden'
@@ -171,20 +161,12 @@ const About = () => {
 					>
 						I have competed in several coding competitions and hackathons,
 						including the{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
+						<span className='highlight'>
 							JPMorgan Code for Good Competition
-						</motion.span>{' '}
+						</span>{' '}
 						and the{' '}
-						<motion.span
-							className='about__highlight'
-							whileHover={{ scale: 1.1, color: '#ff8c00' }}
-						>
-							Google X Code Nation hackathon
-						</motion.span>
-						, where my team placed 2nd.
+						<span className='highlight'>Google X Code Nation hackathon</span>{' '}
+						where my team placed 2nd.
 					</motion.p>
 					<motion.p
 						initial='hidden'
@@ -196,14 +178,21 @@ const About = () => {
 					</motion.p>
 					<motion.ul
 						className='about__skillsList'
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.8, delay: 1 }}
+						initial='hidden'
+						animate='visible'
+						variants={skillsContainerVariants}
 					>
 						{skillsArray.map((skill, index) => (
-							<li key={index} className='about__skillsItems'>
+							<motion.li
+								key={index}
+								className='about__skillsItems'
+								variants={skillsItemVariants}
+								whileHover='whileHover'
+								whileTap='whileTap'
+								{...continuousAnimation}
+							>
 								{skill}
-							</li>
+							</motion.li>
 						))}
 					</motion.ul>
 				</div>
