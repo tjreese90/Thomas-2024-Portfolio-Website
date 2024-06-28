@@ -34,7 +34,7 @@ const OtherProjects = () => {
 							</svg>
 							<div className='other__cardLink'>
 								<a
-									href='https://github.com/yourusername/ai-metaverse-landing-page'
+									href='https://github.com/tjreese90/Metaverse-Madness'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
@@ -72,7 +72,7 @@ const OtherProjects = () => {
 							</svg>
 							<div className='other__cardLink'>
 								<a
-									href='https://github.com/yourusername/3d-clothing-store'
+									href='https://github.com/tjreese90/3D-Clothing-Store'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
@@ -112,7 +112,7 @@ const OtherProjects = () => {
 							</svg>
 							<div className='other__cardLink'>
 								<a
-									href='https://codepen.io/yourusername/pen/yourworldclock'
+									href='https://codepen.io/tjreese90/pen/MWRRvXV'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
@@ -148,7 +148,7 @@ const OtherProjects = () => {
 							</svg>
 							<div className='other__cardLink'>
 								<a
-									href='https://github.com/yourusername/connect-4-ai'
+									href='https://github.com/tjreese90/Connect-4-Web-App'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
@@ -184,7 +184,7 @@ const OtherProjects = () => {
 							</svg>
 							<div className='other__cardLink'>
 								<a
-									href='https://github.com/yourusername/3d-earth'
+									href='https://github.com/tjreese90/3D-Earth'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}

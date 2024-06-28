@@ -87,11 +87,28 @@ const CommunityAndAchievements = () => {
 						<p>
 							Moreover, I have volunteered at the{' '}
 							<span className='highlight'>
-								Disabled Children's Lighthouse of Chicago
+								<a
+									href='https://chicagolighthouse.org/patients-clients/multi-disabled/'
+									target='_blank'
+									className='highlight'
+								>
+									Disabled Children's Lighthouse of Chicago
+								</a>
 							</span>{' '}
-							and <span className='highlight'>Open Hands</span>, helping feed
-							the hungry and those in need. These experiences have deepened my
-							commitment to community service and social responsibility.
+							and{' '}
+							<span className='highlight'>
+								{' '}
+								<a
+									href='https://www.highstreetunited.org/open-hands-free-pantry.html'
+									target='_blank'
+									className='highlight'
+								>
+									Open Hands
+								</a>
+							</span>
+							, helping feed the hungry and those in need. These experiences
+							have deepened my commitment to community service and social
+							responsibility.
 						</p>
 					</section>
 
@@ -105,7 +122,7 @@ const CommunityAndAchievements = () => {
 								<p>
 									Participated in the{' '}
 									<a
-										href='https://www.trnty.edu/academic-program/computing/above-beyond/trollgamers-rank-in-top-5-of-acca-competition/'
+										href='https://accachicago.org/'
 										target='_blank'
 										rel='noreferrer'
 										className='highlight-link'
@@ -122,10 +139,31 @@ const CommunityAndAchievements = () => {
 								</h3>
 								<p>
 									Featured in a commercial for{' '}
-									<span className='highlight'>Credit Karma</span> to share my
-									credit journey story, which highlighted the impact of their
-									services on my financial well-being. Link will be added later.
+									<span className='highlight'>
+										{' '}
+										<a
+											href='https://www.creditkarma.com/about'
+											target='_blank'
+											rel='noreferrer'
+											className='highlight-link'
+										>
+											Credit Karma
+										</a>
+									</span>{' '}
+									to share my credit journey story, which highlighted the impact
+									of their services on my financial well-being.
 								</p>
+								<div className='community-achievements__video'>
+									<iframe
+										width='100%'
+										height='315'
+										src='https://www.youtube.com/embed/JFwQ4r3mtus'
+										title="TJ's credit comeback"
+										frameBorder='0'
+										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+										allowFullScreen
+									></iframe>
+								</div>
 							</article>
 							<article className='community-achievements__card'>
 								<h3 className='community-achievements__cardTitle'>
@@ -135,9 +173,19 @@ const CommunityAndAchievements = () => {
 									Participated in a commercial for{' '}
 									<span className='highlight'>JumpStart</span>, a company aiding
 									college students in finding internships and jobs. The
-									commercial was part of their rebranding efforts. Link will be
-									added later.
+									commercial was part of their rebranding efforts.
 								</p>
+								<div className='community-achievements__video'>
+									<iframe
+										width='100%'
+										height='315'
+										src='https://www.youtube.com/embed/p99rO7GpQoo'
+										title='The future looks like you'
+										frameBorder='0'
+										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+										allowFullScreen
+									></iframe>
+								</div>
 							</article>
 						</div>
 					</section>

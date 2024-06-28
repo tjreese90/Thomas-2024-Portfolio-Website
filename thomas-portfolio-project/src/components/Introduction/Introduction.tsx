@@ -82,8 +82,8 @@ const Introduction = () => {
 				<div className='logo__outline'>
 					<svg
 						id='star-outline'
-						width='49rem'
-						height='49.5rem'
+						width='36rem'
+						height='36.4rem'
 						viewBox='0 0 299 295'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'
@@ -97,8 +97,8 @@ const Introduction = () => {
 				</div>
 				<div className='logo__fill'>
 					<svg
-						width='50.2rem'
-						height='49.7rem'
+						width='36.1rem'
+						height='36.1rem'
 						viewBox='0 0 287 287'
 						fill='none'
 						xmlns='http://www.w3.org/2000/svg'

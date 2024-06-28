@@ -58,10 +58,10 @@ const Contact = () => {
 		if (form.current !== null) {
 			emailjs
 				.sendForm(
-					'service_clrfl7q',
-					'template_56ibui7',
+					'service_mvino5p',
+					'template_2d4e4it',
 					form.current,
-					'hWYBLhSzbCLzcSlTF'
+					'qUG6AOg1cYetUQ6QI'
 				)
 				.then(
 					() => {
@@ -255,10 +255,11 @@ const Contact = () => {
 					</form>
 				</div>
 				<div className='chat-widget'>
-					<h3>AI Chat</h3>
+					<h3>Gemini AI Chat</h3>
 					<p className='chat-description'>
-						Get to know Thomas better by asking the AI bot questions about his
-						work and experience.
+						Engage with our AI bot to learn more about Thomas's professional
+						background and experience. The AI bot is designed to respond as if
+						it were Thomas himself.
 					</p>
 					<div className='chat-messages'>
 						{chatMessages.map((msg, idx) => (

@@ -83,7 +83,7 @@ const Project = () => {
 					<div className='project__left1'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
 						<a
-							href='URL-WILL-BE-ADDED-LATER'
+							href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 							target='_blank'
 							rel='noreferrer'
 							className='project__headingSecondary'
@@ -107,7 +107,7 @@ const Project = () => {
 							</div>
 							<div className='project__icons project__icons1'>
 								<a
-									href='URL-WILL-BE-ADDED-LATER'
+									href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
@@ -140,7 +140,7 @@ const Project = () => {
 					<div className='project__right'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
 						<a
-							href='URL-WILL-BE-ADDED-LATER'
+							href='https://github.com/tjreese90/UFC-Blog-Web-App'
 							target='_blank'
 							rel='noreferrer'
 							className='project__headingSecondary'
@@ -165,7 +165,7 @@ const Project = () => {
 							</div>
 							<div className='project__icons'>
 								<a
-									href='URL-WILL-BE-ADDED-LATER'
+									href='https://github.com/tjreese90/UFC-Blog-Web-App'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}

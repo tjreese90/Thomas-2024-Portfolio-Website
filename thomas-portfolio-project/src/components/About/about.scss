@@ -59,7 +59,7 @@
 	}
 
 	&__description {
-		color: var(--slate);
+		color: var(--lightest-slate);
 
 		&::before {
 			content: '<p>';
@@ -161,6 +161,7 @@
 		position: relative;
 		cursor: pointer;
 		transition: color 0.3s;
+		text-decoration: underline;
 
 		&:hover {
 			color: var(--lightest-slate);

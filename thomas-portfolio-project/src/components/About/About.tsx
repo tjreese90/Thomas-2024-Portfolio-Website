@@ -122,17 +122,50 @@ const About = () => {
 						transition={{ duration: 0.6, delay: 0.2 }}
 					>
 						I graduated from{' '}
-						<span className='highlight'>Dominican University</span> in 2022 with
-						a{' '}
+						<a
+							href='https://www.dom.edu/'
+							target='_blank'
+							className='highlight'
+						>
+							Dominican University
+						</a>{' '}
+						in 2022 with a{' '}
 						<span className='highlight'>
 							Bachelor of Science in Computer Science
 						</span>
 						. My coursework included{' '}
-						<span className='highlight'>Object-Oriented Programming</span>,{' '}
-						<span className='highlight'>Data Structures and Algorithms</span>,{' '}
-						<span className='highlight'>Database Systems</span>,{' '}
-						<span className='highlight'>Advanced Artificial Intelligence</span>,
-						and more.
+						<a
+							href='https://realpython.com/python3-object-oriented-programming/'
+							target='_blank'
+							className='highlight'
+						>
+							Object-Oriented Programming
+						</a>
+						,{' '}
+						<a
+							href='https://www.geeksforgeeks.org/data-structures/'
+							target='_blank'
+							className='highlight'
+						>
+							Data Structures and Algorithms
+						</a>
+						,{' '}
+						<a
+							href='https://planetscale.com/learn/articles/what-is-a-database'
+							target='_blank'
+							className='highlight'
+						>
+							Database Systems
+						</a>
+						,{' '}
+						<a
+							href='https://www.hackerearth.com/blog/developers/artificial-intelligence-101-how-to-get-started/'
+							target='_blank'
+							className='highlight'
+						>
+							Advanced Artificial Intelligence
+						</a>
+						, and more.
 					</motion.p>
 					<motion.p
 						initial='hidden'
@@ -141,10 +174,24 @@ const About = () => {
 						transition={{ duration: 0.6, delay: 0.4 }}
 					>
 						Professionally, I have experience as an{' '}
-						<span className='highlight'>Infrastructure Engineer</span> and
+						<a
+							href='https://medium.com/@joatmon08/the-infrastructure-engineers-identity-crisis-2cc545397240'
+							target='_blank'
+							className='highlight'
+						>
+							Infrastructure Engineer
+						</a>{' '}
+						and
 						<span className='highlight'>
 							{' '}
-							Front-End Software Developer Intern
+							<a
+								href='https://developer.mozilla.org/en-US/curriculum/'
+								target='_blank'
+								className='highlight'
+							>
+								Front-End
+							</a>{' '}
+							Software Developer Intern
 						</span>{' '}
 						at Credit Karma, where I developed React functions, improved
 						documentation accessibility, and applied Agile methodologies. I also
@@ -161,11 +208,21 @@ const About = () => {
 					>
 						I have competed in several coding competitions and hackathons,
 						including the{' '}
-						<span className='highlight'>
+						<a
+							href='https://careers.jpmorgan.com/us/en/students/programs/code-for-good'
+							target='_blank'
+							className='highlight'
+						>
 							JPMorgan Code for Good Competition
-						</span>{' '}
+						</a>{' '}
 						and the{' '}
-						<span className='highlight'>Google X Code Nation hackathon</span>{' '}
+						<a
+							href='https://www.codenation.org/'
+							target='_blank'
+							className='highlight'
+						>
+							Google X Code Nation hackathon
+						</a>{' '}
 						where my team placed 2nd.
 					</motion.p>
 					<motion.p

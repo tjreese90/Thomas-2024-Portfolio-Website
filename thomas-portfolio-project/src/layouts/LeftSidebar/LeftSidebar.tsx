@@ -6,7 +6,7 @@ const LeftSideBar = () => (
 			<ul className='left__social'>
 				<li className='left__linkItems'>
 					<a
-						href='https://www.youtube.com/channel/UCax8or2_bzQCHe0GdSLITOA'
+						href='https://www.tradingview.com/u/ThomasTradingAlgo/#published-scripts'
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
