@@ -29,7 +29,7 @@
 	}
 
 	&__left {
-		flex: 0 0 60%;
+		flex: 0 0 85%;
 
 		@include respond(tab-port) {
 			flex: 0 0 100%;

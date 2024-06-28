@@ -171,9 +171,19 @@ const CommunityAndAchievements = () => {
 								</h3>
 								<p>
 									Participated in a commercial for{' '}
-									<span className='highlight'>JumpStart</span>, a company aiding
-									college students in finding internships and jobs. The
-									commercial was part of their rebranding efforts.
+									<span className='highlight'>
+										{' '}
+										<a
+											href='https://medium.com/sequoia-capital/jumpstart-a-better-approach-to-early-career-recruiting-eb6abd849b5c'
+											target='_blank'
+											rel='noreferrer'
+											className='highlight-link'
+										>
+											JumpStart
+										</a>
+									</span>
+									, a company aiding college students in finding internships and
+									jobs. The commercial was part of their rebranding efforts.
 								</p>
 								<div className='community-achievements__video'>
 									<iframe
