@@ -9,7 +9,7 @@ const Navbar = () => (
 			<Link to='/' className='navbar__link'>
 				<img
 					alt='logo'
-					src='https://res.cloudinary.com/dhbiouaym/image/upload/v1663667966/Portfolio/logo_qny4vm.png'
+					src='https://img.icons8.com/?size=100&id=n1oME711GbEH&format=png&color=000000'
 					className='navbar__img'
 				/>
 			</Link>
@@ -48,7 +48,7 @@ const Navbar = () => (
 				</li>
 			</ul>
 			<a
-				href='https://drive.google.com/file/d/1SArkoqiFxn9qevyzhdjTVBb6oJnRb6F_/view?usp=sharing'
+				href='https://drive.google.com/file/d/1jaFV2r5dNdN8Kjx3VcNMvoo4YhyDOtTK/view?usp=sharing'
 				target='_blank'
 				rel='noreferrer'
 				className='navbar__button'

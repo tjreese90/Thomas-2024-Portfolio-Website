@@ -18,7 +18,7 @@ const LeftSideBar = () => (
 				</li>
 				<li className='left__linkItems'>
 					<a
-						href='https://codepen.io/yashfalke77'
+						href='https://codepen.io/tjreese90'
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
@@ -30,7 +30,7 @@ const LeftSideBar = () => (
 				</li>
 				<li className='left__linkItems'>
 					<a
-						href='https://github.com/yashfalke77'
+						href='https://github.com/tjreese90'
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
@@ -42,7 +42,7 @@ const LeftSideBar = () => (
 				</li>
 				<li className='left__linkItems'>
 					<a
-						href='https://www.instagram.com/yashfalke77/'
+						href='https://www.instagram.com/tjreese90'
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
@@ -54,7 +54,7 @@ const LeftSideBar = () => (
 				</li>
 				<li className='left__linkItems'>
 					<a
-						href='https://www.linkedin.com/in/yashfalke77/'
+						href='https://www.linkedin.com/in/thomas-reese-541758142/'
 						target='_blank'
 						rel='noreferrer'
 						className='left__links'

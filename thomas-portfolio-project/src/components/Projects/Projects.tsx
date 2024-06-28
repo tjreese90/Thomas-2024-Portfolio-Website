@@ -32,7 +32,7 @@ const Project = () => {
 					<div className='project__left'>
 						<img
 							className='project__img'
-							src='https://via.placeholder.com/400'
+							src='/images/project-1.png'
 							alt='Blue Ridge Canine Academy'
 						/>
 					</div>
@@ -122,7 +122,7 @@ const Project = () => {
 					<div className='project__right'>
 						<img
 							className='project__img'
-							src='https://via.placeholder.com/400'
+							src='/images/project-2.png'
 							alt='AI Form Builder'
 						/>
 					</div>
@@ -133,7 +133,7 @@ const Project = () => {
 					<div className='project__left'>
 						<img
 							className='project__img'
-							src='https://via.placeholder.com/400'
+							src='/images/project-3.png'
 							alt='UFC Fight Prediction Generator'
 						/>
 					</div>

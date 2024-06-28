@@ -11,43 +11,43 @@ import './touch.scss';
 //TODO: Fix description and flip logic
 const workExperience = [
 	{
-		company: 'Credit Karma',
-		role: 'Infrastructure Engineer / Front-End Software Developer Intern',
-		duration: 'Jan 2020 - Dec 2021',
-		icon: 'fas fa-briefcase',
-		techStack: 'React, Node.js, AWS',
-		description: '',
-	},
-	{
 		company: 'Sprout Social',
 		role: 'Front-End Web Developer',
-		duration: 'Jan 2019 - Dec 2019',
+		duration: 'Jan 2022 - March 2024',
 		icon: 'fas fa-code',
-		techStack: 'JavaScript, HTML, CSS',
+		techStack: 'JavaScript, HTML, CSS, React, TypeScript',
 		description: '',
 	},
 	{
-		company: 'Google',
+		company: 'The Walt Disney Company',
 		role: 'Software Engineering Intern',
-		duration: 'Jun 2018 - Aug 2018',
+		duration: 'Apr 2021 - Nov 2021',
 		icon: 'fas fa-graduation-cap',
-		techStack: 'Python, BigQuery, Kubernetes',
+		techStack: 'Python, BigQuery, Kubernetes, React',
+		description: '',
+	},
+	{
+		company: 'Credit Karma',
+		role: 'Infrastructure Engineer / QA Intern',
+		duration: 'Jan 2020 - Jan 2021',
+		icon: 'fas fa-briefcase',
+		techStack: 'React, Node.js, AWS, Ruby, Python',
 		description: '',
 	},
 ];
 
 const personalProjects = [
 	{
-		name: 'Project A',
+		name: 'Automated Trading System',
 		description:
-			'A web application that helps users manage their tasks efficiently.',
-		link: '#',
+			"A sophisticated trading application leveraging Oanda's API and Python scripts to automatically analyze multiple assets across various timeframes and execute trades based on meticulously backtested strategies. This comprehensive solution integrates React for the frontend, Flask for the backend, and Jupyter Notebook for data analysis and visualization.",
+		link: 'https://github.com/yourusername/automated-trading-system', // Update with actual link
 	},
 	{
-		name: 'Project B',
+		name: 'Next-Gen Fitness Tracker',
 		description:
-			'A mobile app that tracks fitness activities and provides insights.',
-		link: '#',
+			'An advanced React Native application designed to provide a holistic fitness tracking experience. This full-stack solution includes features such as user authentication, activity tracking, and data visualization. Developed to enhance personal fitness goals with potential for scalability and broader application.',
+		link: 'https://github.com/yourusername/next-gen-fitness-tracker', // Update with actual link
 	},
 ];
 
@@ -164,12 +164,14 @@ const Touch = () => {
 					))}
 				</div>
 				<p className='my-journey__contact'>
-					Although I’m not currently looking for any new opportunities, my inbox
-					is always open. Whether you have a question or just want to say hi,
-					I’ll try my best to get back to you!
+					I'm currently on the lookout for exciting new opportunities—like a
+					coder searching for that elusive semicolon. If you have a question, an
+					interesting project, or just want to say hi, my inbox is always open!
+					I'll try my best to respond faster than a recursive function on
+					overdrive.
 				</p>
 				<Link to='/contact' className='intro__button'>
-					Contact Me
+					Get In Touch
 				</Link>
 			</div>
 			<span className='sectiontag'>&lt;/section&gt;</span>
