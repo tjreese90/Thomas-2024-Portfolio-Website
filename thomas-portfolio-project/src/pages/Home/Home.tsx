@@ -1,8 +1,9 @@
+import React from 'react';
 import Center from '@layouts/Center/Center';
 import LeftSideBar from '@layouts/LeftSidebar/LeftSidebar';
 import RightSideBar from '@layouts/RightSidebar/RightSidebar';
 import Navbar from '@components/Navbar/Navbar';
-import React from 'react';
+import ScrollToTopButton from '@components/ScrollToTopButton';
 import './home.scss';
 
 const Home: React.FC = () => (
@@ -19,6 +20,7 @@ const Home: React.FC = () => (
 				<RightSideBar />
 			</div>
 		</div>
+		<ScrollToTopButton />
 	</div>
 );
 

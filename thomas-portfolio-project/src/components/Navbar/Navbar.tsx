@@ -41,9 +41,9 @@ const Navbar = () => (
 					</HashLink>
 				</li>
 				<li className='navbar__items'>
-					<HashLink to='/#contact' className='navbar__itemsLink'>
+					<HashLink to='/#my-journey' className='navbar__itemsLink'>
 						<span className='navbar__itemsLinkNumeric'>05.</span>
-						Contact
+						My Journey
 					</HashLink>
 				</li>
 			</ul>

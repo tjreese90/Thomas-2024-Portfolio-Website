@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+//CommunityAndAchievements.tsx
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './CommunityAndAchievements.scss';
@@ -40,12 +41,57 @@ const CommunityAndAchievements = () => {
 							Community Involvement
 						</h2>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							For over two years, I have been volunteering with{' '}
+							<a
+								href='https://codenation.org/'
+								target='_blank'
+								rel='noreferrer'
+								className='highlight-link'
+							>
+								Code Nation
+							</a>
+							, where I teach students about STEM roles and careers, and help
+							them learn coding. It has been incredibly rewarding to see young
+							minds light up as they discover their potential in technology.
 						</p>
 						<p>
-							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat.
+							I have also participated in various hackathons, such as{' '}
+							<a
+								href='https://careers.jpmorgan.com/us/en/students/programs/tfsg-hackathons'
+								target='_blank'
+								rel='noreferrer'
+								className='highlight-link'
+							>
+								JP Morgan's 24HR Code For Good hackathon
+							</a>
+							, where I led a front-end team to create a dynamic website for a
+							non-profit called Girls in the Game. This platform encourages
+							young females to engage in sports by providing a friendly place to
+							discuss sports-related activities.
+						</p>
+						<p>
+							In addition, I took part in{' '}
+							<a
+								href='https://codenation.org/recap-code-nation-new-york-hackathon-2023/'
+								target='_blank'
+								rel='noreferrer'
+								className='highlight-link'
+							>
+								Google's Code Nation Hackathon
+							</a>
+							, where I guided students in local schools to use HTML, CSS, and
+							JavaScript to create websites showcasing their passions. This
+							experience was a fantastic opportunity to give back to the
+							community and inspire the next generation of developers.
+						</p>
+						<p>
+							Moreover, I have volunteered at the{' '}
+							<span className='highlight'>
+								Disabled Children's Lighthouse of Chicago
+							</span>{' '}
+							and <span className='highlight'>Open Hands</span>, helping feed
+							the hungry and those in need. These experiences have deepened my
+							commitment to community service and social responsibility.
 						</p>
 					</section>
 
@@ -54,20 +100,43 @@ const CommunityAndAchievements = () => {
 						<div className='community-achievements__cards'>
 							<article className='community-achievements__card'>
 								<h3 className='community-achievements__cardTitle'>
-									Achievement 1
+									ACCA Coding Competition
 								</h3>
 								<p>
-									Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur.
+									Participated in the{' '}
+									<a
+										href='https://www.trnty.edu/academic-program/computing/above-beyond/trollgamers-rank-in-top-5-of-acca-competition/'
+										target='_blank'
+										rel='noreferrer'
+										className='highlight-link'
+									>
+										Associated Colleges of the Chicago Area (ACCA) competition
+									</a>
+									, where my team secured second place by solving complex
+									algorithms and showcasing our coding prowess.
 								</p>
 							</article>
 							<article className='community-achievements__card'>
 								<h3 className='community-achievements__cardTitle'>
-									Achievement 2
+									Credit Karma Commercial
 								</h3>
 								<p>
-									Excepteur sint occaecat cupidatat non proident, sunt in culpa
-									qui officia deserunt mollit anim id est laborum.
+									Featured in a commercial for{' '}
+									<span className='highlight'>Credit Karma</span> to share my
+									credit journey story, which highlighted the impact of their
+									services on my financial well-being. Link will be added later.
+								</p>
+							</article>
+							<article className='community-achievements__card'>
+								<h3 className='community-achievements__cardTitle'>
+									JumpStart Commercial
+								</h3>
+								<p>
+									Participated in a commercial for{' '}
+									<span className='highlight'>JumpStart</span>, a company aiding
+									college students in finding internships and jobs. The
+									commercial was part of their rebranding efforts. Link will be
+									added later.
 								</p>
 							</article>
 						</div>
