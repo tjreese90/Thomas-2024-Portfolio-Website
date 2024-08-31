@@ -60,7 +60,7 @@ const Project = () => {
 							<div className='project__tags'>
 								{' '}
 								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								SCSS/SASS
+								SCSS/SASS &nbsp; Acuity Scheduling &nbsp;
 							</div>
 							<div className='project__icons'>
 								<a
@@ -102,8 +102,8 @@ const Project = () => {
 								efficiency.
 							</p>
 							<div className='project__tags'>
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								Gemini AI &nbsp; SCSS/SASS
+								React.js &nbsp; Node.js &nbsp; Vue.js &nbsp; MongoDB &nbsp;
+								Gemini AI &nbsp; SCSS/SASS &nbsp; API
 							</div>
 							<div className='project__icons project__icons1'>
 								<a
@@ -160,8 +160,8 @@ const Project = () => {
 							</p>
 							<div className='project__tags'>
 								{' '}
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								UFC MMA V2 API &nbsp; SCSS/SASS
+								React.js &nbsp; Node.js &nbsp; Vite.js &nbsp; MongoDB &nbsp; UFC
+								MMA V2 API &nbsp; SCSS/SASS
 							</div>
 							<div className='project__icons'>
 								<a
