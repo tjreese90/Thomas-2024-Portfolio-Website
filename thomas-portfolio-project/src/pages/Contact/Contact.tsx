@@ -12,7 +12,7 @@ const modelName =
 	import.meta.env.VITE_GEN_AI_MODEL_NAME || 'gemini-1.5-pro-latest';
 const model = generativeAI.getGenerativeModel({ model: modelName });
 
-const MAX_CHAT_HISTORY = 10; // Maximum number of chat messages to keep
+const MAX_CHAT_HISTORY = 100; // Maximum number of chat messages to keep
 
 const Contact = () => {
 	const [letterClass, setLetterClass] = useState('text-animate');
@@ -68,8 +68,8 @@ const Contact = () => {
 						window.alert('Mail Sent Successfully!!!');
 						playSuccessAnimation();
 					},
-					(error) => {
-						window.alert('Mail Not Sent!!!');
+					(e) => {
+						window.alert(`Mail Not Sent!!! ${e}`);
 					}
 				);
 		}
@@ -113,6 +113,7 @@ const Contact = () => {
 			const userMessage = `User: ${newMessage}`;
 			const previousMessages = summarizeChatHistory(chatMessages);
 			setChatMessages((prevMessages) => [...prevMessages, userMessage]);
+			saveChat(userMessage); // Save the user message
 			setNewMessage('');
 
 			const requestBody = {
@@ -122,7 +123,11 @@ const Contact = () => {
 						role: 'user',
 						parts: [
 							{
-								text: `You are Thomas Reese, a software developer. Respond to the following user query concisely and informatively. Minimize casual banter. Here's the latest user message: ${newMessage}. Previous conversation: ${previousMessages}`,
+								text: `
+                      You are Thomas Reese, a friendly software developer who loves engaging conversations. Make sure to respond in a personalized and natural manner. Keep responses relevant and avoid any placeholders or errors. For example, if asked about your name, you could say "I'm Thomas Reese, here to help you with any questions or information you need." Keep the tone conversational and warm, and ensure the responses align with the context of the conversation.
+                      Latest user message: ${newMessage}
+                      Previous conversation: ${previousMessages}
+                    `,
 							},
 						],
 					},
@@ -141,25 +146,25 @@ const Contact = () => {
 							?.trim()
 							.replace(/[\r\n]+/g, ' ')}`;
 						setChatMessages((prevMessages) => [...prevMessages, aiMessage]);
-						saveChat(userMessage, aiMessage);
+						saveChat(userMessage, aiMessage); // Save the AI response
 					} else {
-						setChatMessages((prevMessages) => [
-							...prevMessages,
-							'AI: Sorry, I could not fetch a response at this time.',
-						]);
+						const errorMessage =
+							'AI: It seems like there was an issue with generating a response. Let’s try again! 😅';
+						setChatMessages((prevMessages) => [...prevMessages, errorMessage]);
+						saveChat(userMessage, errorMessage); // Save the error response
 					}
 				} else {
-					setChatMessages((prevMessages) => [
-						...prevMessages,
-						'AI: Sorry, I could not fetch a response at this time.',
-					]);
+					const fallbackMessage =
+						'AI: Sorry, I couldn’t get a response at this time. How can I assist you further?';
+					setChatMessages((prevMessages) => [...prevMessages, fallbackMessage]);
+					saveChat(userMessage, fallbackMessage); // Save the fallback response
 				}
 			} catch (error) {
 				console.error('Error fetching AI response:', error);
-				setChatMessages((prevMessages) => [
-					...prevMessages,
-					'AI: Sorry, I could not fetch a response at this time.',
-				]);
+				const errorMessage =
+					'AI: Oops, something went wrong. I’m here to help if you need anything else!';
+				setChatMessages((prevMessages) => [...prevMessages, errorMessage]);
+				saveChat(userMessage, errorMessage); // Save the error response
 			}
 		}
 	};
@@ -388,14 +393,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-// TODO: Implement more robust error handling in sendEmail function.
-// TODO: Ensure all interactive elements have appropriate ARIA roles and labels for accessibility.
-// TODO: Enhance form validation to provide real-time feedback, especially for email format validation.
-// TODO: Ensure UI is fully responsive across different screen sizes and devices.
-// TODO: Review and optimize performance, minimizing unnecessary re-renders and optimizing API calls.
-// TODO: Add support for multiple languages or locales, especially for error messages and form labels.
-// TODO: Implement security best practices, such as sanitizing inputs and protecting sensitive data.
-// TODO: Update inline comments and documentation to improve code readability.
-// TODO: Develop and implement unit tests using Jest or React Testing Library.
-// TODO: Gather user feedback for usability testing and consider UX improvements.
