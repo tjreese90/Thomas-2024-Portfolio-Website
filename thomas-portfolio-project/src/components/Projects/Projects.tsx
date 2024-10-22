@@ -1,4 +1,3 @@
-//Projects.tsx
 import React, { useState, useEffect } from 'react';
 import './projects.scss';
 import LazyLoad from 'react-lazyload';
@@ -8,11 +7,61 @@ const Project = () => {
 	const [letterClass, setLetterClass] = useState('text-animate-fast');
 	const nameArray = [...'02. My Projects'];
 
+	// Countdown logic
+	const [timeRemaining, setTimeRemaining] = useState({
+		days: 0,
+		hours: 0,
+		minutes: 0,
+		seconds: 0,
+	});
+
 	useEffect(() => {
 		setTimeout(() => {
 			setLetterClass('text-animate-fast-hover');
 		}, 4000);
-	});
+
+		// Retrieve the target date from localStorage or set a new one
+		const savedTargetDate = localStorage.getItem('targetDate');
+		let targetDate;
+
+		if (savedTargetDate) {
+			// Parse the stored target date
+			targetDate = new Date(savedTargetDate);
+		} else {
+			// Set a new target date if one doesn't exist
+			targetDate = new Date();
+			targetDate.setDate(targetDate.getDate() + 10); // 10 days from now
+			localStorage.setItem('targetDate', targetDate.toString()); // Store it in localStorage
+		}
+
+		// Function to calculate the remaining time
+		const calculateTimeRemaining = () => {
+			const now = new Date();
+			const difference = targetDate.getTime() - now.getTime();
+
+			if (difference > 0) {
+				const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+				const hours = Math.floor(
+					(difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+				);
+				const minutes = Math.floor(
+					(difference % (1000 * 60 * 60)) / (1000 * 60),
+				);
+				const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+				setTimeRemaining({ days, hours, minutes, seconds });
+			} else {
+				// Countdown is finished
+				setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+			}
+		};
+
+		// Set interval to update countdown every second
+		const intervalId = setInterval(calculateTimeRemaining, 1000);
+
+		// Cleanup the interval on component unmount
+		return () => clearInterval(intervalId);
+	}, []);
 
 	return (
 		<div className='project' id='projects'>
@@ -78,10 +127,17 @@ const Project = () => {
 					</div>
 				</section>
 			</LazyLoad>
+
+			{/* Countdown timer */}
 			<LazyLoad once height={400}>
 				<section className='project__section'>
 					<div className='project__left1'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
+						<h5>
+							Deploying in: {timeRemaining.days} Days, {timeRemaining.hours}{' '}
+							Hours, {timeRemaining.minutes} Minutes, {timeRemaining.seconds}{' '}
+							Seconds
+						</h5>
 						<a
 							href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 							target='_blank'
@@ -128,6 +184,7 @@ const Project = () => {
 					</div>
 				</section>
 			</LazyLoad>
+
 			<LazyLoad once height={400}>
 				<section className='project__section project__section3'>
 					<div className='project__left'>
@@ -139,6 +196,7 @@ const Project = () => {
 					</div>
 					<div className='project__right'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
+						<h5>In Development</h5>
 						<a
 							href='https://github.com/tjreese90/UFC-Blog-Web-App'
 							target='_blank'
@@ -231,7 +289,7 @@ const Project = () => {
 							</svg>
 							<div className='projectResp__cardLink'>
 								<a
-									href='URL-WILL-BE-ADDED-LATER'
+									href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
@@ -271,7 +329,7 @@ const Project = () => {
 							</svg>
 							<div className='projectResp__cardLink'>
 								<a
-									href='URL-WILL-BE-ADDED-LATER'
+									href='https://github.com/tjreese90/UFC-Blog-Web-App'
 									target='_blank'
 									rel='noreferrer'
 									style={{ marginRight: '1.6rem' }}
