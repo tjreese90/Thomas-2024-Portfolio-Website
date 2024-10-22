@@ -1,4 +1,3 @@
-//CommunityAndAchievements.tsx
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
@@ -7,8 +6,14 @@ import './CommunityAndAchievements.scss';
 const CommunityAndAchievements = () => {
 	const [letterClass, setLetterClass] = useState('text-animate-fast');
 	const nameArray = [...'04. Community Impact'];
-
 	const TIMEOUT_DURATION = 4000;
+
+	// State for iframe loading (used for Credit Karma video)
+	const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+
+	const loadIframe = () => {
+		setIsIframeLoaded(true);
+	};
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -103,7 +108,7 @@ const CommunityAndAchievements = () => {
 									target='_blank'
 									className='highlight'
 								>
-									Open Hands
+									Project Open Hands
 								</a>
 							</span>
 							, helping feed the hungry and those in need. These experiences
@@ -132,7 +137,30 @@ const CommunityAndAchievements = () => {
 									, where my team secured second place by solving complex
 									algorithms and showcasing our coding prowess.
 								</p>
+								<div
+									style={{
+										display: 'flex',
+										justifyContent: 'center',
+										alignItems: 'center',
+										width: '100%',
+										margin: '20px 0',
+									}}
+								>
+									<img
+										src='../../../public/images/codenation.jpg'
+										alt='Code Nation'
+										className='community-achievements__image'
+										style={{
+											width: '45%',
+											height: 'auto',
+											objectFit: 'cover',
+											borderRadius: '8px',
+											boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+										}}
+									/>
+								</div>
 							</article>
+
 							<article className='community-achievements__card'>
 								<h3 className='community-achievements__cardTitle'>
 									Credit Karma Commercial
@@ -154,10 +182,11 @@ const CommunityAndAchievements = () => {
 									of their services on my financial well-being.
 								</p>
 								<div className='community-achievements__video'>
+									// Replace with the YouTube iframe once clicked
 									<iframe
 										width='100%'
-										height='315'
-										src='https://www.youtube.com/embed/JFwQ4r3mtus'
+										height='315px'
+										src='https://www.youtube.com/embed/JFwQ4r3mtus?autoplay=1'
 										title="TJ's credit comeback"
 										frameBorder='0'
 										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -165,7 +194,8 @@ const CommunityAndAchievements = () => {
 									></iframe>
 								</div>
 							</article>
-							<article className='community-achievements__card'>
+
+							<article className='community-achievements__card' id='jumpStart'>
 								<h3 className='community-achievements__cardTitle'>
 									JumpStart Commercial
 								</h3>

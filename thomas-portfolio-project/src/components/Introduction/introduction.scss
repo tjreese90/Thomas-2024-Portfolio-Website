@@ -68,6 +68,7 @@
 		line-height: 1;
 		letter-spacing: -0.03em;
 		margin-bottom: 1.6rem;
+		cursor: default;
 		color: var(--lightest-slate);
 
 		@include respond(phone) {
@@ -277,4 +278,8 @@
 
 .intro__headingSecondary {
 	color: var(--lightest-slate);
+}
+
+.text-animate-hover {
+	cursor: default;
 }
