@@ -174,9 +174,9 @@ const About = () => {
 				</h1>
 				<div className='about__description'>
 					{[
-						'Hello! My name is Thomas Reese, a Front-End Developer based in Lisle, Illinois. I am passionate about creating intuitive and dynamic user experiences.',
-						'I graduated from Dominican University in 2022 with a Bachelor of Science in Computer Science. My coursework included OOP, Data Structures, and AI.',
-						'I have worked as an Infrastructure Engineer and Front-End Developer Intern at Credit Karma and a Front-End Web Developer at Sprout Social.',
+						'Hello! My name is Thomas Reese, a Front-End Developer based in Lisle, Illinois. I specialize in building engaging and interactive web applications with a focus on clean, maintainable code.',
+						'I graduated from Dominican University in 2022 with a Bachelor of Science in Computer Science, where I honed my skills in Object-Oriented Programming (OOP), Data Structures, and Artificial Intelligence (AI).',
+						'In my professional experience, I have worked as an Infrastructure Engineer and Front-End Developer Intern at Credit Karma, where I gained hands-on experience with infrastructure automation and front-end development using React, JavaScript, and CSS. I also worked as a Front-End Web Developer at Sprout Social, focusing on building responsive user interfaces using modern tools like React, TypeScript, and SCSS.',
 						'Here are some of the technologies I have been working with recently:',
 					].map((text, idx) => (
 						<motion.p
