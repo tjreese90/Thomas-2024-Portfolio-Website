@@ -48,7 +48,7 @@ const Navbar = () => (
 				</li>
 			</ul>
 			<a
-				href='https://drive.google.com/file/d/1jaFV2r5dNdN8Kjx3VcNMvoo4YhyDOtTK/view?usp=sharing'
+				href='https://drive.google.com/file/d/1Xxme-Q0HY299yebjTTyeKw7af02v-jCT/view?usp=drive_link'
 				target='_blank'
 				rel='noreferrer'
 				className='navbar__button'
