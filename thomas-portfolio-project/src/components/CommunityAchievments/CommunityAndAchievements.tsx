@@ -147,7 +147,7 @@ const CommunityAndAchievements = () => {
 									}}
 								>
 									<img
-										src='../../../public/images/codenation.jpg'
+										src='./codenation.jpg'
 										alt='Code Nation'
 										className='community-achievements__image'
 										style={{
