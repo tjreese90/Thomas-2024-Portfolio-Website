@@ -145,7 +145,7 @@ const Project = () => {
 							rel='noreferrer'
 							className='project__headingSecondary'
 						>
-							<h2>UFC Fight Prediction Generator</h2>
+							<h2>UFC Fight Prediction Generator WIP</h2>
 						</a>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>

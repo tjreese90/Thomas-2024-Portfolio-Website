@@ -61,7 +61,7 @@ const Contact = () => {
 					'service_mvino5p',
 					'template_2d4e4it',
 					form.current,
-					'qUG6AOg1cYetUQ6QI'
+					'qUG6AOg1cYetUQ6QI',
 				)
 				.then(
 					() => {
@@ -70,7 +70,7 @@ const Contact = () => {
 					},
 					(e) => {
 						window.alert(`Mail Not Sent!!! ${e}`);
-					}
+					},
 				);
 		}
 
@@ -186,9 +186,6 @@ const Contact = () => {
 	return (
 		<div className={`contact ${isDarkMode ? 'dark' : ''}`}>
 			<div className='contact__left'>
-				<button onClick={toggleDarkMode} className='toggle-dark-mode'>
-					Toggle {isDarkMode ? 'Light' : 'Dark'} Mode
-				</button>
 				<span className='tag' style={{ padding: '0rem' }}>
 					&lt;body&gt;
 				</span>
