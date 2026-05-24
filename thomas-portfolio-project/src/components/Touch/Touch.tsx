@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -6,7 +5,6 @@ import {
 	VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './touch.scss';
 
 const workExperience = [
@@ -72,86 +70,54 @@ const goals = [
 ];
 
 const Touch = () => {
-	const [letterClass, setLetterClass] = useState('text-animate-fast');
-	const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
-
-	const handleCardClick = (index: number) => {
-		setFlippedIndex(flippedIndex === index ? null : index);
-	};
-
-	const nameArray = [...'05. My Journey'];
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLetterClass('text-animate-fast-hover');
-		}, 4000);
-		return () => clearTimeout(timer);
-	}, []);
-
 	return (
-		<section className='my-journey' id='my-journey'>
+		<section className='my-journey' id='experience'>
 			<span className='sectiontag'>&lt;section&gt;</span>
 			<div className='my-journey__content'>
-				<h1 className='my-journey__headingPrimary'>
-					<AnimatedLettersFast
-						letterClass={letterClass}
-						strArray={nameArray}
-						idx={15}
-					/>
-				</h1>
+				<h2 className='my-journey__headingPrimary'>
+					<span className='my-journey__sectionNumber'>02.</span> Experience
+				</h2>
+				<VerticalTimeline>
+					{workExperience.map((job) => (
+						<VerticalTimelineElement
+							key={job.company}
+							date={job.duration}
+							iconStyle={{ background: 'var(--secondary)', color: 'var(--primary)' }}
+							icon={<i className={job.icon} aria-hidden='true'></i>}
+						>
+							<motion.article
+								className='vertical-timeline-element-content'
+								initial={{ opacity: 0, y: 12 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.4 }}
+							>
+								<h3 className='vertical-timeline-element-title'>
+									{job.company}
+								</h3>
+								<p className='vertical-timeline-element-subtitle'>{job.role}</p>
+								<p className='vertical-timeline-element-stack'>
+									<span className='vertical-timeline-element-stackLabel'>
+										Stack:
+									</span>{' '}
+									{job.techStack}
+								</p>
+								<p className='vertical-timeline-element-description'>
+									{job.description}
+								</p>
+							</motion.article>
+						</VerticalTimelineElement>
+					))}
+				</VerticalTimeline>
 				<div className='banner'>
-					<h2 className='goals-banner'>Goals and Aspirations</h2>
+					<h3 className='goals-banner'>Goals & Aspirations</h3>
 					<ul>
 						{goals.map((goal) => (
 							<li key={goal}>{goal}</li>
 						))}
 					</ul>
 				</div>
-				<h2 className='my-journey__subheading'>Work Experience</h2>
-				<p className='my-journey__hint'>
-					Tap a card to flip and see the tech stack and details.
-				</p>
-				<VerticalTimeline>
-					{workExperience.map((job, index) => (
-						<VerticalTimelineElement
-							key={job.company}
-							date={job.duration}
-							iconStyle={{ background: 'var(--primary)', color: '#fff' }}
-							icon={<i className={job.icon} aria-hidden='true'></i>}
-						>
-							<motion.div
-								className={`vertical-timeline-element-content ${
-									flippedIndex === index ? 'flipped' : ''
-								}`}
-								role='button'
-								tabIndex={0}
-								aria-pressed={flippedIndex === index}
-								aria-label={`${job.company} — ${job.role}. Activate to view tech stack and details.`}
-								onClick={() => handleCardClick(index)}
-								onKeyDown={(e) => {
-									if (e.key === 'Enter' || e.key === ' ') {
-										e.preventDefault()
-										handleCardClick(index)
-									}
-								}}
-							>
-								<div className='vertical-timeline-element-front'>
-									<h3 className='vertical-timeline-element-title'>
-										{job.company}
-									</h3>
-									<h4 className='vertical-timeline-element-subtitle'>
-										{job.role}
-									</h4>
-								</div>
-								<div className='vertical-timeline-element-back'>
-									<h4>Tech Stack: {job.techStack}</h4>
-									<p>{job.description}</p>
-								</div>
-							</motion.div>
-						</VerticalTimelineElement>
-					))}
-				</VerticalTimeline>
-				<h2 className='my-journey__subheading'>Personal Projects</h2>
+				<h3 className='my-journey__subheading'>Personal Projects</h3>
 				<div className='my-journey__projects'>
 					{personalProjects.map((project, index) => (
 						<motion.div
@@ -161,7 +127,7 @@ const Touch = () => {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.6, delay: index * 0.2 }}
 						>
-							<h3>
+							<h4>
 								<a
 									href={project.link}
 									target='_blank'
@@ -169,17 +135,14 @@ const Touch = () => {
 								>
 									{project.name}
 								</a>
-							</h3>
+							</h4>
 							<p>{project.description}</p>
 						</motion.div>
 					))}
 				</div>
 				<p className='my-journey__contact'>
-					I'm currently on the lookout for exciting new opportunities—like a
-					coder searching for that elusive semicolon. If you have a question, an
-					interesting project, or just want to say hi, my inbox is always open!
-					I'll try my best to respond faster than a recursive function on
-					overdrive.
+					I'm open to roles, contract work, or interesting collaborations.
+					The inbox is always open — drop a note via the form.
 				</p>
 				<Link to='/contact' className='intro__button'>
 					Get In Touch

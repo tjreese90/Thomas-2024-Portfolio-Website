@@ -123,26 +123,55 @@
 
 	&__headingTertiary {
 		font-weight: 500;
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		color: var(--primary);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
 	}
 
 	&__status {
-		display: inline-block;
-		font-size: 1.2rem;
-		color: var(--primary);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1.15rem;
 		text-transform: uppercase;
-		letter-spacing: 0.1rem;
-		margin-bottom: 0.6rem;
+		letter-spacing: 0.12rem;
+		font-weight: 700;
+		margin-bottom: 0.8rem;
+
+		&Dot {
+			width: 0.7rem;
+			height: 0.7rem;
+			border-radius: 50%;
+			display: inline-block;
+		}
+
+		&--live {
+			color: #64ffda;
+
+			.project__statusDot {
+				background: #64ffda;
+				box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.18);
+			}
+		}
+
+		&--wip {
+			color: var(--slate);
+
+			.project__statusDot {
+				background: var(--slate);
+				box-shadow: 0 0 0 3px rgba(136, 146, 176, 0.18);
+			}
+		}
 	}
 
 	&__headingSecondary {
 		font-weight: 700;
-		font-size: 2.2rem;
-		color: var(--lightest-slate);
-		margin: 0;
+		font-size: 2.4rem;
+		color: #ffffff;
+		margin: 0 0 1rem;
 		text-decoration: none;
-		transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+		transition: color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
 		a {
 			color: inherit;
@@ -155,12 +184,49 @@
 		}
 	}
 
+	&__imgLink {
+		position: relative;
+		display: block;
+		text-decoration: none;
+		overflow: hidden;
+		border-radius: 0.4rem;
+		transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+		.project__img {
+			transition: filter 0.3s ease, transform 0.4s ease;
+		}
+
+		.project__imgOverlay {
+			position: absolute;
+			inset: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(10, 25, 47, 0.55);
+			color: var(--primary);
+			opacity: 0;
+			transition: opacity 0.25s ease;
+		}
+
+		&:hover, &:focus-visible {
+			.project__img {
+				filter: brightness(0.55);
+				transform: scale(1.02);
+			}
+			.project__imgOverlay {
+				opacity: 1;
+			}
+		}
+	}
+
 	&__description {
 		background-color: #112240;
 		letter-spacing: 0.6px;
 		width: 55rem;
+		max-width: 65ch;
 		padding: 2rem;
 		font-size: 1.4rem;
+		line-height: 1.6;
 		margin-top: 1rem;
 		border-radius: 4px;
 		box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);

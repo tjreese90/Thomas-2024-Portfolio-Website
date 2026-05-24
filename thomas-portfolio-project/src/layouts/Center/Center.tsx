@@ -16,16 +16,16 @@ const Center = () => (
 			<About />
 		</LazyLoad>
 		<LazyLoad once height={566}>
-			<Project />
+			<Touch />
 		</LazyLoad>
 		<LazyLoad once height={566}>
-			<CommunityAndAchievements />
+			<Project />
 		</LazyLoad>
 		<LazyLoad once height={566}>
 			<OtherProjects />
 		</LazyLoad>
 		<LazyLoad once height={566}>
-			<Touch />
+			<CommunityAndAchievements />
 		</LazyLoad>
 		<span className='tag'>&lt;/body&gt;</span>
 	</div>

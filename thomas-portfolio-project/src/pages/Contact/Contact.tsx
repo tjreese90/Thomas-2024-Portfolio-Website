@@ -1,5 +1,4 @@
-import AnimatedLetters from '@components/AnimatedLetters/AnimatedLetters';
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './contact.scss';
 import emailjs from '@emailjs/browser';
@@ -14,8 +13,6 @@ const SUGGESTED_PROMPTS = [
 ]
 
 const Contact = () => {
-	const [letterClass, setLetterClass] = useState('text-animate');
-	const nameArray = [...'Contact me'];
 	const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
 	const [newMessage, setNewMessage] = useState('');
 	const [isStreaming, setIsStreaming] = useState(false);
@@ -29,13 +26,6 @@ const Contact = () => {
 	const inputRef2 = useRef<HTMLInputElement>(null);
 	const inputRef3 = useRef<HTMLTextAreaElement>(null);
 	const chatEndRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLetterClass('text-animate-hover');
-		}, 4000);
-		return () => clearTimeout(timer);
-	}, []);
 
 	useEffect(() => {
 		const saved = localStorage.getItem('askThomasMessages');
@@ -179,13 +169,7 @@ const Contact = () => {
 				<span className='tag' style={{ padding: '0rem' }}>
 					&lt;body&gt;
 				</span>
-				<h1 className='about__headingPrimary'>
-					<AnimatedLetters
-						letterClass={letterClass}
-						strArray={nameArray}
-						idx={15}
-					/>
-				</h1>
+				<h1 className='about__headingPrimary'>Contact</h1>
 				<p className='contact__description'>
 					I'm open to freelance opportunities, especially ambitious or
 					large-scale projects. For anything else — questions, intros, or

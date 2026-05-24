@@ -9,10 +9,10 @@ const Navbar = () => {
 	const menuItems = useMemo(
 		() => [
 			{ id: '01.', name: 'About', link: '/#about' },
-			{ id: '02.', name: 'Projects', link: '/#projects' },
-			{ id: '03.', name: 'Work', link: '/#other-project' },
+			{ id: '02.', name: 'Experience', link: '/#experience' },
+			{ id: '03.', name: 'Projects', link: '/#projects' },
 			{ id: '04.', name: 'Impact', link: '/#community-achievements' },
-			{ id: '05.', name: 'My Journey', link: '/#my-journey' },
+			{ id: '05.', name: 'Contact', link: '/contact' },
 		],
 		[],
 	);

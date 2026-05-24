@@ -92,9 +92,10 @@
 	}
 
 	&__description {
-		color: var(--slate);
+		color: var(--lightest-slate);
 		margin-top: 2rem;
-		line-height: 1.6;
+		line-height: 1.7;
+		max-width: 65ch;
 
 		&::before {
 			content: '<p>';
@@ -164,33 +165,27 @@
 	}
 
 	&__headingPrimary {
-		font-size: 4.5rem;
+		font-size: 3.6rem;
 		font-weight: 800;
-		line-height: 1;
-		letter-spacing: -0.03em;
-		margin-bottom: 1.6rem;
-		color: var(--lightest-slate);
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin-bottom: 2.4rem;
+		color: #ffffff;
+		display: flex;
+		align-items: baseline;
+		gap: 1rem;
 
-		&::before {
-			content: '<h1>';
-			font-size: 1.8rem;
-			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
-			opacity: 0.15;
-			font-weight: 500;
-			display: block;
+		@include respond(phone) {
+			font-size: 2.8rem;
 		}
+	}
 
-		&::after {
-			content: '</h1>';
-			font-size: 1.8rem;
-			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
-			opacity: 0.15;
-			font-weight: 500;
-			animation: fadeIn 1s 1.7s backwards;
-			display: block;
-		}
+	&__subheading {
+		font-size: 1.8rem;
+		color: var(--primary);
+		font-weight: 700;
+		margin-top: 2rem;
+		margin-bottom: 1.2rem;
 	}
 
 	&__subheading {
@@ -217,10 +212,10 @@
 	}
 
 	&__cardTitle {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
 		font-weight: 700;
 		margin-bottom: 1rem;
-		color: var(--primary);
+		color: #ffffff;
 	}
 
 	.community-achievements__description p {

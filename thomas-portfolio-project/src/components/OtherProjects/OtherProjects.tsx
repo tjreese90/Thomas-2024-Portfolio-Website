@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import AnimatedLettersFast from '@components/AnimatedLettersFast/AnimatedLettersFast';
 import './otherProjects.scss';
 
 const projects = [
@@ -41,28 +39,11 @@ const projects = [
 ];
 
 const OtherProjects = () => {
-	const [letterClass, setLetterClass] = useState('text-animate-fast');
-	const nameArray = [...'Other Projects'];
-
-	useEffect(() => {
-		const timer = setTimeout(
-			() => setLetterClass('text-animate-fast-hover'),
-			4000,
-		);
-		return () => clearTimeout(timer);
-	}, []);
-
 	return (
-		<div className='other-project' id='other-project'>
+		<section className='other-project' id='other-project'>
 			<span className='sectiontag'>&lt;section&gt;</span>
 			<div className='other__container'>
-				<h1 className='other__headingPrimary'>
-					<AnimatedLettersFast
-						letterClass={letterClass}
-						strArray={nameArray}
-						idx={15}
-					/>
-				</h1>
+				<h3 className='other__headingPrimary'>Other Noteworthy Projects</h3>
 			</div>
 
 			<ul className='other__list'>
@@ -87,7 +68,7 @@ const OtherProjects = () => {
 								</div>
 							</div>
 							<div className='other__cardBody'>
-								<div className='other__cardBodyHeading'>{project.title}</div>
+								<h4 className='other__cardBodyHeading'>{project.title}</h4>
 								<p className='other__cardBodyDescription'>
 									{project.description}
 								</p>
@@ -105,7 +86,7 @@ const OtherProjects = () => {
 			</ul>
 
 			<span className='sectiontag'>&lt;/section&gt;</span>
-		</div>
+		</section>
 	);
 };
 

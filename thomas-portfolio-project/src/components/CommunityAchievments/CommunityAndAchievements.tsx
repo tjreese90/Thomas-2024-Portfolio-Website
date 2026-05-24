@@ -1,15 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './CommunityAndAchievements.scss';
 
 type VideoKey = 'creditKarma';
 
 const CommunityAndAchievements = () => {
-	const [letterClass, setLetterClass] = useState('text-animate-fast');
-	const nameArray = [...'04. Community Impact'];
-	const TIMEOUT_DURATION = 4000;
-
 	const [playingVideo, setPlayingVideo] = useState<Record<VideoKey, boolean>>({
 		creditKarma: false,
 	});
@@ -50,12 +45,6 @@ const CommunityAndAchievements = () => {
 		);
 	};
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLetterClass('text-animate-fast-hover');
-		}, TIMEOUT_DURATION);
-		return () => clearTimeout(timer);
-	}, []);
 
 	return (
 		<section
@@ -65,21 +54,17 @@ const CommunityAndAchievements = () => {
 		>
 			<div className='community-achievements__left'>
 				<span className='sectiontag'>&lt;section&gt;</span>
-				<h1
+				<h2
 					id='community-achievements-heading'
 					className='community-achievements__headingPrimary'
 				>
-					<AnimatedLettersFast
-						letterClass={letterClass}
-						strArray={nameArray}
-						idx={15}
-					/>
-				</h1>
+					<span className='about__sectionNumber'>04.</span> Community Impact
+				</h2>
 				<div className='community-achievements__description'>
 					<section>
-						<h2 className='community-achievements__subheading'>
+						<h3 className='community-achievements__subheading'>
 							Community Involvement
-						</h2>
+						</h3>
 						<p>
 							For over two years, I have been volunteering with{' '}
 							<a
@@ -153,12 +138,12 @@ const CommunityAndAchievements = () => {
 					</section>
 
 					<section>
-						<h2 className='community-achievements__subheading'>Achievements</h2>
+						<h3 className='community-achievements__subheading'>Achievements</h3>
 						<div className='community-achievements__cards'>
 							<article className='community-achievements__card'>
-								<h3 className='community-achievements__cardTitle'>
+								<h4 className='community-achievements__cardTitle'>
 									ACCA Coding Competition
-								</h3>
+								</h4>
 								<p>
 									Participated in the{' '}
 									<a
@@ -197,9 +182,9 @@ const CommunityAndAchievements = () => {
 							</article>
 
 							<article className='community-achievements__card'>
-								<h3 className='community-achievements__cardTitle'>
+								<h4 className='community-achievements__cardTitle'>
 									Credit Karma Commercial
-								</h3>
+								</h4>
 								<p>
 									Featured in a commercial for{' '}
 									<span className='highlight'>
@@ -226,9 +211,9 @@ const CommunityAndAchievements = () => {
 							</article>
 
 							<article className='community-achievements__card' id='jumpStart'>
-								<h3 className='community-achievements__cardTitle'>
+								<h4 className='community-achievements__cardTitle'>
 									JumpStart Commercial
-								</h3>
+								</h4>
 								<p>
 									Participated in a commercial for{' '}
 									<span className='highlight'>

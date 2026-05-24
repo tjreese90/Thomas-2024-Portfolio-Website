@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import AnimatedLetters from '@components/AnimatedLetters/AnimatedLetters';
 import { TypeAnimation } from 'react-type-animation';
 import './introduction.scss';
 
 const TYPE_PHRASES = [
-	'I build full-stack web apps',
-	2800,
 	'Software Engineer at Envoy',
+	2800,
+	'I build full-stack web apps',
 	2800,
 	'React + TypeScript specialist',
 	2800,
@@ -15,23 +14,13 @@ const TYPE_PHRASES = [
 	2800,
 	'Mobile-first UI/UX developer',
 	2800,
-] as const
+] as const;
 
-const PHRASE_FALLBACK =
-	'I build full-stack web apps · Software Engineer at Envoy · React + TypeScript · Trading systems & AI agents · Mobile-first UI/UX'
+const PHRASE_FALLBACK = 'Software Engineer at Envoy';
 
 const Introduction = () => {
-	const [letterClass, setLetterClass] = useState('text-animate');
-	const nameArray = [...'Thomas,'];
-	const jobArray = [...'oftware Developer '];
 	const [typePaused, setTypePaused] = useState(false);
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-	useEffect(() => {
-		setTimeout(() => {
-			setLetterClass('text-animate-hover');
-		}, 4000);
-	}, []);
 
 	useEffect(() => {
 		if (typeof window === 'undefined' || !window.matchMedia) return;
@@ -48,56 +37,53 @@ const Introduction = () => {
 		<div className='intro'>
 			<div className='intro__left'>
 				<span className='sectiontag'>&lt;section&gt;</span>
-				<h1 className='intro__headingPrimary' aria-label="Hi, I'm Thomas, Software Developer">
-					<span className='intro__line' aria-hidden='true'>
-						<span className={letterClass}>H</span>
-						<span className={`${letterClass} _12`}>i,</span>
-					</span>
-					<span className='intro__line' aria-hidden='true'>
-						<span className={`${letterClass} _13`}>I</span>
-						<span className={`${letterClass} _14`}>'m</span>
-						{' '}
-						<AnimatedLetters
-							letterClass={letterClass}
-							strArray={nameArray}
-							idx={25}
-						/>
-					</span>
-					<span className='intro__line' aria-hidden='true'>
-						<img
-							src='https://res.cloudinary.com/dhbiouaym/image/upload/v1663667972/Portfolio/logo-s_fna9e6.png'
-							className='intro__logos'
-							alt=''
-						/>
-						<AnimatedLetters
-							letterClass={letterClass}
-							strArray={jobArray}
-							idx={25}
-						/>
+				<h1 className='intro__headingPrimary'>
+					Hi, I'm Thomas.
+					<span className='intro__headingPrimaryRole'>
+						Full-Stack Software Engineer.
 					</span>
 				</h1>
-				<h2 className='intro__headingSecondary'>
-					{isAnimating ? (
-						<TypeAnimation
-							sequence={[...TYPE_PHRASES]}
-							wrapper='span'
-							speed={65}
-							repeat={Infinity}
-							cursor={false}
-						/>
-					) : (
-						<span>{PHRASE_FALLBACK}</span>
-					)}
+				<div className='intro__subheadingRow'>
+					<p
+						className='intro__headingSecondary'
+						aria-live='polite'
+					>
+						{isAnimating ? (
+							<TypeAnimation
+								sequence={[...TYPE_PHRASES]}
+								wrapper='span'
+								speed={65}
+								repeat={Infinity}
+								cursor={false}
+							/>
+						) : (
+							<span>{PHRASE_FALLBACK}</span>
+						)}
+					</p>
 					<button
 						type='button'
 						className='intro__typePauseToggle'
 						onClick={() => setTypePaused((p) => !p)}
-						aria-label={typePaused ? 'Resume animation' : 'Pause animation'}
+						aria-label={typePaused ? 'Resume subtitle animation' : 'Pause subtitle animation'}
 						aria-pressed={typePaused}
 					>
-						<span aria-hidden='true'>{typePaused ? '▶' : '❚❚'}</span>
+						<svg
+							viewBox='0 0 24 24'
+							width='14'
+							height='14'
+							aria-hidden='true'
+						>
+							{typePaused ? (
+								<path d='M8 5v14l11-7z' fill='currentColor' />
+							) : (
+								<>
+									<rect x='6' y='5' width='4' height='14' fill='currentColor' />
+									<rect x='14' y='5' width='4' height='14' fill='currentColor' />
+								</>
+							)}
+						</svg>
 					</button>
-				</h2>
+				</div>
 				<Link to='/contact' className='intro__button'>
 					Contact Me
 				</Link>

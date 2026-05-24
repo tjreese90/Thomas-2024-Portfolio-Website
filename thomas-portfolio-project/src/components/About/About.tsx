@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
-import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './about.scss';
 
-const TIMEOUT_DURATION = 4000;
 const DOUBLE_TAP_TIMEOUT = 300; // Time window for detecting a double tap
 
 const paragraphVariants = {
@@ -47,7 +45,6 @@ interface DragConstraints {
 }
 
 const About = () => {
-	const [letterClass, setLetterClass] = useState('text-animate-fast');
 	const [speedMode, setSpeedMode] = useState(0);
 	const [lastTap, setLastTap] = useState(0); // Store time of last tap
 	const rotateX = useMotionValue(0);
@@ -63,7 +60,6 @@ const About = () => {
 	const initialPosition = { x: 0, y: 0 };
 	const initialSpeed = 8; // Initial speed
 
-	const nameArray = [...'01. About Me'];
 	const skillsArray = [
 		'TypeScript & React 19',
 		'Ruby on Rails',
@@ -90,14 +86,6 @@ const About = () => {
 		'Three.js & Framer Motion',
 		'Figma',
 	];
-
-	useEffect(() => {
-		const timer = setTimeout(
-			() => setLetterClass('text-animate-fast-hover'),
-			TIMEOUT_DURATION,
-		);
-		return () => clearTimeout(timer);
-	}, []);
 
 	// Function to toggle between different spin speeds
 	const toggleSpeed = () => {
@@ -165,13 +153,9 @@ const About = () => {
 		>
 			<div className='about__left'>
 				<span className='sectiontag'>&lt;section&gt;</span>
-				<h1 id='about-heading' className='about__headingPrimary'>
-					<AnimatedLettersFast
-						letterClass={letterClass}
-						strArray={nameArray}
-						idx={15}
-					/>
-				</h1>
+				<h2 id='about-heading' className='about__headingPrimary'>
+					<span className='about__sectionNumber'>01.</span> About Me
+				</h2>
 				<div className='about__description'>
 					{[
 						'Hello! My name is Thomas Reese, a Full-Stack Developer based in Oakland, California. I build production systems where AI agents, scalable web apps, and developer tooling intersect.',

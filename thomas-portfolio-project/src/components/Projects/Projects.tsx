@@ -1,46 +1,51 @@
-import { useState, useEffect } from 'react';
 import './projects.scss';
 import LazyLoad from 'react-lazyload';
-import AnimatedLettersFast from '@components/AnimatedLettersFast/AnimatedLettersFast';
 
 const Project = () => {
-	const [letterClass, setLetterClass] = useState('text-animate-fast');
-	const nameArray = [...'02. My Projects'];
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLetterClass('text-animate-fast-hover');
-		}, 4000);
-		return () => clearTimeout(timer);
-	}, []);
-
 	return (
-		<div className='project' id='projects'>
+		<section className='project' id='projects' aria-labelledby='projects-heading'>
 			<span className='sectiontag'>&lt;section&gt;</span>
-			<h1 className='about__headingPrimary'>
-				<AnimatedLettersFast
-					letterClass={letterClass}
-					strArray={nameArray}
-					idx={15}
-				/>
-			</h1>
+			<h2 id='projects-heading' className='about__headingPrimary'>
+				<span className='about__sectionNumber'>03.</span> Projects
+			</h2>
 
 			{/* ----------------------------------------- for desktops -------------------------- */}
 
 			<LazyLoad once height={400}>
-				<section className='project__section'>
-					<div className='project__left'>
+				<article className='project__section'>
+					<a
+						className='project__left project__imgLink'
+						href='https://github.com/tjreese90'
+						target='_blank'
+						rel='noreferrer'
+						aria-label='View TraderDan repositories on GitHub (opens in new tab)'
+					>
 						<img
 							className='project__img'
 							src='/images/project-traderdan.png'
 							alt='TraderDan dashboard — Fleet Command view with 14-agent AI team'
 						/>
-					</div>
+						<span className='project__imgOverlay' aria-hidden='true'>
+							<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2'>
+								<path d='M14 3h7v7M10 14L21 3M21 14v7H3V3h7' />
+							</svg>
+						</span>
+					</a>
 					<div className='project__right'>
 						<p className='project__headingTertiary'>Featured Project</p>
-						<span className='project__status'>Live</span>
+						<span className='project__status project__status--live'>
+							<span className='project__statusDot' aria-hidden='true' />
+							Live
+						</span>
 						<h3 className='project__headingSecondary'>
-							TraderDan — Automated Trading System
+							<a
+								href='https://github.com/tjreese90'
+								target='_blank'
+								rel='noreferrer'
+								aria-label='View TraderDan source on GitHub (opens in new tab)'
+							>
+								TraderDan — Automated Trading System
+							</a>
 						</h3>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>
@@ -55,26 +60,42 @@ const Project = () => {
 									<li key={t}>{t}</li>
 								))}
 							</ul>
+							<div className='project__icons'>
+								<a
+									href='https://github.com/tjreese90'
+									target='_blank'
+									rel='noreferrer'
+									aria-label='View TraderDan on GitHub (opens in new tab)'
+								>
+									<svg className='project__icon'>
+										<use href='/icons/symbol-defs.svg#icon-github' />
+									</svg>
+								</a>
+							</div>
 						</div>
 					</div>
-				</section>
+				</article>
 			</LazyLoad>
 
 			<LazyLoad once height={400}>
-				<section className='project__section'>
+				<article className='project__section'>
 					<div className='project__left1'>
 						<p className='project__headingTertiary'>Featured Project</p>
-						<span className='project__status'>Live</span>
+						<span className='project__status project__status--live'>
+							<span className='project__statusDot' aria-hidden='true' />
+							Live
+						</span>
 						<h3 className='project__headingSecondary'>
 							<a
 								href='https://blueridgecanineacademy.com/'
 								target='_blank'
 								rel='noreferrer'
+								aria-label='Visit Blue Ridge Canine Academy live site (opens in new tab)'
 							>
 								Blue Ridge Canine Academy
 							</a>
 						</h3>
-						<div className='project__descriptionContainer'>
+						<div className='project__descriptionContainer project__descriptionContainer1'>
 							<p className='project__description'>
 								A freelance full-stack scheduling and payments platform for a
 								local dog trainer. React frontend, Node.js + Express backend,
@@ -86,11 +107,12 @@ const Project = () => {
 									<li key={t}>{t}</li>
 								))}
 							</ul>
-							<div className='project__icons'>
+							<div className='project__icons project__icons1'>
 								<a
 									href='https://blueridgecanineacademy.com/'
 									target='_blank'
 									rel='noreferrer'
+									aria-label='Open Blue Ridge Canine Academy live site (opens in new tab)'
 									style={{ marginRight: '1.6rem' }}
 								>
 									<svg className='project__icon'>
@@ -100,26 +122,41 @@ const Project = () => {
 							</div>
 						</div>
 					</div>
-					<div className='project__right'>
+					<a
+						className='project__right project__imgLink'
+						href='https://blueridgecanineacademy.com/'
+						target='_blank'
+						rel='noreferrer'
+						aria-label='Visit Blue Ridge Canine Academy live site (opens in new tab)'
+					>
 						<img
 							className='project__img'
 							src='/images/project-1.png'
 							alt='Blue Ridge Canine Academy — scheduling and payments site'
 						/>
-					</div>
-				</section>
+						<span className='project__imgOverlay' aria-hidden='true'>
+							<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2'>
+								<path d='M14 3h7v7M10 14L21 3M21 14v7H3V3h7' />
+							</svg>
+						</span>
+					</a>
+				</article>
 			</LazyLoad>
 
 			<LazyLoad once height={400}>
-				<section className='project__section'>
+				<article className='project__section'>
 					<div className='project__left1'>
 						<p className='project__headingTertiary'>Featured Project</p>
-						<span className='project__status'>Live</span>
+						<span className='project__status project__status--live'>
+							<span className='project__statusDot' aria-hidden='true' />
+							Live
+						</span>
 						<h3 className='project__headingSecondary'>
 							<a
 								href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 								target='_blank'
 								rel='noreferrer'
+								aria-label='View AI Form Builder source on GitHub (opens in new tab)'
 							>
 								AI Form Builder
 							</a>
@@ -141,6 +178,7 @@ const Project = () => {
 									href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 									target='_blank'
 									rel='noreferrer'
+									aria-label='Open AI Form Builder on GitHub (opens in new tab)'
 									style={{ marginRight: '1.6rem' }}
 								>
 									<svg className='project__icon'>
@@ -150,33 +188,59 @@ const Project = () => {
 							</div>
 						</div>
 					</div>
-					<div className='project__right'>
+					<a
+						className='project__right project__imgLink'
+						href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
+						target='_blank'
+						rel='noreferrer'
+						aria-label='View AI Form Builder source on GitHub (opens in new tab)'
+					>
 						<img
 							className='project__img'
 							src='/images/project-2.png'
 							alt='AI Form Builder — Gemini-powered dynamic form generator'
 						/>
-					</div>
-				</section>
+						<span className='project__imgOverlay' aria-hidden='true'>
+							<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2'>
+								<path d='M14 3h7v7M10 14L21 3M21 14v7H3V3h7' />
+							</svg>
+						</span>
+					</a>
+				</article>
 			</LazyLoad>
 
 			<LazyLoad once height={400}>
-				<section className='project__section project__section3'>
-					<div className='project__left'>
+				<article className='project__section project__section3'>
+					<a
+						className='project__left project__imgLink'
+						href='https://github.com/tjreese90/UFC-Blog-Web-App'
+						target='_blank'
+						rel='noreferrer'
+						aria-label='View UFC Fight Prediction Generator source on GitHub (opens in new tab)'
+					>
 						<img
 							className='project__img'
 							src='/images/project-3.png'
 							alt='UFC Fight Prediction Generator — ML-driven matchup predictor'
 						/>
-					</div>
+						<span className='project__imgOverlay' aria-hidden='true'>
+							<svg width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.2'>
+								<path d='M14 3h7v7M10 14L21 3M21 14v7H3V3h7' />
+							</svg>
+						</span>
+					</a>
 					<div className='project__right'>
 						<p className='project__headingTertiary'>Featured Project</p>
-						<span className='project__status'>In Development</span>
+						<span className='project__status project__status--wip'>
+							<span className='project__statusDot' aria-hidden='true' />
+							In Development
+						</span>
 						<h3 className='project__headingSecondary'>
 							<a
 								href='https://github.com/tjreese90/UFC-Blog-Web-App'
 								target='_blank'
 								rel='noreferrer'
+								aria-label='View UFC Fight Prediction Generator on GitHub (opens in new tab)'
 							>
 								UFC Fight Prediction Generator
 							</a>
@@ -198,6 +262,7 @@ const Project = () => {
 									href='https://github.com/tjreese90/UFC-Blog-Web-App'
 									target='_blank'
 									rel='noreferrer'
+									aria-label='Open UFC Fight Prediction Generator on GitHub (opens in new tab)'
 									style={{ marginRight: '1.6rem' }}
 								>
 									<svg className='project__icon'>
@@ -207,7 +272,7 @@ const Project = () => {
 							</div>
 						</div>
 					</div>
-				</section>
+				</article>
 			</LazyLoad>
 
 			{/* --------------------------------------------------- for Mobiles ----------------------------------------------------------------- */}
@@ -372,7 +437,7 @@ const Project = () => {
 			</ul>
 
 			<span className='sectiontag'>&lt;/section&gt;</span>
-		</div>
+		</section>
 	);
 };
 
