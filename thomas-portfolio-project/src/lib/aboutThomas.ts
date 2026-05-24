@@ -5,11 +5,7 @@
 type Topic = { keywords: RegExp; answer: string };
 
 export const TOPICS: Topic[] = [
-	{
-		keywords: /\b(who|tell me about|introduce|about thomas|background)\b/i,
-		answer:
-			"Thomas Reese is a Full-Stack Software Engineer at Envoy (Visitor Management team), based in Oakland, California. He has 4+ years of experience and currently focuses on production AI systems and developer tooling — building things like Codebase Intelligence (a RAG platform serving 14 agentic AI tools) and TraderDan (a multi-account prop-firm trading system).",
-	},
+	// Specific topics first — more specific keywords win
 	{
 		keywords: /\b(envoy|current job|current role|where (does|is) (he|thomas) work|day job)\b/i,
 		answer:
@@ -99,6 +95,12 @@ export const TOPICS: Topic[] = [
 		keywords: /\b(open to work|hiring|opportunit|available|looking)\b/i,
 		answer:
 			"Yes — Thomas is open to new opportunities, especially senior+ roles where he can work on production AI systems, developer tooling, or AI-product UX. Reach out at ThomasReeseCareers@gmail.com.",
+	},
+	// Generic "who is Thomas / tell me about him" comes LAST so specific topics above win first
+	{
+		keywords: /\b(who|tell me about|introduce|about thomas|background)\b/i,
+		answer:
+			"Thomas Reese is a Full-Stack Software Engineer at Envoy (Visitor Management team), based in Oakland, California. He has 4+ years of experience and currently focuses on production AI systems and developer tooling — building things like Codebase Intelligence (a RAG platform serving 14 agentic AI tools) and TraderDan (a multi-account prop-firm trading system).",
 	},
 ];
 
