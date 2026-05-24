@@ -1,6 +1,5 @@
 @import '../../scss/mixins';
 
-$primary-color: #ffcc00; // Define your primary color here
 $dark-bg-color: #121212;
 $dark-element-bg-color: #333;
 $light-font-color: #ffffff;
@@ -17,8 +16,11 @@ body.dark-mode {
 .contact {
 	display: flex;
 	animation: fadeIn 1s forwards;
-	height: 100vh;
-	font-family: 'Arial, sans-serif';
+	min-height: 100vh;
+	max-width: 120rem;
+	margin: 0 auto;
+	padding-top: 8rem;
+	font-family: inherit;
 
 	@include respond(tab-port) {
 		flex-direction: column;
@@ -51,7 +53,7 @@ body.dark-mode {
 	}
 
 	&__left {
-		flex: 0 0 50%;
+		flex: 1 1 auto;
 		padding: 2rem 5rem;
 
 		@include respond(phone) {
@@ -60,8 +62,9 @@ body.dark-mode {
 	}
 
 	&__right {
-		flex: 1;
+		flex: 0 0 auto;
 		width: 100%;
+		max-width: 40rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -69,6 +72,7 @@ body.dark-mode {
 
 		@include respond(phone) {
 			padding: 2rem 1rem 3rem;
+			max-width: 100%;
 		}
 	}
 
@@ -80,10 +84,15 @@ body.dark-mode {
 		padding: 4rem 3rem;
 		max-width: 36rem;
 		width: 100%;
-		background: rgba(17, 81, 115, 0.18);
-		border: 1px solid rgba(255, 215, 0, 0.25);
-		border-radius: 1rem;
+		background: rgba(10, 30, 60, 0.5);
+		border: 1px solid var(--primary-border);
+		border-radius: 1.4rem;
 		box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.35);
+		transition: border-color 0.25s ease, transform 0.25s ease;
+
+		&:hover {
+			border-color: var(--primary-border-strong);
+		}
 	}
 
 	&__locationPin {
@@ -113,14 +122,14 @@ body.dark-mode {
 
 	&__locationEmail {
 		font-size: 1.4rem;
-		color: $primary-color;
+		color: var(--primary);
 		text-decoration: none;
 		margin-bottom: 2rem;
 		word-break: break-all;
 		transition: opacity 0.2s ease;
 
 		&:hover {
-			opacity: 0.8;
+			opacity: 0.85;
 			text-decoration: underline;
 		}
 	}
@@ -133,14 +142,15 @@ body.dark-mode {
 			color: var(--lightest-slate);
 			text-decoration: none;
 			font-size: 1.3rem;
-			padding: 0.6rem 1.4rem;
-			border: 1px solid rgba(255, 215, 0, 0.35);
+			padding: 0.7rem 1.6rem;
+			border: 1px solid var(--primary-border-strong);
 			border-radius: 0.4rem;
-			transition: background 0.2s ease, color 0.2s ease;
+			transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
 			&:hover {
-				background: rgba(255, 215, 0, 0.1);
-				color: $primary-color;
+				background: var(--primary-dim);
+				color: var(--primary);
+				border-color: var(--primary);
 			}
 		}
 	}
@@ -156,7 +166,7 @@ body.dark-mode {
 		&::after {
 			font-size: $font-size-large;
 			font-family: $base-font-family;
-			color: $primary-color;
+			color: var(--primary);
 			opacity: 0.15;
 			font-weight: 500;
 			position: absolute;
@@ -190,7 +200,7 @@ textarea {
 	&::after {
 		font-size: $font-size-large;
 		font-family: $base-font-family;
-		color: $primary-color;
+		color: var(--primary);
 		opacity: 0.15;
 		font-weight: 500;
 		position: absolute;
@@ -207,21 +217,21 @@ textarea {
 	}
 
 	&__group:not(:last-child) {
-		margin-bottom: 1rem;
+		margin-bottom: 1.2rem;
 	}
 
 	&__input {
 		padding: 1.5rem 2rem;
 		font-family: inherit;
-		color: inherit;
+		color: var(--white);
 		font-size: $font-size-medium;
-		border-radius: 2px;
-		background-color: #112240;
+		border-radius: 0.4rem 0.4rem 0 0;
+		background-color: var(--surface);
 		border: none;
+		border-bottom: 2px solid rgba(204, 214, 246, 0.18);
 		width: 90%;
 		display: block;
-		border-bottom: 3px solid transparent;
-		transition: all 0.3s ease-in-out;
+		transition: border-color 0.25s ease-in-out, background 0.25s ease-in-out;
 
 		@include respond(phone) {
 			width: 100%;
@@ -229,27 +239,29 @@ textarea {
 
 		&:focus {
 			outline: none;
-			box-shadow: 0 1rem 2rem rgba(#000, 0.1);
-			border-bottom: 3px solid $primary-color;
+			background-color: #102b54;
+			border-bottom: 2px solid var(--primary);
 		}
 
 		&:focus:invalid {
-			border-bottom: 3px solid $primary-color;
+			border-bottom: 2px solid #ff6b6b;
 		}
 
 		&::-webkit-input-placeholder {
-			color: var(--lightest-slate);
+			color: var(--light-slate);
 		}
 	}
 
 	&__label {
-		font-size: $font-size-small;
+		font-size: 1.05rem;
 		font-weight: 700;
+		letter-spacing: 0.11em;
+		text-transform: uppercase;
 		margin-left: 2rem;
 		margin-top: 0.7rem;
 		display: block;
 		transition: all 0.3s ease-in-out;
-		color: $primary-color;
+		color: var(--primary);
 	}
 
 	&__input:placeholder-shown + &__label {
@@ -273,20 +285,20 @@ textarea {
 .back__home {
 	display: inline-block;
 	margin-top: 2rem;
-	padding: 0.5rem 1.5rem;
-	background-color: $primary-color;
-	color: #0a192f;
+	padding: 0.85rem 1.8rem;
+	background-color: transparent;
+	color: var(--primary);
 	font-weight: 600;
-	border: none;
-	border-radius: 5px;
+	border: 1px solid var(--primary);
+	border-radius: 0.4rem;
 	cursor: pointer;
-	transition: background-color 0.3s ease-in-out;
+	transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
 	text-decoration: none;
 	font-size: $font-size-medium;
 	margin-right: 1rem;
 
 	&:hover {
-		background-color: darken($primary-color, 10%);
+		background-color: var(--primary-dim);
 	}
 }
 
@@ -305,16 +317,16 @@ textarea {
 .toggle-dark-mode {
 	margin-bottom: 2rem;
 	padding: 0.5rem 1.5rem;
-	background-color: $primary-color;
-	color: #fff;
+	background-color: var(--primary);
+	color: var(--secondary);
 	border: none;
-	border-radius: 5px;
+	border-radius: 0.5rem;
 	cursor: pointer;
 	transition: background-color 0.3s ease-in-out;
 	font-size: $font-size-medium;
 
 	&:hover {
-		background-color: darken($primary-color, 10%);
+		background-color: var(--primary-hover);
 	}
 }
 
@@ -346,11 +358,16 @@ textarea {
 
 .chat-widget {
 	margin-top: 3.5rem;
-	background: rgba(17, 81, 115, 0.18);
-	border: 1px solid rgba(255, 215, 0, 0.25);
-	border-radius: 0.8rem;
-	padding: 2rem;
+	background: rgba(17, 81, 115, 0.24);
+	border: 1px solid var(--primary-border);
+	border-radius: 1rem;
+	padding: 2.2rem;
 	color: var(--lightest-slate);
+	transition: border-color 0.25s ease;
+
+	&:hover {
+		border-color: var(--primary-border-strong);
+	}
 
 	&__header {
 		display: flex;
@@ -360,7 +377,7 @@ textarea {
 	}
 
 	&__title {
-		color: $primary-color;
+		color: var(--primary);
 		font-size: 2rem;
 		font-weight: 700;
 		margin: 0;
@@ -370,7 +387,7 @@ textarea {
 		font-size: 1rem;
 		font-weight: 600;
 		letter-spacing: 0.08em;
-		color: $primary-color;
+		color: var(--primary);
 		background: rgba(255, 215, 0, 0.12);
 		border: 1px solid rgba(255, 215, 0, 0.4);
 		padding: 0.2rem 0.6rem;
@@ -397,19 +414,21 @@ textarea {
 		font-family: inherit;
 		color: var(--lightest-slate);
 		background: rgba(255, 215, 0, 0.06);
-		border: 1px solid rgba(255, 215, 0, 0.3);
+		border: 1px solid rgba(168, 178, 209, 0.3);
 		border-radius: 999px;
 		padding: 0.6rem 1.2rem;
 		cursor: pointer;
-		transition: background 0.18s ease, transform 0.18s ease;
+		transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 
 		&:hover {
-			background: rgba(255, 215, 0, 0.15);
+			background: var(--primary-dim);
+			border-color: var(--primary);
+			color: var(--primary);
 			transform: translateY(-1px);
 		}
 
 		&:focus-visible {
-			outline: 2px solid $primary-color;
+			outline: 2px solid var(--primary);
 			outline-offset: 2px;
 		}
 	}
@@ -485,7 +504,7 @@ textarea {
 
 			&:focus {
 				outline: none;
-				border-color: $primary-color;
+				border-color: var(--primary);
 				background: rgba(10, 25, 47, 0.6);
 			}
 
@@ -497,19 +516,20 @@ textarea {
 
 		.chat-send {
 			padding: 0.9rem 1.6rem;
-			background: $primary-color;
-			color: #0a192f;
+			background: var(--primary);
+			color: var(--secondary);
 			border: none;
 			border-radius: 0.6rem;
 			cursor: pointer;
 			font-size: 1.3rem;
 			font-weight: 700;
 			font-family: inherit;
-			transition: opacity 0.18s ease, transform 0.18s ease;
+			transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 
 			&:hover:not(:disabled) {
-				opacity: 0.88;
+				background: var(--primary-hover);
 				transform: translateY(-1px);
+				box-shadow: 0 0.4rem 1.2rem rgba(255, 215, 0, 0.25);
 			}
 
 			&:disabled {
@@ -533,8 +553,8 @@ textarea {
 	font-family: inherit;
 
 	&:hover {
-		color: $primary-color;
-		background: rgba(255, 215, 0, 0.08);
+		color: var(--primary);
+		background: var(--primary-dim);
 	}
 }
 
@@ -558,15 +578,15 @@ textarea {
 
 		.meeting-submit {
 			padding: 0.5rem 1rem;
-			background: $primary-color;
-			color: #fff;
+			background: var(--primary);
+			color: var(--secondary);
 			border: none;
 			border-radius: 4px;
 			cursor: pointer;
 			transition: background 0.3s;
 
 			&:hover {
-				background: darken($primary-color, 10%);
+				background: var(--primary-hover);
 			}
 		}
 	}
@@ -577,7 +597,7 @@ textarea {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background: $primary-color;
+	background: var(--primary);
 	padding: 2rem;
 	border-radius: 50%;
 	animation: pop-in 0.5s ease-out;

@@ -19,6 +19,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 
   @include respond(tab-land) {
     font-size: 56.25%; // 1rem = 9px
@@ -31,6 +32,11 @@ html {
   @include respond(big-desktop) {
     font-size: 75%; // 1rem = 12px
   }
+}
+
+::selection {
+  background: rgba(255, 215, 0, 0.3);
+  color: var(--white);
 }
 
 body {

@@ -1,9 +1,24 @@
 :root {
+    /* ===== Brand ===== */
     --primary: #ffd700;
-    --secondary: #0a192f;
+    --primary-hover: #ffe033;
+    --primary-dim: rgba(255, 215, 0, 0.1);
+    --primary-border: rgba(255, 215, 0, 0.25);
+    --primary-border-strong: rgba(255, 215, 0, 0.6);
+
+    /* ===== Surfaces (depth hierarchy) ===== */
+    --secondary: #0a192f;             /* page background */
+    --surface: #0d2347;               /* form inputs / elevated surfaces */
+    --surface-card: rgba(13, 36, 71, 0.6); /* glass card */
+    --surface-card-strong: rgba(13, 36, 71, 0.85);
     --secondary-shadow: rgba(2, 12, 27, 0.7);
-    --slate: #8892b0;
-    --light-slate: #a8b2d1;
-    --lightest-slate: #ccd6f6;
-    --white: #ffffff;
+
+    /* ===== Text tiers ===== */
+    --white: #ffffff;                 /* headings */
+    --lightest-slate: #ccd6f6;        /* body / descriptions */
+    --light-slate: #a8b2d1;           /* secondary text */
+    --slate: #8892b0;                 /* muted / metadata */
+
+    /* ===== Accents (hero star inner fill, decorative) ===== */
+    --teal-deep: #115173;
 }

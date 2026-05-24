@@ -1,21 +1,27 @@
 .scroll-to-top {
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
+	bottom: 2rem;
+	right: 2rem;
 	z-index: 1000;
 }
 
 .scroll-to-top__button {
-	background-color: var(--primary);
-	color: white;
-	border: none;
-	padding: 15px;
+	width: 4.4rem;
+	height: 4.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(13, 36, 71, 0.7);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	color: var(--primary);
+	border: 1px solid rgba(255, 215, 0, 0.65);
 	border-radius: 50%;
 	cursor: pointer;
-	font-size: 20px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	font-size: 1.6rem;
+	box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.3);
 	transition: transform 0.3s ease, background-color 0.3s ease,
-		box-shadow 0.3s ease;
+		box-shadow 0.3s ease, border-color 0.3s ease;
 	opacity: 0;
 	visibility: hidden;
 	transform: translateY(100px);
@@ -28,7 +34,8 @@
 }
 
 .scroll-to-top__button:hover {
-	background-color: #0056b3;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-	transform: translateY(-5px);
+	background-color: rgba(255, 215, 0, 0.15);
+	border-color: var(--primary);
+	box-shadow: 0 0.6rem 1.8rem rgba(255, 215, 0, 0.3);
+	transform: translateY(-2px);
 }
