@@ -222,7 +222,7 @@
 	}
 
 	&__description {
-		background-color: #112240;
+		background-color: var(--surface);
 		letter-spacing: 0.6px;
 		width: 55rem;
 		max-width: 65ch;
@@ -308,7 +308,7 @@
 			height: 100%;
 			padding: 2rem 1.75rem;
 			border-radius: 4px;
-			background-color: #112240;
+			background-color: var(--surface);
 			transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
 			// Mobile background images
@@ -348,7 +348,7 @@
 				}
 
 				&Description {
-					color: #a8b2d1;
+					color: var(--light-slate);
 					font-size: 1.4rem;
 					margin-top: 0.6rem;
 				}
