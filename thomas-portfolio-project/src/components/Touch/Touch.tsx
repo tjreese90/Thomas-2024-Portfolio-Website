@@ -11,6 +11,14 @@ import './touch.scss';
 //TODO: Fix description and flip logic
 const workExperience = [
 	{
+		company: 'Envoy',
+		role: 'Software Engineer',
+		duration: 'Apr 2024 - Present',
+		icon: 'fas fa-rocket',
+		techStack: 'TypeScript, React, Node.js, Python',
+		description: '',
+	},
+	{
 		company: 'Sprout Social',
 		role: 'Front-End Web Developer',
 		duration: 'Jan 2022 - March 2024',
@@ -38,16 +46,16 @@ const workExperience = [
 
 const personalProjects = [
 	{
-		name: 'Automated Trading System',
+		name: 'TraderDan — Automated Trading System',
 		description:
-			"A sophisticated trading application leveraging Oanda's API and Python scripts to automatically analyze multiple assets across various timeframes and execute trades based on meticulously backtested strategies. This comprehensive solution integrates React for the frontend, Flask for the backend, and Jupyter Notebook for data analysis and visualization.",
-		link: 'https://github.com/yourusername/automated-trading-system', // Update with actual link
+			"A sophisticated multi-asset automated trading system built on OANDA's API. Features multi-agent AI orchestration for strategy development, real-time risk management across FX and crypto markets, meticulously backtested strategies, and a Next.js dashboard for live monitoring and performance analytics.",
+		link: 'https://github.com/tjreese90',
 	},
 	{
 		name: 'Next-Gen Fitness Tracker',
 		description:
 			'An advanced React Native application designed to provide a holistic fitness tracking experience. This full-stack solution includes features such as user authentication, activity tracking, and data visualization. Developed to enhance personal fitness goals with potential for scalability and broader application.',
-		link: 'https://github.com/yourusername/next-gen-fitness-tracker', // Update with actual link
+		link: 'https://github.com/tjreese90/Workout-Tracker-Native-App',
 	},
 ];
 

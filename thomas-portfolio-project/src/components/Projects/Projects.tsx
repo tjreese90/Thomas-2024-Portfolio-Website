@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './projects.scss';
 import LazyLoad from 'react-lazyload';
 import AnimatedLettersFast from '@components/AnimatedLettersFast/AnimatedLettersFast';
@@ -7,60 +7,11 @@ const Project = () => {
 	const [letterClass, setLetterClass] = useState('text-animate-fast');
 	const nameArray = [...'02. My Projects'];
 
-	// Countdown logic
-	const [timeRemaining, setTimeRemaining] = useState({
-		days: 0,
-		hours: 0,
-		minutes: 0,
-		seconds: 0,
-	});
-
 	useEffect(() => {
-		setTimeout(() => {
+		const timer = setTimeout(() => {
 			setLetterClass('text-animate-fast-hover');
 		}, 4000);
-
-		// Retrieve the target date from localStorage or set a new one
-		const savedTargetDate = localStorage.getItem('targetDate');
-		let targetDate;
-
-		if (savedTargetDate) {
-			// Parse the stored target date
-			targetDate = new Date(savedTargetDate);
-		} else {
-			// Set a new target date if one doesn't exist
-			targetDate = new Date();
-			targetDate.setDate(targetDate.getDate() + 10); // 10 days from now
-			localStorage.setItem('targetDate', targetDate.toString()); // Store it in localStorage
-		}
-
-		// Function to calculate the remaining time
-		const calculateTimeRemaining = () => {
-			const now = new Date();
-			const difference = targetDate.getTime() - now.getTime();
-
-			if (difference > 0) {
-				const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-				const hours = Math.floor(
-					(difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-				);
-				const minutes = Math.floor(
-					(difference % (1000 * 60 * 60)) / (1000 * 60),
-				);
-				const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-				setTimeRemaining({ days, hours, minutes, seconds });
-			} else {
-				// Countdown is finished
-				setTimeRemaining({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-			}
-		};
-
-		// Set interval to update countdown every second
-		const intervalId = setInterval(calculateTimeRemaining, 1000);
-
-		// Cleanup the interval on component unmount
-		return () => clearInterval(intervalId);
+		return () => clearTimeout(timer);
 	}, []);
 
 	return (
@@ -81,11 +32,38 @@ const Project = () => {
 					<div className='project__left'>
 						<img
 							className='project__img'
-							src='/images/project-1.png'
-							alt='Blue Ridge Canine Academy'
+							src='/images/project-traderdan.png'
+							alt='TraderDan automated trading system'
 						/>
 					</div>
 					<div className='project__right'>
+						<h3 className='project__headingTertiary'>Featured Project</h3>
+						<h5>Live</h5>
+						<span className='project__headingSecondary'>
+							<h2>TraderDan — Automated Trading System</h2>
+						</span>
+						<div className='project__descriptionContainer'>
+							<p className='project__description'>
+								TraderDan is a sophisticated multi-asset automated trading
+								system built on OANDA&apos;s API. It features multi-agent AI
+								orchestration for strategy development, real-time risk
+								management across FX and crypto markets, meticulously
+								backtested strategies, and a Next.js dashboard for live
+								monitoring and performance analytics.
+							</p>
+							<div className='project__tags'>
+								{' '}
+								Python &nbsp; Next.js &nbsp; TypeScript &nbsp; OANDA API &nbsp;
+								Multi-Agent AI &nbsp; PostgreSQL &nbsp;
+							</div>
+						</div>
+					</div>
+				</section>
+			</LazyLoad>
+
+			<LazyLoad once height={400}>
+				<section className='project__section'>
+					<div className='project__left1'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
 						<a
 							href='https://blueridgecanineacademy.com/'
@@ -125,19 +103,21 @@ const Project = () => {
 							</div>
 						</div>
 					</div>
+					<div className='project__right'>
+						<img
+							className='project__img'
+							src='/images/project-1.png'
+							alt='Blue Ridge Canine Academy'
+						/>
+					</div>
 				</section>
 			</LazyLoad>
 
-			{/* Countdown timer */}
 			<LazyLoad once height={400}>
 				<section className='project__section'>
 					<div className='project__left1'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
-						<h5>
-							Deploying in: {timeRemaining.days} Days, {timeRemaining.hours}{' '}
-							Hours, {timeRemaining.minutes} Minutes, {timeRemaining.seconds}{' '}
-							Seconds
-						</h5>
+						<h5>Live</h5>
 						<a
 							href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
 							target='_blank'
@@ -241,6 +221,33 @@ const Project = () => {
 			{/* --------------------------------------------------- for Mobiles ----------------------------------------------------------------- */}
 
 			<ul className='projectResp__list'>
+				<li className='projectResp__items projectResp__items1'>
+					<div className='projectResp__card'>
+						<div className='projectResp__cardTop'>
+							<svg className='projectResp__cardFolder'>
+								<use href='icons/symbol-defs.svg#icon-folder' />
+							</svg>
+						</div>
+						<div className='projectResp__cardBody'>
+							<div className='projectResp__cardBodyHeading'>
+								TraderDan — Automated Trading System
+							</div>
+							<p className='projectResp__cardBodyDescription'>
+								A sophisticated multi-asset automated trading system built on
+								OANDA&apos;s API. Features multi-agent AI orchestration, real-time
+								risk management across FX and crypto markets, and a Next.js
+								dashboard for live monitoring.
+							</p>
+						</div>
+						<div className='projectResp__cardFooter'>
+							<div className='projectResp__tags'>
+								{' '}
+								Python &nbsp; Next.js &nbsp; TypeScript &nbsp; OANDA &nbsp;
+								Multi-Agent AI
+							</div>
+						</div>
+					</div>
+				</li>
 				<li className='projectResp__items projectResp__items1'>
 					<div className='projectResp__card'>
 						<div className='projectResp__cardTop'>
