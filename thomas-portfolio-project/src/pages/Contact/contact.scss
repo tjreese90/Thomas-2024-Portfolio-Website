@@ -262,6 +262,7 @@ textarea {
 		display: block;
 		transition: all 0.3s ease-in-out;
 		color: var(--primary);
+		cursor: pointer;
 	}
 
 	&__input:placeholder-shown + &__label {
