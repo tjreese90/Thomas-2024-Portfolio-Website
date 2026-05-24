@@ -65,30 +65,30 @@ const About = () => {
 
 	const nameArray = [...'01. About Me'];
 	const skillsArray = [
-		'JavaScript (ES6+) & Babel',
-		'TypeScript / Flow',
-		'HTML5 & CSS3 & XML',
-		'React.js & Redux & RTK',
-		'Node.js & Express.js',
-		'MongoDB & SQL',
+		'TypeScript & React 19',
+		'Ruby on Rails',
+		'Ember.js (Octane / Glimmer)',
+		'Python & FastAPI',
+		'AWS Bedrock & S3 Vectors',
+		'Model Context Protocol (MCP)',
+		'Anthropic Claude SDK',
+		'Pulumi & Terraform',
+		'Kubernetes & Docker',
+		'PostgreSQL & Redis & Kafka',
+		'Module Federation (Webpack 5)',
+		'TanStack Query v5',
+		'Tailwind & Radix UI',
+		'Cerbos Authorization',
+		'OpenTelemetry & Datadog',
+		'Vitest & RSpec & Playwright',
+		'MSW v2 & Mocking',
+		'Graphite (Stacked PRs)',
+		'Next.js & Vite',
+		'Node.js & Express',
 		'GraphQL & REST APIs',
-		'Docker & Kubernetes',
-		'AWS & GCP',
-		'Git & GitHub & Xcode',
-		'CircleCI & Webpack',
-		'Tailwind CSS & Bootstrap & Material UI',
-		'Jest & Cypress Testing & Enzyme',
-		'Figma Dev & Adobe XD',
-		'Netlify & Heroku & Vercel',
-		'Next.js & Vite.js',
-		'Three.js & D3.js',
-		'Angular & Vue.js',
-		'Scrum & Agile Development',
-		'WebGL & Blender',
-		'Ruby & Ruby on Rails',
-		'Java & C#',
-		'Python & Pandas.py',
-		'PineScript & MQL5',
+		'OANDA API & PineScript',
+		'Three.js & Framer Motion',
+		'Figma',
 	];
 
 	useEffect(() => {
@@ -174,9 +174,10 @@ const About = () => {
 				</h1>
 				<div className='about__description'>
 					{[
-						'Hello! My name is Thomas Reese, a Full-Stack Developer based in Lisle, Illinois. I specialize in building engaging and interactive web applications with a focus on clean, maintainable code.',
-						'I graduated from Dominican University in 2022 with a Bachelor of Science in Computer Science, where I honed my skills in Object-Oriented Programming (OOP), Data Structures, and Artificial Intelligence (AI).',
-						'I currently work as a Software Engineer at Envoy. Previously, I was a Front-End Web Developer at Sprout Social, building responsive user interfaces with React, TypeScript, and SCSS. Earlier in my career, I worked as an Infrastructure Engineer and Front-End Developer Intern at Credit Karma and as a Software Engineering Intern at The Walt Disney Company.',
+						'Hello! My name is Thomas Reese, a Full-Stack Developer based in Lisle, Illinois. I build production systems where AI agents, scalable web apps, and developer tooling intersect.',
+						'I currently work as a Software Engineer at Envoy, where I built a Codebase Intelligence platform end-to-end — S3 Vectors infrastructure on AWS (Pulumi/Terraform), a Bedrock Knowledge Base with Titan v2 embeddings, and a Python MCP server exposing six retrieval tools to Anthropic Claude. The system indexes 22 internal repositories (~87,500 AST chunks) with top-1 retrieval averaging 0.785 at ~$0.03/month, replacing per-engineer 6–8 GB local vector databases.',
+						"I led the migration of Envoy's visitor-management dashboard from Ember/Glimmer to React 19 using Webpack 5 Module Federation, and have shipped 337 merged pull requests across nine internal repos in 18 months — sustaining 5+ PRs/week on a stacked-PR (Graphite) workflow. Customers I've shipped fixes for include Blue Origin, Tesla, and NVIDIA.",
+						'Before Envoy, I was a Front-End Web Developer at Sprout Social. Earlier in my career, I worked as a Software Engineering Intern at The Walt Disney Company and as an Infrastructure Engineer / QA Intern at Credit Karma. I graduated from Dominican University in 2022 with a Bachelor of Science in Computer Science.',
 						'Here are some of the technologies I have been working with recently:',
 					].map((text, idx) => (
 						<motion.p

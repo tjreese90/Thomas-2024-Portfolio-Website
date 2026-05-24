@@ -12,11 +12,13 @@ import './touch.scss';
 const workExperience = [
 	{
 		company: 'Envoy',
-		role: 'Software Engineer',
-		duration: 'Apr 2024 - Present',
+		role: 'Software Engineer, Visitor Management',
+		duration: 'Nov 2024 - Present',
 		icon: 'fas fa-rocket',
-		techStack: 'TypeScript, React, Node.js, Python',
-		description: '',
+		techStack:
+			'Rails, Ember.js, React 19, TypeScript, AWS Bedrock, MCP, Pulumi, Cerbos',
+		description:
+			"Built Envoy's Codebase Intelligence platform end-to-end (S3 Vectors + Bedrock + MCP server for Claude) indexing 22 repos at ~$0.03/mo. Led the Ember-to-React 19 migration via Module Federation. Shipped 337 PRs in 18 months and fixed customer issues for Blue Origin, Tesla, and NVIDIA.",
 	},
 	{
 		company: 'Sprout Social',
