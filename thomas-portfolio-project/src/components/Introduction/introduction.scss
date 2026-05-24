@@ -5,7 +5,7 @@
 	font-size: 1.1rem;
 	font-family: 'La Belle Aurore', cursive;
 	display: block;
-	color: #ffd700;
+	color: var(--primary);
 	opacity: 0.18;
 	font-weight: 400;
 	margin: 0.8rem 0rem;
@@ -65,7 +65,7 @@
 		font-size: 1.8rem;
 		font-family: 'La Belle Aurore', cursive;
 		display: block;
-		color: #ffd700;
+		color: var(--primary);
 		opacity: 0.15;
 		font-weight: 500;
 	}
@@ -131,7 +131,7 @@
 			content: '<h1>';
 			font-size: 1.8rem;
 			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
+			color: var(--primary);
 			opacity: 0.15;
 			font-weight: 500;
 			position: absolute;
@@ -143,7 +143,7 @@
 			content: '</h1>';
 			font-size: 1.8rem;
 			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
+			color: var(--primary);
 			opacity: 0.15;
 			font-weight: 500;
 			animation: fadeIn 1s 1.7s backwards;
@@ -187,7 +187,7 @@
 			font-size: 1.8rem;
 			display: block;
 			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
+			color: var(--primary);
 			opacity: 0.15;
 			font-weight: 500;
 		}
@@ -196,7 +196,7 @@
 			content: '</p>';
 			font-size: 1.8rem;
 			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
+			color: var(--primary);
 			opacity: 0.15;
 			display: block;
 			font-weight: 500;
@@ -252,7 +252,7 @@
 		}
 
 		&:hover {
-			background-color: rgba(#ffd700, $alpha: 0.1);
+			background-color: var(--primary-dim);
 		}
 
 		&Active {

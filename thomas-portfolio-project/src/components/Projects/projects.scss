@@ -18,7 +18,7 @@
 			box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
 
 			.project__headingTertiary {
-				color: #ffd700;
+				color: var(--primary);
 				font-size: 1.4rem;
 				letter-spacing: 0.1rem;
 				text-transform: uppercase;
@@ -27,7 +27,7 @@
 
 			.project__status {
 				display: block;
-				color: #ffd700;
+				color: var(--primary);
 				font-size: 1.2rem;
 				margin-bottom: 1.2rem;
 				letter-spacing: 0.1rem;
@@ -50,7 +50,7 @@
 
 			.project__tags {
 				font-family: 'La Belle Aurore', cursive;
-				color: #ffd700;
+				color: var(--primary);
 				font-size: 1.4rem;
 				letter-spacing: 0.05rem;
 			}

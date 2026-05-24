@@ -61,11 +61,11 @@
 
 	&:hover .community-achievements__playIcon {
 		transform: translate(-50%, -50%) scale(1.08);
-		background: #ffd700;
+		background: var(--primary);
 	}
 
 	&:focus-visible {
-		outline: 2px solid #ffd700;
+		outline: 2px solid var(--primary);
 		outline-offset: 2px;
 	}
 }
