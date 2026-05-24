@@ -85,13 +85,7 @@ const Touch = () => {
 							iconStyle={{ background: 'var(--secondary)', color: 'var(--primary)' }}
 							icon={<i className={job.icon} aria-hidden='true'></i>}
 						>
-							<motion.article
-								className='vertical-timeline-element-content'
-								initial={{ opacity: 0, y: 12 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.4 }}
-							>
+							<article className='vertical-timeline-element-content'>
 								<h3 className='vertical-timeline-element-title'>
 									{job.company}
 								</h3>
@@ -105,7 +99,7 @@ const Touch = () => {
 								<p className='vertical-timeline-element-description'>
 									{job.description}
 								</p>
-							</motion.article>
+							</article>
 						</VerticalTimelineElement>
 					))}
 				</VerticalTimeline>
