@@ -1,4 +1,3 @@
-//CommunityAndAchievements.scss
 @import '../../scss/mixins';
 
 .community-achievements__video {
@@ -72,81 +71,44 @@
 }
 
 .community-achievements {
-	padding: 4rem 2rem;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	min-height: 56.6rem;
+	padding: 6rem 2rem 4rem;
+	min-height: auto;
 	animation: fadeIn 1s forwards;
+	max-width: 120rem;
+	margin: 0 auto;
+	display: block;
 
-	@include respond(tab-port) {
-		flex-direction: column;
+	@include respond(phone) {
+		padding: 3rem 1.5rem;
 	}
 
 	&__left {
-		flex: 0 0 100%;
-
-		@include respond(tab-port) {
-			flex: 0 0 100%;
-		}
+		width: 100%;
+		max-width: none;
 	}
 
 	&__description {
 		color: var(--lightest-slate);
 		margin-top: 2rem;
 		line-height: 1.7;
-		max-width: 65ch;
-
-		&::before {
-			content: '<p>';
-			font-size: 1.8rem;
-			display: block;
-			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
-			opacity: 0.15;
-			font-weight: 500;
-		}
-
-		&::after {
-			content: '</p>';
-			font-size: 1.8rem;
-			font-family: 'La Belle Aurore', cursive;
-			color: #ffd700;
-			opacity: 0.15;
-			display: block;
-			font-weight: 500;
-		}
+		max-width: 78ch;
+		margin-left: auto;
+		margin-right: auto;
 
 		p {
 			margin-bottom: 1.5rem;
 		}
+
 		.highlight {
 			color: var(--primary);
 			font-weight: 700;
 			position: relative;
-			cursor: pointer;
 			transition: color 0.3s;
 			text-decoration: none;
-
-			&:before {
-				content: '';
-				position: absolute;
-				left: 0;
-				bottom: 0;
-				width: 0;
-				height: 100%;
-				background: var(--highlight-color); // Use your desired highlight color
-				transition: width 0.3s ease-in-out;
-				z-index: -1;
-			}
 
 			&:hover {
 				color: var(--lightest-slate);
 				text-decoration: underline;
-
-				&:before {
-					width: 100%;
-				}
 			}
 		}
 
@@ -154,7 +116,6 @@
 			color: var(--primary);
 			font-weight: 700;
 			text-decoration: none;
-			position: relative;
 			transition: color 0.3s;
 
 			&:hover {
@@ -181,40 +142,50 @@
 	}
 
 	&__subheading {
-		font-size: 1.8rem;
+		font-size: 2rem;
 		color: var(--primary);
 		font-weight: 700;
-		margin-top: 2rem;
-		margin-bottom: 1.2rem;
-	}
-
-	&__subheading {
-		font-size: 2.5rem;
-		font-weight: 600;
-		color: var(--primary);
-		margin-top: 2rem;
-		margin-bottom: 1rem;
+		margin-top: 3rem;
+		margin-bottom: 1.4rem;
+		letter-spacing: -0.01em;
 	}
 
 	&__cards {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
 		gap: 2rem;
 		margin-top: 2rem;
+
+		@include respond(phone) {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	&__card {
-		background: var(--light-navy);
-		padding: 2rem;
-		border-radius: 10px;
-		box-shadow: var(--shadow);
-		flex: 1 1 calc(50% - 2rem);
+		background: var(--surface-card);
+		border: 1px solid rgba(255, 215, 0, 0.18);
+		padding: 2rem 2.2rem;
+		border-radius: 0.8rem;
+		transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+		&:hover {
+			transform: translateY(-4px);
+			border-color: var(--primary-border-strong);
+			box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.4);
+		}
+
+		p {
+			color: var(--lightest-slate);
+			font-size: 1.35rem;
+			line-height: 1.65;
+			margin-bottom: 1.2rem;
+		}
 	}
 
 	&__cardTitle {
-		font-size: 1.6rem;
+		font-size: 1.7rem;
 		font-weight: 700;
-		margin-bottom: 1rem;
+		margin: 0 0 1rem;
 		color: #ffffff;
 	}
 
@@ -224,6 +195,5 @@
 }
 
 #jumpStart {
-	position: relative;
-	margin-top: -5rem;
+	margin-top: 0;
 }
