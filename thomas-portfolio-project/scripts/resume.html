@@ -16,7 +16,7 @@
 		padding: 0;
 		font-family: 'Latin Modern Roman', 'Computer Modern Serif', 'CMU Serif', Georgia, 'Times New Roman', serif;
 		font-size: 10.5pt;
-		line-height: 1.22;
+		line-height: 1.20;
 		color: #000;
 		background: #fff;
 		-webkit-font-smoothing: antialiased;
@@ -58,7 +58,7 @@
 		font-variant: small-caps;
 		font-size: 12pt;
 		letter-spacing: 0.05em;
-		margin: 12pt 0 4pt 0;
+		margin: 10pt 0 3pt 0;
 		padding-bottom: 1pt;
 		border-bottom: 0.6pt solid #1F3A5F;
 		font-weight: 400;
@@ -107,26 +107,25 @@
 		padding: 0;
 	}
 	ul li {
-		margin-bottom: 3pt;
+		margin-bottom: 2.5pt;
 		text-align: left;
 	}
 	ul li b, ul li strong { font-weight: 700; }
 
-	/* ============ Skills table ============ */
-	table.skills {
-		width: 100%;
-		border-collapse: collapse;
+	/* ============ Skills (definition-list, ATS-parseable) ============ */
+	dl.skills {
+		display: grid;
+		grid-template-columns: 22% 1fr;
+		column-gap: 8pt;
+		row-gap: 3pt;
+		margin: 2pt 0 0 0;
 		font-size: 10pt;
-		margin-top: 2pt;
 	}
-	table.skills td {
-		vertical-align: top;
-		padding: 3pt 0;
-	}
-	table.skills td.label {
-		width: 20%;
+	dl.skills dt {
 		font-style: italic;
-		padding-right: 8pt;
+	}
+	dl.skills dd {
+		margin: 0;
 	}
 
 	/* ============ Projects ============ */
@@ -163,62 +162,59 @@
 <body>
 
 <h1 class="name">Thomas Reese</h1>
-<div class="title">Software Engineer · Full-Stack &amp; AI Systems</div>
+<div class="title">Full-Stack Software Engineer · AI Systems &amp; Developer Tooling</div>
 <div class="contact">
-	ThomasReeseCareers@gmail.com · (708) 673-2536 · Oakland, CA
+	ThomasReeseCareers@gmail.com | (708) 673-2536 | Oakland, CA
 </div>
 <div class="links">
-	<a href="https://www.linkedin.com/in/thomas-reese-541758142/">LinkedIn</a> ·
-	<a href="https://github.com/tjreese90">GitHub</a> ·
-	<a href="https://thomas-2024-portfolio-website-4g9e.vercel.app/">Portfolio</a> ·
-	<a href="https://leetcode.com/u/tjreese90/">LeetCode</a>
+	<a href="https://www.linkedin.com/in/thomas-reese-541758142/">linkedin.com/in/thomas-reese-541758142</a> |
+	<a href="https://github.com/tjreese90">github.com/tjreese90</a> |
+	<a href="https://thomas-2024-portfolio-website-4g9e.vercel.app/">thomasreese.dev</a>
 </div>
 
 <h2 class="section">Summary</h2>
 <p class="summary">
-	Full-stack engineer (4+ yrs) shipping AI-native systems on AWS Bedrock and the Model Context Protocol. Currently at Envoy, where I architected Codebase Intelligence — an 87,500-chunk vector index serving 22 repos at $0.03/month. Production stack spans Ruby on Rails, Ember.js, React 19, and Python. Comfortable from infra (Pulumi, Terraform) to model eval (RAG, MCP tool use, embeddings).
+	Full-stack software engineer (4+ yrs) building production AI systems, agentic <b>LLM</b> tooling, and developer infrastructure. Currently at Envoy, where I built <b>Codebase Intelligence</b>: an 87,500-chunk vector index serving 22 repos through an <b>MCP</b> server on <b>AWS Bedrock</b>. Production stack spans Ruby on Rails, Ember.js, React 19, and Python — comfortable across <b>Pulumi/Terraform</b> IaC, <b>RAG</b> retrieval, <b>LLM evals</b>, and tool-use guardrails.
 </p>
 
-<h2 class="section">Experience</h2>
+<h2 class="section">Professional Experience</h2>
 
 <div class="role-block">
 	<div class="role-line">
-		<span class="left">Envoy &nbsp;|&nbsp; Software Engineer, Visitor Management</span>
-		<span class="right">San Francisco, CA · Nov 2024 – Present</span>
+		<span class="left">Envoy | Full-Stack Software Engineer, Visitor Management</span>
+		<span class="right">San Francisco, CA | Nov 2024 – Present</span>
 	</div>
 	<ul>
-		<li>Architected <b>Codebase Intelligence</b>, a RAG platform indexing 22 repos (~87,500 Tree-sitter AST chunks) on <b>Amazon S3 Vectors</b> and <b>Bedrock Knowledge Bases</b> (Titan Text Embeddings V2), with a Python <b>MCP server</b> exposing six retrieval tools to Anthropic <b>Claude</b>. Hit <b>0.785 top-1 recall</b> at <b>$0.03/month</b>, retiring 6–8 GB per-engineer local vector DBs.</li>
+		<li>Built <b>Codebase Intelligence</b>, a <b>RAG</b> platform indexing 22 internal repos (~87,500 AST-aware code chunks, tree-sitter parsed) on <b>Amazon S3 Vectors</b> and <b>Bedrock Knowledge Bases</b> (<b>Titan Text Embeddings V2</b>), with a Python <b>MCP server</b> exposing six retrieval tools to Anthropic <b>Claude</b>. Hit <b>Hit@1 = 0.785</b> on a 200-query human-labeled eval set at ~$0.03/month, replacing per-engineer 6–8 GB local vector DBs.</li>
 		<li>Migrated the visitor-management dashboard from <b>Ember/Glimmer to React 19</b> across six surfaces (profile, printers, screeners, visits, matching-rules, documents) using <b>Module Federation 2.0</b>, <b>TanStack Query v5</b>, and <b>Radix UI</b>, shipping incrementally behind feature flags.</li>
-		<li>Shipped <b>Visitor Profile Merge</b> and <b>Block List V2</b> end-to-end across two quarters: Rails APIs, React merge UI, and the identity-matching lifecycle (expiration, disable toggle, search, deletion), eliminating manual support handling for duplicate-visitor cleanup.</li>
+		<li>Designed <b>AgentLock</b>, a phase-based <b>guardrails</b> and permission model for the 14 <b>agentic</b> AI tools embedded in the Visitors product — capability gating per request lifecycle, observability hooks, and policy enforcement at the MCP boundary.</li>
+		<li>Delivered <b>Visitor Profile Merge</b> and <b>Block List V2</b> end-to-end across two quarters: Rails APIs, React merge UI, and the identity-matching lifecycle (expiration, disable toggle, search, deletion). Validated with TDD: <b>RSpec</b> on Rails, <b>Vitest + MSW</b> on React, plus staging-pod-exec mutation testing.</li>
 		<li>Replaced fragile SKU-name string matching with a <b>ChargeBee feature-code subscription gate</b> on the Visitors Basic plan: counter table, gate-state API, 75% / 100% threshold mailer, and reset cron, spanning Rails and Ember in one sprint.</li>
-		<li>Authored <b>AgentLock</b>, a phase-based permission model governing the 14 AI tools embedded in the Visitors product, and scoped the Visitors AI roadmap (drafting, fuzzy matching, NL analytics, audit log, smart dedup).</li>
-		<li>Resolved customer-facing bugs blocking Fortune 500 accounts (<b>Blue Origin</b>, <b>Tesla</b>, <b>NVIDIA</b>) using TDD: <b>RSpec</b> on Rails, <b>Vitest + MSW</b> on React, with staging verification via Kubernetes pod exec.</li>
-		<li>Authored the org's <b>AI-tooling onboarding guide</b>, a <b>six-layer agent memory architecture</b> reference, and a coding-agent observability writeup, adopted across teams as Envoy's internal AI playbook.</li>
-		<li>Shipped at <b>5+ PRs/week</b> across nine repos on a stacked-PR (<b>Graphite</b>) and worktree-based workflow, covering Rails, Ember (Octane / Glimmer / GTS), React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM, with zero production rollbacks over 18 months.</li>
+		<li>Authored Envoy's internal AI playbook: AI-tooling onboarding guide, a six-layer agent memory reference, and a coding-agent <b>observability</b> writeup adopted by Envoy's Engineering Innovation Program.</li>
+		<li>Sustained <b>5+ PRs/week</b> across nine repos on a stacked-PR (<b>Graphite</b>) and worktree workflow, shipping Rails, Ember (Octane / Glimmer / GTS), React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM.</li>
 	</ul>
 </div>
 
 <div class="role-block">
 	<div class="role-line">
-		<span class="left">Sprout Social &nbsp;|&nbsp; Front-End Engineer</span>
-		<span class="right">Chicago, IL · May 2022 – Apr 2024</span>
+		<span class="left">Sprout Social | Front-End Engineer</span>
+		<span class="right">Chicago, IL | May 2022 – Apr 2024</span>
 	</div>
 	<ul>
 		<li>Migrated core front-end components from <b>Flow to TypeScript</b>, eliminating a class of runtime type errors and unblocking strict-mode adoption across the codebase.</li>
 		<li>Built and maintained the <b>Seeds</b> shared React component library, standardizing UI primitives across product teams and cutting per-feature build time by ~3 days.</li>
-		<li>Built a React UI for <b>bulk sentiment reclassification</b> (1,000 messages per batch) using <b>Redux</b> and virtualized lists, cutting analyst handle time ~30% per batch.</li>
+		<li>Delivered a React UI for <b>bulk sentiment reclassification</b> (1,000 messages per batch) using <b>Redux</b> and virtualized lists, cutting analyst handle time ~30% per batch.</li>
 		<li>Built a <b>Query Builder</b> in React + TypeScript backed by <b>OpenAI GPT</b> keyword suggestions with debounced search, lowering query-setup time for social-listening analysts.</li>
-		<li>Shipped a <b>faceted message-exploration tool</b> (React Context, Redux, React Router) with virtualized lists, lifting session engagement ~30% on the listening dashboard.</li>
+		<li>Launched a <b>faceted message-exploration tool</b> (React Context, Redux, React Router) with virtualized lists, lifting session engagement ~30% on the listening dashboard.</li>
 	</ul>
 </div>
 
 <div class="role-block">
 	<div class="role-line">
-		<span class="left">The Walt Disney Company &nbsp;|&nbsp; Software Engineering Intern</span>
-		<span class="right">Remote · May 2021 – Nov 2021</span>
+		<span class="left">The Walt Disney Company | Software Engineering Intern</span>
+		<span class="right">Remote | May 2021 – Nov 2021</span>
 	</div>
 	<ul>
-		<li>Shipped React and responsive-CSS fixes across multiple <b>ABC News</b> station sites: navigation restructure, broken-link remediation, and mobile UI/UX polish.</li>
 		<li>Built <b>ESPN's Banner-Maker</b>: reusable React components with Redux state and team / player API integration, cutting editorial banner-creation time ~35%.</li>
 		<li>Owned the React front-end for a <b>Student Loan Refinance</b> product: responsive UI, client-side validation, and back-end API integration, cutting form-validation errors ~60%.</li>
 		<li>Drove <b>WCAG</b> accessibility work with <b>Applitools</b>: screen-reader audits and semantic-HTML refactors that raised automated a11y coverage ~70%.</li>
@@ -227,50 +223,40 @@
 
 <div class="role-block">
 	<div class="role-line">
-		<span class="left">Credit Karma &nbsp;|&nbsp; Full-Stack Web Developer Intern</span>
-		<span class="right">San Francisco, CA · Jan 2020 – Dec 2020</span>
+		<span class="left">Credit Karma | Full-Stack Web Developer Intern</span>
+		<span class="right">San Francisco, CA | Jan 2020 – Dec 2020</span>
 	</div>
 	<ul>
 		<li>Built internal full-stack tooling across <b>React</b>, <b>Node.js</b>, <b>Ruby</b>, and <b>Python</b> services on <b>AWS</b>, focused on infrastructure automation and front-end developer experience.</li>
-		<li>Partnered with platform engineers on shared infrastructure improvements, contributing changes to internal libraries and CI pipelines.</li>
 	</ul>
 </div>
 
 <h2 class="section">Skills</h2>
-<table class="skills">
-	<tr>
-		<td class="label">Languages</td>
-		<td>TypeScript, JavaScript (ES6+), Python, Ruby, HTML5, CSS3, SQL, Flow (legacy)</td>
-	</tr>
-	<tr>
-		<td class="label">Frameworks &amp; UI</td>
-		<td>React 19, Next.js, Ember.js (Octane / Glimmer / GTS), Ruby on Rails, FastAPI, Node.js, Express, Tailwind, Radix UI, SCSS, Luxon, Three.js, Framer Motion</td>
-	</tr>
-	<tr>
-		<td class="label">AI &amp; Data</td>
-		<td>Model Context Protocol (MCP), Anthropic Claude SDK, OpenAI SDK, Gemini Flash, Amazon Bedrock, S3 Vectors, Titan Text Embeddings V2, Tree-sitter AST chunking, ChromaDB, Pinecone, LangChain, Optuna</td>
-	</tr>
-	<tr>
-		<td class="label">Cloud &amp; Infra</td>
-		<td>AWS (Bedrock, S3, IAM), Pulumi, Terraform, Kubernetes, Docker, OpenTelemetry, Datadog, Vercel</td>
-	</tr>
-	<tr>
-		<td class="label">Data Stores</td>
-		<td>PostgreSQL, Redis, Kafka, Sidekiq, MongoDB</td>
-	</tr>
-	<tr>
-		<td class="label">Build &amp; State</td>
-		<td>Module Federation 2.0, Vite, Webpack 5, TanStack Query v5, Redux Toolkit, Axios, MSW v2, GraphQL, REST</td>
-	</tr>
-	<tr>
-		<td class="label">Testing</td>
-		<td>Vitest, RSpec, Playwright, Jest, Cypress, MSW v2</td>
-	</tr>
-	<tr>
-		<td class="label">Workflow &amp; Sec</td>
-		<td>Graphite (stacked PRs), GitHub Actions, CircleCI, Cerbos, OAuth, JWT, WCAG accessibility</td>
-	</tr>
-</table>
+<dl class="skills">
+	<dt>Languages:</dt>
+	<dd>TypeScript, JavaScript (ES6+), Python, Ruby, HTML5, CSS3, SQL, Flow (legacy)</dd>
+
+	<dt>Frameworks &amp; UI:</dt>
+	<dd>React 19, Next.js, Ember.js (Octane / Glimmer / GTS), Ruby on Rails, FastAPI, Node.js, Express, Tailwind, Radix UI, SCSS, Luxon, Three.js, Framer Motion</dd>
+
+	<dt>AI &amp; LLM:</dt>
+	<dd>Model Context Protocol (MCP), Anthropic Claude SDK, OpenAI SDK, Gemini Flash, Amazon Bedrock, S3 Vectors, Titan Text Embeddings V2, RAG, agentic tool use, LLM evals, prompt engineering, function calling, AI guardrails, tree-sitter AST chunking, LangChain, LangGraph</dd>
+
+	<dt>Vector / Data:</dt>
+	<dd>ChromaDB, Pinecone, pgvector, PostgreSQL, Redis, Kafka, Sidekiq, MongoDB, Optuna</dd>
+
+	<dt>Cloud &amp; Infra:</dt>
+	<dd>AWS (Bedrock, S3, IAM), Pulumi, Terraform, Kubernetes, Docker, OpenTelemetry, Datadog, Vercel</dd>
+
+	<dt>Build &amp; State:</dt>
+	<dd>Module Federation 2.0, Vite, Webpack 5, TanStack Query v5, Redux Toolkit, Axios, MSW v2, GraphQL, REST</dd>
+
+	<dt>Testing:</dt>
+	<dd>Vitest, RSpec, Playwright, Jest, Cypress, MSW v2, mutation testing</dd>
+
+	<dt>Workflow &amp; Sec:</dt>
+	<dd>Graphite (stacked PRs), GitHub Actions, CircleCI, Cerbos, OAuth, JWT, WCAG accessibility</dd>
+</dl>
 
 <h2 class="section">Education</h2>
 <div class="role-line">
@@ -290,7 +276,7 @@
 		<span class="right">Python · Next.js · FastAPI · Anthropic Claude · TradeLocker · PostgreSQL · Optuna · ChromaDB</span>
 	</div>
 	<div class="project-body">
-		Production trading system managing real capital across five active prop-firm accounts, trading XAUUSD on H1/M15 via TradeLocker. Architecture spans a backtest engine, live signal generator, FastAPI webhook execution server with prop-firm risk gates (daily-loss, drawdown, ATR-spike, news blackout, weekend closer), a 14-agent AI team led by an OpenClaw CEO orchestrator (Anthropic Claude tool use, Gemini Flash routing), an eval harness with drift detection, semantic memory in ChromaDB, and a Next.js 15 dashboard with 17 pages for live monitoring. 5,696+ tests on a stacked-PR workflow.
+		Live multi-asset trading system across five active prop-firm accounts (XAUUSD H1/M15 via TradeLocker). Architecture: backtest engine, FastAPI webhook execution server with prop-firm risk gates (daily-loss, drawdown, ATR-spike, news blackout, weekend closer), a 14-agent AI team led by an OpenClaw orchestrator (Anthropic Claude tool use, Gemini Flash routing), an eval harness with drift detection, ChromaDB semantic memory, and a Next.js 15 dashboard. 5,000+ tests, stacked-PR workflow.
 	</div>
 </div>
 
@@ -306,12 +292,9 @@
 
 <h2 class="section">Honors &amp; Awards</h2>
 <ul class="tight">
-	<li>Won <b>1st place</b>, Google × Code Nation Hackathon.</li>
-	<li>Won the <b>24-hour Code for Good Hackathon</b> by JP Morgan, leading a front-end team that shipped a dynamic site for the Girls in the Game non-profit.</li>
-	<li>Won <b>2nd place</b> at the ACCA Programming Contest (Associated Colleges of the Chicago Area), the highest Dominican University finish to date.</li>
-	<li>Completed <b>MLT Career Prep</b> (Management Leadership for Tomorrow).</li>
-	<li>Mentored high school students in STEM and technology at <b>Code Nation</b>.</li>
-	<li>Featured in a <b>Credit Karma</b> commercial on personal credit recovery; also appeared in a <b>JumpStart</b> rebranding spot on early-career recruiting.</li>
+	<li><b>1st place</b>, Google × Code Nation Hackathon.</li>
+	<li><b>Won 24-hour Code for Good Hackathon</b> (JP Morgan), leading a front-end team shipping a site for the Girls in the Game non-profit.</li>
+	<li><b>2nd place</b>, ACCA Programming Contest — highest Dominican University finish to date. Completed <b>MLT Career Prep</b>; STEM mentor at <b>Code Nation</b>.</li>
 </ul>
 
 </body>

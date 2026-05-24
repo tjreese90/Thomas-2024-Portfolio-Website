@@ -12,13 +12,13 @@ import './touch.scss';
 const workExperience = [
 	{
 		company: 'Envoy',
-		role: 'Software Engineer, Visitor Management',
+		role: 'Full-Stack Software Engineer, Visitor Management',
 		duration: 'Nov 2024 - Present',
 		icon: 'fas fa-rocket',
 		techStack:
 			'Rails, Ember.js, React 19, TypeScript, AWS Bedrock, Model Context Protocol, Pulumi, Cerbos',
 		description:
-			"Architected Codebase Intelligence: a RAG platform indexing 22 repos (~87,500 Tree-sitter AST chunks) on Amazon S3 Vectors and Bedrock Knowledge Bases, with a Python MCP server exposing six retrieval tools to Anthropic Claude — 0.785 top-1 recall at $0.03/month. Migrated the visitor-management dashboard from Ember/Glimmer to React 19 via Module Federation 2.0. Shipped at 5+ PRs/week with zero rollbacks; resolved customer issues for Blue Origin, Tesla, and NVIDIA.",
+			"Built Codebase Intelligence: a RAG platform indexing 22 repos (~87,500 AST-aware code chunks, tree-sitter parsed) on Amazon S3 Vectors and Bedrock Knowledge Bases (Titan Text Embeddings V2), with a Python MCP server exposing six retrieval tools to Anthropic Claude — Hit@1 = 0.785 on a 200-query human-labeled eval set at ~$0.03/month. Migrated the visitor-management dashboard from Ember/Glimmer to React 19 via Module Federation 2.0. Designed AgentLock — a phase-based guardrails and permission model for the 14 agentic AI tools embedded in the Visitors product.",
 	},
 	{
 		company: 'Sprout Social',
