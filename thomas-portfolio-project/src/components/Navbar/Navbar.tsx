@@ -53,7 +53,16 @@ const Navbar = () => {
 
 	useEffect(() => {
 		document.body.classList.toggle('nav-open', menuOpen);
-		return () => document.body.classList.remove('nav-open');
+		// Mark sibling landmarks inert while the mobile menu is open
+		const siblings = document.querySelectorAll('main, [role="main"], aside');
+		siblings.forEach((el) => {
+			if (menuOpen) el.setAttribute('inert', '');
+			else el.removeAttribute('inert');
+		});
+		return () => {
+			document.body.classList.remove('nav-open');
+			siblings.forEach((el) => el.removeAttribute('inert'));
+		};
 	}, [menuOpen]);
 
 	const closeMenu = () => setMenuOpen(false);
@@ -65,7 +74,13 @@ const Navbar = () => {
 					to='/'
 					className='navbar__link'
 					aria-label='Thomas Reese — Home'
-					onClick={closeMenu}
+					onClick={(e) => {
+						closeMenu();
+						if (window.location.pathname === '/') {
+							e.preventDefault();
+							window.scrollTo({ top: 0, behavior: 'smooth' });
+						}
+					}}
 				>
 					<img
 						alt=''
@@ -92,6 +107,9 @@ const Navbar = () => {
 			<div
 				id='primary-nav'
 				className={`navbar__right ${menuOpen ? 'is-open' : ''}`}
+				role={menuOpen ? 'dialog' : undefined}
+				aria-modal={menuOpen ? true : undefined}
+				aria-label={menuOpen ? 'Site navigation' : undefined}
 			>
 				<ul className='navbar__list'>
 					{menuItems.map((item) => (

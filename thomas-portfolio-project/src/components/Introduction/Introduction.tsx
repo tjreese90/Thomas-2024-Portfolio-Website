@@ -6,6 +6,7 @@ import './introduction.scss';
 const HERO_NAME = "Hi, I'm Thomas.";
 const HERO_ROLE = 'Full-Stack Software Engineer.';
 const ROLE_LINE = 'Software Engineer at Envoy · React, TypeScript, Rails, Python, MCP';
+const ACCESSIBLE_HEADING = `${HERO_NAME} ${HERO_ROLE}`;
 
 const Introduction = () => {
 	const reduced = useReducedMotion();
@@ -24,14 +25,14 @@ const Introduction = () => {
 					variants={parent}
 					initial='hidden'
 					animate='visible'
+					aria-label={ACCESSIBLE_HEADING}
 				>
-					<span className='intro__name' aria-label={HERO_NAME}>
+					<span className='intro__name' aria-hidden='true'>
 						{nameLetters.map((ch, i) => (
 							<motion.span
 								key={i}
 								className='intro__letter'
 								variants={letter}
-								aria-hidden='true'
 							>
 								{ch === ' ' ? ' ' : ch}
 							</motion.span>
@@ -43,6 +44,7 @@ const Introduction = () => {
 						initial='hidden'
 						animate='visible'
 						transition={{ delay: 0.45 }}
+						aria-hidden='true'
 					>
 						{HERO_ROLE}
 					</motion.span>
