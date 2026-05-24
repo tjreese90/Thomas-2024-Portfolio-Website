@@ -55,7 +55,8 @@ const Introduction = () => {
 					</span>
 					<span className='intro__line' aria-hidden='true'>
 						<span className={`${letterClass} _13`}>I</span>
-						<span className={`${letterClass} _14`}>'m </span>
+						<span className={`${letterClass} _14`}>'m</span>
+						{' '}
 						<AnimatedLetters
 							letterClass={letterClass}
 							strArray={nameArray}
