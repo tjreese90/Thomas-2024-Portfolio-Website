@@ -312,15 +312,15 @@ const Contact = () => {
 			</div>
 			<div className='contact__right'>
 				<Map
-					mapboxAccessToken='pk.eyJ1IjoieWFzaGZhbGtlNzciLCJhIjoiY2t1MjQ2Z2cwMmxjazJvbXI2OGk5b2V0dSJ9.BGnMIJbpa2OzthfRTtTP6w'
+					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN || ''}
 					initialViewState={{
-						longitude: -89.65,
-						latitude: 39.7983,
-						zoom: 7,
+						longitude: -122.2712,
+						latitude: 37.8044,
+						zoom: 10,
 					}}
 					mapStyle='mapbox://styles/yashfalke77/cl89ugdbm001q14rth35g4qth'
 				>
-					<Marker latitude={39.7983} longitude={-89.65}>
+					<Marker latitude={37.8044} longitude={-122.2712}>
 						<button type='button' className='map__button'>
 							<svg
 								width='40'

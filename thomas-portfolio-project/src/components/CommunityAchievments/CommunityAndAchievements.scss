@@ -3,16 +3,71 @@
 
 .community-achievements__video {
 	margin-top: 1rem;
-	overflow: hidden; // Helps prevent any overflow issues on smaller screens
+	overflow: hidden;
 	position: relative;
 	width: 100%;
-	padding-bottom: 56.25%; // This maintains a 16:9 aspect ratio
-	iframe {
+	padding-bottom: 56.25%;
+	border-radius: 0.6rem;
+
+	iframe,
+	.community-achievements__videoPoster {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
+	}
+}
+
+.community-achievements__videoPoster {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.4s ease, filter 0.4s ease;
+		filter: brightness(0.78);
+	}
+
+	.community-achievements__playIcon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 6.4rem;
+		height: 6.4rem;
+		border-radius: 50%;
+		background: rgba(255, 215, 0, 0.92);
+		color: #0a192f;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 2.4rem;
+		padding-left: 0.4rem;
+		box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.45);
+		transition: transform 0.2s ease, background 0.2s ease;
+	}
+
+	&:hover img {
+		transform: scale(1.04);
+		filter: brightness(0.95);
+	}
+
+	&:hover .community-achievements__playIcon {
+		transform: translate(-50%, -50%) scale(1.08);
+		background: #ffd700;
+	}
+
+	&:focus-visible {
+		outline: 2px solid #ffd700;
+		outline-offset: 2px;
 	}
 }
 

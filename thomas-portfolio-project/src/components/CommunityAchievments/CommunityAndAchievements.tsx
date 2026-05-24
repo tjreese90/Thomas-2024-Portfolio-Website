@@ -3,16 +3,52 @@ import PropTypes from 'prop-types';
 import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './CommunityAndAchievements.scss';
 
+type VideoKey = 'creditKarma' | 'jumpStart';
+
 const CommunityAndAchievements = () => {
 	const [letterClass, setLetterClass] = useState('text-animate-fast');
 	const nameArray = [...'04. Community Impact'];
 	const TIMEOUT_DURATION = 4000;
 
-	// State for iframe loading (used for Credit Karma video)
-	const [isIframeLoaded, setIsIframeLoaded] = useState(false);
+	const [playingVideo, setPlayingVideo] = useState<Record<VideoKey, boolean>>({
+		creditKarma: false,
+		jumpStart: false,
+	});
 
-	const loadIframe = () => {
-		setIsIframeLoaded(true);
+	const playVideo = (key: VideoKey) =>
+		setPlayingVideo((prev) => ({ ...prev, [key]: true }));
+
+	const renderVideo = (key: VideoKey, videoId: string, title: string) => {
+		if (playingVideo[key]) {
+			return (
+				<iframe
+					width='100%'
+					height='315'
+					src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+					title={title}
+					frameBorder='0'
+					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+					allowFullScreen
+				/>
+			);
+		}
+		return (
+			<button
+				type='button'
+				className='community-achievements__videoPoster'
+				onClick={() => playVideo(key)}
+				aria-label={`Play video: ${title}`}
+			>
+				<img
+					src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+					alt={title}
+					loading='lazy'
+				/>
+				<span className='community-achievements__playIcon' aria-hidden='true'>
+					▶
+				</span>
+			</button>
+		);
 	};
 
 	useEffect(() => {
@@ -182,16 +218,11 @@ const CommunityAndAchievements = () => {
 									of their services on my financial well-being.
 								</p>
 								<div className='community-achievements__video'>
-									// Replace with the YouTube iframe once clicked
-									<iframe
-										width='100%'
-										height='315px'
-										src='https://www.youtube.com/embed/JFwQ4r3mtus?autoplay=1'
-										title="TJ's credit comeback"
-										frameBorder='0'
-										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-										allowFullScreen
-									></iframe>
+									{renderVideo(
+										'creditKarma',
+										'JFwQ4r3mtus',
+										"TJ's credit comeback",
+									)}
 								</div>
 							</article>
 
@@ -216,15 +247,11 @@ const CommunityAndAchievements = () => {
 									jobs. The commercial was part of their rebranding efforts.
 								</p>
 								<div className='community-achievements__video'>
-									<iframe
-										width='100%'
-										height='315'
-										src='https://www.youtube.com/embed/p99rO7GpQoo'
-										title='The future looks like you'
-										frameBorder='0'
-										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-										allowFullScreen
-									></iframe>
+									{renderVideo(
+										'jumpStart',
+										'p99rO7GpQoo',
+										'The future looks like you',
+									)}
 								</div>
 							</article>
 						</div>
