@@ -68,7 +68,7 @@ body.dark-mode {
 		padding: 2rem;
 
 		@include respond(phone) {
-			display: none;
+			padding: 2rem 1rem 3rem;
 		}
 	}
 
