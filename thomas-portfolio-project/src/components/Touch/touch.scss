@@ -7,7 +7,7 @@
 	color: var(--lightest-slate);
 
 	&__content {
-		padding: 0 10%;
+		padding: 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -18,7 +18,12 @@
 		width: 100%;
 
 		@include respond(phone) {
-			padding: 0 2rem;
+			padding: 0 1rem;
+		}
+
+		// Headings / hint / project items stay centered with their own max-width
+		> :not(.vertical-timeline) {
+			align-self: center;
 		}
 	}
 
