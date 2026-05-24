@@ -3,22 +3,23 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './contact.scss';
 import emailjs from '@emailjs/browser';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const apiKey = import.meta.env.VITE_GOOGLE_GEN_AI_KEY || '';
-const generativeAI = new GoogleGenerativeAI(apiKey);
-const modelName =
-	import.meta.env.VITE_GEN_AI_MODEL_NAME || 'gemini-1.5-pro-latest';
-const model = generativeAI.getGenerativeModel({ model: modelName });
+type ChatMessage = { role: 'user' | 'assistant'; content: string }
 
-const MAX_CHAT_HISTORY = 100; // Maximum number of chat messages to keep
+const SUGGESTED_PROMPTS = [
+	"What is TraderDan?",
+	"Tell me about Codebase Intelligence at Envoy.",
+	"What's Thomas's strongest stack?",
+	"How can I reach him?",
+]
 
 const Contact = () => {
 	const [letterClass, setLetterClass] = useState('text-animate');
 	const nameArray = [...'Contact me'];
-	const [isDarkMode, setIsDarkMode] = useState(false);
-	const [chatMessages, setChatMessages] = useState<string[]>([]);
+	const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
 	const [newMessage, setNewMessage] = useState('');
+	const [isStreaming, setIsStreaming] = useState(false);
+	const [chatError, setChatError] = useState<string | null>(null);
 	const form = useRef<HTMLFormElement>(null);
 	const inputRef1 = useRef<HTMLInputElement>(null);
 	const inputRef2 = useRef<HTMLInputElement>(null);
@@ -33,30 +34,33 @@ const Contact = () => {
 	}, []);
 
 	useEffect(() => {
-		const savedChatMessages = localStorage.getItem('chatMessages');
-		if (!savedChatMessages) return;
+		const saved = localStorage.getItem('askThomasMessages');
+		if (!saved) return;
 		try {
-			const parsed = JSON.parse(savedChatMessages);
-			if (Array.isArray(parsed) && parsed.every((m) => typeof m === 'string')) {
+			const parsed = JSON.parse(saved);
+			if (
+				Array.isArray(parsed) &&
+				parsed.every(
+					(m) =>
+						m &&
+						typeof m === 'object' &&
+						(m.role === 'user' || m.role === 'assistant') &&
+						typeof m.content === 'string',
+				)
+			) {
 				setChatMessages(parsed);
 			} else {
-				localStorage.removeItem('chatMessages');
+				localStorage.removeItem('askThomasMessages');
 			}
 		} catch {
-			localStorage.removeItem('chatMessages');
+			localStorage.removeItem('askThomasMessages');
 		}
 	}, []);
 
 	useEffect(() => {
-		// Save chat messages to local storage and auto-scroll to the bottom
-		localStorage.setItem('chatMessages', JSON.stringify(chatMessages));
+		localStorage.setItem('askThomasMessages', JSON.stringify(chatMessages));
 		chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
 	}, [chatMessages]);
-
-	const toggleDarkMode = () => {
-		setIsDarkMode(!isDarkMode);
-		document.body.classList.toggle('dark-mode', !isDarkMode);
-	};
 
 	const sendEmail = (e: any) => {
 		e.preventDefault();
@@ -94,84 +98,82 @@ const Contact = () => {
 		}, 2000);
 	};
 
-	const summarizeChatHistory = (chatMessages: string[]): string => {
-		return chatMessages
-			.slice(-MAX_CHAT_HISTORY)
-			.map((msg) => {
-				if (msg.startsWith('User: ')) {
-					return `User said: ${msg.replace('User: ', '')}`;
-				} else if (msg.startsWith('AI: ')) {
-					return `AI replied: ${msg.replace('AI: ', '')}`;
-				}
-				return msg;
+	const sendChatMessage = async (text: string) => {
+		const trimmed = text.trim()
+		if (!trimmed || isStreaming) return
+
+		setChatError(null)
+		const nextHistory: ChatMessage[] = [
+			...chatMessages,
+			{ role: 'user', content: trimmed },
+		]
+		setChatMessages([...nextHistory, { role: 'assistant', content: '' }])
+		setNewMessage('')
+		setIsStreaming(true)
+
+		try {
+			const res = await fetch('/api/chat', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ messages: nextHistory }),
 			})
-			.join(' ');
-	};
+
+			if (!res.ok) {
+				const errBody = await res.json().catch(() => ({}))
+				throw new Error(
+					errBody.error ||
+						`Chat service returned ${res.status}. Try again, or reach Thomas at ThomasReeseCareers@gmail.com.`,
+				)
+			}
+
+			if (!res.body) throw new Error('No response stream from the assistant.')
+
+			const reader = res.body.getReader()
+			const decoder = new TextDecoder()
+			let assistantContent = ''
+
+			while (true) {
+				const { value, done } = await reader.read()
+				if (done) break
+				assistantContent += decoder.decode(value, { stream: true })
+				setChatMessages((prev) => {
+					const copy = [...prev]
+					copy[copy.length - 1] = {
+						role: 'assistant',
+						content: assistantContent,
+					}
+					return copy
+				})
+			}
+		} catch (err) {
+			const message =
+				err instanceof Error
+					? err.message
+					: 'Something went wrong. Please email Thomas at ThomasReeseCareers@gmail.com.'
+			setChatError(message)
+			setChatMessages((prev) => prev.slice(0, -1))
+		} finally {
+			setIsStreaming(false)
+		}
+	}
 
 	const handleChatSend = async (e: React.FormEvent) => {
-		e.preventDefault();
-		if (newMessage.trim()) {
-			const userMessage = `User: ${newMessage}`;
-			const previousMessages = summarizeChatHistory(chatMessages);
-			setChatMessages((prevMessages) => [...prevMessages, userMessage]);
-			setNewMessage('');
+		e.preventDefault()
+		await sendChatMessage(newMessage)
+	}
 
-			const requestBody = {
-				safetySettings: [],
-				contents: [
-					{
-						role: 'user',
-						parts: [
-							{
-								text: `
-                      You are Thomas Reese, a friendly software developer who loves engaging conversations. Make sure to respond in a personalized and natural manner. Keep responses relevant and avoid any placeholders or errors. For example, if asked about your name, you could say "I'm Thomas Reese, here to help you with any questions or information you need." Keep the tone conversational and warm, and ensure the responses align with the context of the conversation.
-                      Latest user message: ${newMessage}
-                      Previous conversation: ${previousMessages}
-                    `,
-							},
-						],
-					},
-				],
-			};
-
-			try {
-				const aiResponse = await model.generateContent(requestBody);
-				const candidates = aiResponse?.response?.candidates;
-
-				if (candidates && candidates.length > 0) {
-					const aiMessageContent = candidates[0]?.content?.parts;
-
-					if (aiMessageContent && aiMessageContent.length > 0) {
-						const aiMessage = `AI: ${aiMessageContent[0]?.text
-							?.trim()
-							.replace(/[\r\n]+/g, ' ')}`;
-						setChatMessages((prevMessages) => [...prevMessages, aiMessage]);
-					} else {
-						const errorMessage =
-							'AI: It seems like there was an issue with generating a response. Let’s try again! 😅';
-						setChatMessages((prevMessages) => [...prevMessages, errorMessage]);
-					}
-				} else {
-					const fallbackMessage =
-						'AI: Sorry, I couldn’t get a response at this time. How can I assist you further?';
-					setChatMessages((prevMessages) => [...prevMessages, fallbackMessage]);
-				}
-			} catch (error) {
-				console.error('Error fetching AI response:', error);
-				const errorMessage =
-					'AI: Oops, something went wrong. I’m here to help if you need anything else!';
-				setChatMessages((prevMessages) => [...prevMessages, errorMessage]);
-			}
-		}
-	};
+	const handleSuggestedClick = (prompt: string) => {
+		sendChatMessage(prompt)
+	}
 
 	const clearChat = () => {
-		localStorage.removeItem('chatMessages');
-		setChatMessages([]);
+		localStorage.removeItem('askThomasMessages')
+		setChatMessages([])
+		setChatError(null)
 	};
 
 	return (
-		<div className={`contact ${isDarkMode ? 'dark' : ''}`}>
+		<div className='contact'>
 			<div className='contact__left'>
 				<span className='tag' style={{ padding: '0rem' }}>
 					&lt;body&gt;
@@ -237,50 +239,78 @@ const Contact = () => {
 					</form>
 				</div>
 				<div className='chat-widget'>
-					<h3>Gemini AI Chat</h3>
-					<p className='chat-description'>
-						Chat with the AI assistant to ask about Thomas's background,
-						projects, or experience — it answers in his voice.
-					</p>
-					<div className='chat-messages'>
-						{chatMessages.map((msg, idx) => (
-							<p
-								key={idx}
-								className={`chat-message ${
-									msg.startsWith('AI:') ? 'ai-message' : 'user-message'
-								}`}
-							>
-								{msg.split('\n').map((line, i) => (
-									<span key={i}>
-										{line}
-										<br />
-									</span>
-								))}
-							</p>
-						))}
-						<div ref={chatEndRef} />
+					<div className='chat-widget__header'>
+						<h3 className='chat-widget__title'>Ask About Thomas</h3>
+						<span className='chat-widget__badge'>AI</span>
 					</div>
+					<p className='chat-description'>
+						Ask anything — projects, stack, work history, why he built X. The
+						assistant answers from Thomas's resume and portfolio context.
+					</p>
+
+					{chatMessages.length === 0 && !isStreaming && (
+						<div className='chat-suggestions'>
+							{SUGGESTED_PROMPTS.map((p) => (
+								<button
+									key={p}
+									type='button'
+									className='chat-suggestion'
+									onClick={() => handleSuggestedClick(p)}
+								>
+									{p}
+								</button>
+							))}
+						</div>
+					)}
+
+					{chatMessages.length > 0 && (
+						<div className='chat-messages'>
+							{chatMessages.map((msg, idx) => (
+								<div
+									key={idx}
+									className={`chat-message chat-message--${msg.role}`}
+								>
+									{msg.content ||
+										(msg.role === 'assistant' && isStreaming
+											? '…'
+											: '')}
+								</div>
+							))}
+							<div ref={chatEndRef} />
+						</div>
+					)}
+
+					{chatError && (
+						<p className='chat-error' role='alert'>
+							{chatError}
+						</p>
+					)}
+
 					<form onSubmit={handleChatSend} className='chat-form'>
 						<input
 							type='text'
 							value={newMessage}
 							onChange={(e) => setNewMessage(e.target.value)}
-							placeholder='Type your message...'
+							placeholder={
+								isStreaming ? 'Thinking…' : 'Ask a question…'
+							}
 							className='chat-input'
-							autoFocus
+							disabled={isStreaming}
+							aria-label='Ask About Thomas — type your question'
 						/>
-						<button type='submit' className='chat-send'>
-							Send
+						<button
+							type='submit'
+							className='chat-send'
+							disabled={isStreaming || !newMessage.trim()}
+						>
+							{isStreaming ? '…' : 'Send'}
 						</button>
 					</form>
-					<button onClick={clearChat} className='clear-chat'>
-						Clear Chat
-					</button>
-					{!apiKey && (
-						<p className='error-message'>
-							Error: API Key not provided. Please set the API key in your
-							environment variables.
-						</p>
+
+					{chatMessages.length > 0 && (
+						<button onClick={clearChat} className='clear-chat'>
+							Clear conversation
+						</button>
 					)}
 				</div>
 				<div className='buttons'>
