@@ -1,5 +1,5 @@
 import './projects.scss';
-import LazyLoad from 'react-lazyload';
+
 
 const Project = () => {
 	return (
@@ -11,7 +11,7 @@ const Project = () => {
 
 			{/* ----------------------------------------- for desktops -------------------------- */}
 
-			<LazyLoad once height={400}>
+			
 				<article className='project__section'>
 					<a
 						className='project__left project__imgLink'
@@ -75,9 +75,9 @@ const Project = () => {
 						</div>
 					</div>
 				</article>
-			</LazyLoad>
+			
 
-			<LazyLoad once height={400}>
+			
 				<article className='project__section'>
 					<div className='project__left1'>
 						<p className='project__headingTertiary'>Featured Project</p>
@@ -141,9 +141,9 @@ const Project = () => {
 						</span>
 					</a>
 				</article>
-			</LazyLoad>
+			
 
-			<LazyLoad once height={400}>
+			
 				<article className='project__section'>
 					<div className='project__left1'>
 						<p className='project__headingTertiary'>Featured Project</p>
@@ -207,9 +207,9 @@ const Project = () => {
 						</span>
 					</a>
 				</article>
-			</LazyLoad>
+			
 
-			<LazyLoad once height={400}>
+			
 				<article className='project__section project__section3'>
 					<a
 						className='project__left project__imgLink'
@@ -273,7 +273,7 @@ const Project = () => {
 						</div>
 					</div>
 				</article>
-			</LazyLoad>
+			
 
 			{/* --------------------------------------------------- for Mobiles ----------------------------------------------------------------- */}
 
