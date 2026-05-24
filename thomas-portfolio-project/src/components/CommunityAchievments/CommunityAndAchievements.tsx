@@ -105,10 +105,10 @@ const CommunityAndAchievements = () => {
 							>
 								JP Morgan's 24HR Code For Good hackathon
 							</a>
-							, where I led a front-end team to create a dynamic website for a
-							non-profit called Girls in the Game. This platform encourages
-							young females to engage in sports by providing a friendly place to
-							discuss sports-related activities.
+							, where I led a front-end team to build a dynamic website for the
+							non-profit Girls in the Game. The platform encourages women and
+							girls to participate in sports by providing a community space for
+							discussion and discovery.
 						</p>
 						<p>
 							In addition, I took part in{' '}
@@ -243,16 +243,10 @@ const CommunityAndAchievements = () => {
 											JumpStart
 										</a>
 									</span>
-									, a company aiding college students in finding internships and
-									jobs. The commercial was part of their rebranding efforts.
+									, a company helping college students find internships and
+									full-time jobs. The spot ran as part of their rebranding
+									campaign.
 								</p>
-								<div className='community-achievements__video'>
-									{renderVideo(
-										'jumpStart',
-										'p99rO7GpQoo',
-										'The future looks like you',
-									)}
-								</div>
 							</article>
 						</div>
 					</section>

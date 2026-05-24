@@ -127,14 +127,10 @@ const Project = () => {
 						</a>
 						<div className='project__descriptionContainer project__descriptionContainer1'>
 							<p className='project__description'>
-								The AI Form Builder is an innovative full stack React
-								application that harnesses the power of Gemini AI to dynamically
-								generate custom forms based on user inputs. This project
-								exemplifies the integration of advanced AI capabilities with
-								robust backend services to create a highly interactive and
-								user-centric application. The use of modern technologies such as
-								Node.js, Express.js, and MongoDB ensures scalability and
-								efficiency.
+								A full-stack React app that uses Gemini to generate custom
+								forms from natural-language prompts. Node.js + Express.js
+								backend with MongoDB for persistence, plus a clean React
+								frontend for the form-builder UX.
 							</p>
 							<div className='project__tags'>
 								React.js &nbsp; Node.js &nbsp; Vue.js &nbsp; MongoDB &nbsp;
@@ -186,14 +182,10 @@ const Project = () => {
 						</a>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>
-								The UFC Fight Prediction Generator is a sophisticated
-								application that utilizes the UFC MMA V2 API, Postman, and other
-								full stack technologies to deliver AI-powered predictions for
-								UFC matches. This project demonstrates advanced skills in API
-								integration, data handling, and machine learning, providing
-								users with insightful and accurate fight predictions. The
-								application’s architecture ensures high performance and
-								reliability.
+								A fight-prediction app powered by the UFC MMA V2 API. It
+								combines historical fight data with a machine-learning model
+								to produce per-matchup outcome estimates, surfaced through a
+								React + Vite frontend with MongoDB-backed match history.
 							</p>
 							<div className='project__tags'>
 								{' '}
@@ -271,11 +263,10 @@ const Project = () => {
 								Blue Ridge Canine Academy
 							</div>
 							<p className='projectResp__cardBodyDescription'>
-								Blue Ridge Canine Academy is a comprehensive dog training
-								platform with integrated scheduling and payment functionalities.
-								The application leverages modern web technologies to offer a
-								seamless user experience, enabling clients to effortlessly book
-								training sessions and manage payments.
+								A full-stack dog-training platform with integrated scheduling
+								and payments. React frontend, Node.js + Express.js backend,
+								MongoDB persistence; built as a freelance project for a local
+								trainer.
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
@@ -311,12 +302,9 @@ const Project = () => {
 								AI Form Builder
 							</div>
 							<p className='projectResp__cardBodyDescription'>
-								The AI Form Builder is an innovative full stack React
-								application that harnesses the power of Gemini AI to dynamically
-								generate custom forms based on user inputs. This project
-								exemplifies the integration of advanced AI capabilities with
-								robust backend services to create a highly interactive and
-								user-centric application.
+								Full-stack React app that uses Gemini to generate custom forms
+								from natural-language prompts. Node.js + Express backend,
+								MongoDB persistence, clean React UI for the form-builder UX.
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
@@ -351,12 +339,10 @@ const Project = () => {
 								UFC Fight Prediction Generator
 							</div>
 							<p className='projectResp__cardBodyDescription'>
-								The UFC Fight Prediction Generator is a sophisticated
-								application that utilizes the UFC MMA V2 API, Postman, and other
-								full stack technologies to deliver AI-powered predictions for
-								UFC matches. This project demonstrates advanced skills in API
-								integration, data handling, and machine learning, providing
-								users with insightful and accurate fight predictions.
+								A fight-prediction app powered by the UFC MMA V2 API.
+								Combines historical fight data with an ML model to produce
+								per-matchup outcome estimates, surfaced through a React + Vite
+								frontend with MongoDB-backed history.
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>

@@ -2,7 +2,6 @@ import AnimatedLetters from '@components/AnimatedLetters/AnimatedLetters';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './contact.scss';
-import Map, { Marker } from 'react-map-gl';
 import emailjs from '@emailjs/browser';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
@@ -197,9 +196,9 @@ const Contact = () => {
 					/>
 				</h1>
 				<p className='contact__description'>
-					I am interested in freelance opportunities - especially on ambitious
-					or large projects. However, if you have any other requests or
-					questions, don't hesitate to contact me using the form below.
+					I'm open to freelance opportunities, especially ambitious or
+					large-scale projects. For anything else — questions, intros, or
+					just a hello — drop a note via the form below.
 				</p>
 				<div className='form'>
 					<form ref={form} onSubmit={sendEmail}>
@@ -259,9 +258,8 @@ const Contact = () => {
 				<div className='chat-widget'>
 					<h3>Gemini AI Chat</h3>
 					<p className='chat-description'>
-						Engage with our AI bot to learn more about Thomas's professional
-						background and experience. The AI bot is designed to respond as if
-						it were Thomas himself.
+						Chat with the AI assistant to ask about Thomas's background,
+						projects, or experience — it answers in his voice.
 					</p>
 					<div className='chat-messages'>
 						{chatMessages.map((msg, idx) => (
@@ -311,79 +309,54 @@ const Contact = () => {
 				</div>
 			</div>
 			<div className='contact__right'>
-				<Map
-					mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN || ''}
-					initialViewState={{
-						longitude: -122.2712,
-						latitude: 37.8044,
-						zoom: 10,
-					}}
-					mapStyle='mapbox://styles/yashfalke77/cl89ugdbm001q14rth35g4qth'
-				>
-					<Marker latitude={37.8044} longitude={-122.2712}>
-						<button type='button' className='map__button'>
-							<svg
-								width='40'
-								height='132'
-								viewBox='0 0 420 512'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'
-							>
-								<g filter='url(#filter0_d_405_4)'>
-									<path
-										d='M235 473C173.283 420.483 127.188 371.704 96.7125 326.663C66.2375 281.621 51 239.933 51 201.6C51 144.1 69.4958 98.2917 106.487 64.175C143.479 30.0583 186.317 13 235 13C283.683 13 326.521 30.0583 363.512 64.175C400.504 98.2917 419 144.1 419 201.6C419 239.933 403.763 281.621 373.288 326.663C342.812 371.704 296.717 420.483 235 473Z'
-										fill='#0A192F'
-									/>
-								</g>
-								<path
-									d='M324.275 124L243.706 279.334V362.293H195.91V279.334L115 124H168.94L220.149 232.905L271.017 124H324.275Z'
-									fill='#FFD700'
-								/>
-								<path
-									d='M355 124L274.431 279.334V362.293H226.636V279.334L145.726 124H199.666L250.875 232.905L301.743 124H355Z'
-									fill='#115173'
-								/>
-								<defs>
-									<filter
-										id='filter0_d_405_4'
-										x='0'
-										y='0'
-										width='420'
-										height='512'
-										filterUnits='userSpaceOnUse'
-										colorInterpolationFilters='sRGB'
-									>
-										<feFlood floodOpacity='0' result='BackgroundImageFix' />
-										<feColorMatrix
-											in='SourceAlpha'
-											type='matrix'
-											values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-											result='hardAlpha'
-										/>
-										<feOffset dx='-25' dy='13' />
-										<feGaussianBlur stdDeviation='13' />
-										<feComposite in2='hardAlpha' operator='out' />
-										<feColorMatrix
-											type='matrix'
-											values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.32 0'
-										/>
-										<feBlend
-											mode='normal'
-											in2='BackgroundImageFix'
-											result='effect1_dropShadow_405_4'
-										/>
-										<feBlend
-											mode='normal'
-											in='SourceGraphic'
-											in2='effect1_dropShadow_405_4'
-											result='shape'
-										/>
-									</filter>
-								</defs>
-							</svg>
-						</button>
-					</Marker>
-				</Map>
+				<div className='contact__locationCard'>
+					<div className='contact__locationPin' aria-hidden='true'>
+						<svg
+							viewBox='0 0 24 24'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								d='M12 22s7-7.58 7-13a7 7 0 1 0-14 0c0 5.42 7 13 7 13z'
+								stroke='#ffd700'
+								strokeWidth='1.5'
+								fill='rgba(255, 215, 0, 0.08)'
+							/>
+							<circle
+								cx='12'
+								cy='9.5'
+								r='2.5'
+								fill='#ffd700'
+							/>
+						</svg>
+					</div>
+					<h3 className='contact__locationHeading'>Oakland, California</h3>
+					<p className='contact__locationSubtitle'>
+						Pacific Time (UTC−8 / −7)
+					</p>
+					<a
+						href='mailto:ThomasReeseCareers@gmail.com'
+						className='contact__locationEmail'
+					>
+						ThomasReeseCareers@gmail.com
+					</a>
+					<div className='contact__locationLinks'>
+						<a
+							href='https://github.com/tjreese90'
+							target='_blank'
+							rel='noreferrer'
+						>
+							GitHub
+						</a>
+						<a
+							href='https://www.linkedin.com/in/thomas-reese-541758142/'
+							target='_blank'
+							rel='noreferrer'
+						>
+							LinkedIn
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

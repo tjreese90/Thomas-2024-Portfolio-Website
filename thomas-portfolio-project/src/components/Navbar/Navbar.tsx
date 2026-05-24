@@ -43,7 +43,7 @@ const Navbar = () => {
 					))}
 				</ul>
 				<a
-					href='https://drive.google.com/file/d/1Xxme-Q0HY299yebjTTyeKw7af02v-jCT/view?usp=sharing'
+					href='/resume.pdf'
 					target='_blank'
 					rel='noreferrer'
 					className='navbar__button'

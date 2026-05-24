@@ -50,21 +50,21 @@ const personalProjects = [
 	{
 		name: 'TraderDan — Automated Trading System',
 		description:
-			"A sophisticated multi-asset automated trading system built on OANDA's API. Features multi-agent AI orchestration for strategy development, real-time risk management across FX and crypto markets, meticulously backtested strategies, and a Next.js dashboard for live monitoring and performance analytics.",
+			"A production trading system managing real capital across five active prop-firm accounts. Built around TradeLocker integration, a FastAPI webhook execution server with prop-firm risk gates, a 14-agent AI team led by an OpenClaw CEO orchestrator (Anthropic Claude tool use), an eval harness with drift detection, semantic memory in ChromaDB, and a Next.js 15 dashboard for live monitoring.",
 		link: 'https://github.com/tjreese90',
 	},
 	{
-		name: 'Next-Gen Fitness Tracker',
+		name: 'Workout Tracker — React Native',
 		description:
-			'An advanced React Native application designed to provide a holistic fitness tracking experience. This full-stack solution includes features such as user authentication, activity tracking, and data visualization. Developed to enhance personal fitness goals with potential for scalability and broader application.',
+			'A React Native fitness tracker with user authentication, activity logging, and data visualization. Designed for quick daily check-ins and trend review.',
 		link: 'https://github.com/tjreese90/Workout-Tracker-Native-App',
 	},
 ];
 
 const goals = [
-	'Become a lead developer in a dynamic team.',
-	'Contribute to open-source projects.',
-	'Continue learning and growing in the field of software development.',
+	'Ship production AI systems with clear cost, latency, and quality budgets.',
+	'Contribute to open-source MCP servers and developer tooling.',
+	'Keep learning across the stack — from infra to model evaluation.',
 ];
 
 const Touch = () => {

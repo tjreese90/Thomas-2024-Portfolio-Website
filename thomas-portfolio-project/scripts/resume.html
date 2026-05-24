@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Thomas Reese — Resume</title>
+<style>
+	@page {
+		size: Letter;
+		margin: 0.5in 0.65in 0.55in 0.65in;
+	}
+
+	* { box-sizing: border-box; }
+
+	html, body {
+		margin: 0;
+		padding: 0;
+		font-family: 'Latin Modern Roman', 'Computer Modern Serif', 'CMU Serif', Georgia, 'Times New Roman', serif;
+		font-size: 10.5pt;
+		line-height: 1.32;
+		color: #000;
+		background: #fff;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	body { padding: 0; }
+
+	/* ============ Header ============ */
+	.name {
+		text-align: center;
+		font-variant: small-caps;
+		font-size: 24pt;
+		letter-spacing: 0.04em;
+		margin: 0 0 1pt 0;
+		font-weight: 400;
+	}
+	.title {
+		text-align: center;
+		font-size: 11pt;
+		margin: 0 0 2pt 0;
+	}
+	.contact {
+		text-align: center;
+		font-size: 10pt;
+		margin-bottom: 1pt;
+	}
+	.links {
+		text-align: center;
+		font-size: 10pt;
+		margin-bottom: 8pt;
+	}
+	.links a, .contact a {
+		color: #000;
+		text-decoration: underline;
+	}
+
+	/* ============ Section headers ============ */
+	h2.section {
+		font-variant: small-caps;
+		font-size: 12.5pt;
+		letter-spacing: 0.06em;
+		margin: 11pt 0 4pt 0;
+		padding-bottom: 1pt;
+		border-bottom: 0.6pt solid #000;
+		font-weight: 400;
+	}
+
+	/* ============ Experience entries ============ */
+	.role-line {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin-top: 3pt;
+	}
+	.role-line .left {
+		font-weight: 700;
+		font-size: 11pt;
+	}
+	.role-line .right {
+		font-size: 10pt;
+	}
+	.subrole-line {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		font-size: 10pt;
+		font-style: italic;
+		margin-bottom: 2pt;
+	}
+
+	ul {
+		margin: 2pt 0 4pt 16pt;
+		padding: 0;
+	}
+	ul li {
+		margin-bottom: 2.5pt;
+		text-align: justify;
+		text-justify: inter-word;
+	}
+	ul li b, ul li strong { font-weight: 700; }
+
+	/* ============ Skills table ============ */
+	table.skills {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 10pt;
+		margin-top: 2pt;
+	}
+	table.skills td {
+		vertical-align: top;
+		padding: 1.5pt 0;
+	}
+	table.skills td.label {
+		width: 22%;
+		font-style: italic;
+		padding-right: 8pt;
+	}
+
+	/* ============ Projects ============ */
+	.project-line {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin-top: 3pt;
+	}
+	.project-line .left {
+		font-weight: 700;
+		font-size: 10.5pt;
+	}
+	.project-line .right {
+		font-size: 9.5pt;
+		font-style: italic;
+		max-width: 60%;
+		text-align: right;
+	}
+	.project-body {
+		font-size: 10pt;
+		margin: 2pt 0 4pt 0;
+		text-align: justify;
+	}
+
+	/* ============ Tight list (certs / honors) ============ */
+	.tight li { margin-bottom: 1.5pt; }
+
+	/* Keep section blocks together where possible */
+	h2.section { page-break-after: avoid; }
+	.role-block { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<h1 class="name">Thomas Reese</h1>
+<div class="title">Software Engineer · Full-Stack &amp; AI Systems</div>
+<div class="contact">
+	ThomasReeseCareers@gmail.com · (708) 673-2536 · Oakland, CA
+</div>
+<div class="links">
+	<a href="https://www.linkedin.com/in/thomas-reese-541758142/">LinkedIn</a> ·
+	<a href="https://github.com/tjreese90">GitHub</a> ·
+	<a href="https://thomas-2024-portfolio-website-4g9e.vercel.app/">Portfolio</a> ·
+	<a href="https://leetcode.com/u/tjreese90/">LeetCode</a>
+</div>
+
+<h2 class="section">Experience</h2>
+
+<div class="role-block">
+	<div class="role-line">
+		<span class="left">Envoy &nbsp;|&nbsp; Software Engineer, Visitor Management</span>
+		<span class="right">Remote · Nov 2024 – Present</span>
+	</div>
+	<ul>
+		<li>Designed and shipped <b>Envoy's Codebase Intelligence platform</b> end-to-end across four phases: <b>Amazon S3 Vectors</b> infrastructure on AWS (Pulumi/Terraform), an <b>Amazon Bedrock Knowledge Bases</b> store using <b>Titan Text Embeddings V2</b>, and a Python <b>MCP server</b> exposing six retrieval tools to <b>Anthropic Claude</b>. Indexed 22 internal repositories (~87,500 <b>Tree-sitter</b> AST chunks) with top-1 retrieval averaging <b>0.785</b> at ~<b>$0.03/month</b>, replacing per-engineer 6–8 GB local vector databases.</li>
+		<li>Led the migration of the visitor-management dashboard from <b>Ember.js / Glimmer</b> to <b>React 19</b> across the visitor profile, printer overview, and new screeners, visits, matching-rules, and documents tabs — using <b>Module Federation 2.0</b>, <b>TanStack Query v5</b>, <b>Radix UI</b>, <b>Tailwind</b>, Luxon, and <b>MSW v2</b>.</li>
+		<li>Shipped the <b>Visitor Profile Merge</b> feature end-to-end across ~20 tickets (visitor directory, merge UI, Rails APIs) and the <b>Block List V2</b> identity-matching lifecycle (expiration dates, disable toggle, search, deletion) across two quarters.</li>
+		<li>Owned the frontend for a ChargeBee-feature-code-driven subscription gate on Envoy's Visitors Basic plan — replacing fragile SKU-name matching with a counter table, gate-state API, 75% / 100% threshold mailer, and reset cron — shipped across six PRs spanning Rails and Ember in a single sprint.</li>
+		<li>Scoped Envoy's Visitors AI roadmap (~30 child tickets covering AI drafting, fuzzy matching, NL analytics, audit log, and smart dedup) and the <b>AgentLock</b> initiative for phase-based agent permissions with observability-first risk gating.</li>
+		<li>Resolved ~20 customer-facing bug tickets affecting Fortune 500 accounts including <b>Blue Origin</b>, <b>Tesla</b>, and <b>NVIDIA</b> — using TDD with <b>RSpec</b> on the Rails side and <b>Vitest + MSW</b> on the React side, with mutation-tested verification against staging via Kubernetes pod exec.</li>
+		<li>Authored <b>28+ internal technical documents</b> adopted cross-team — including an AI-tooling onboarding guide, a six-layer AI memory architecture reference, an AI coding-agent observability writeup, and the Engineering Innovation Program's cross-team companion guide.</li>
+		<li>Shipped <b>337 merged pull requests</b> across nine internal repositories in 18 months — Ruby on Rails, Ember Octane / Glimmer / GTS, React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM — sustaining 5+ PR/week cadence on stacked-PR (<b>Graphite</b>) and worktree-based parallel-dev workflows.</li>
+	</ul>
+	<div style="font-size: 9.5pt; font-style: italic; margin-top: 1pt;">
+		<b>Tech:</b> Ruby on Rails · Ember.js (Octane / Glimmer / GTS) · React 19 · TypeScript · PostgreSQL · Redis · Kafka · Sidekiq · Cerbos · TanStack Query · Module Federation · Tailwind · Radix UI · MSW · Vitest · RSpec · Playwright · AWS (Bedrock, S3 Vectors, IAM) · Kubernetes · Pulumi · Terraform · OpenTelemetry · Datadog · Graphite · Anthropic Claude / Model Context Protocol
+	</div>
+</div>
+
+<div class="role-block">
+	<div class="role-line">
+		<span class="left">Sprout Social &nbsp;|&nbsp; Front-End Engineer</span>
+		<span class="right">Chicago, IL · May 2022 – April 2024</span>
+	</div>
+	<ul>
+		<li>Led front-end migration of key components from <b>Flow</b> to <b>TypeScript</b>, improving code quality through stricter type checking and cutting daily-workflow debugging time by ~20%.</li>
+		<li>Built and maintained reusable <b>React</b> components in the <b>Seeds</b> shared library, standardizing UI patterns across teams and reducing feature development time by 3+ days per project.</li>
+		<li>Collaborated with product managers and designers to integrate UX/UI improvements across the platform; conducted code reviews and mentored junior developers on best practices.</li>
+		<li>Built a React UI for bulk sentiment updates, allowing users to reclassify up to <b>1,000 messages</b> at once with Redux state management and Axios — improving workflow speed by ~30%; optimized component rendering with React memoization.</li>
+		<li>Developed dynamic <b>Query Builder Form</b> components in React + TypeScript for AI-driven keyword suggestions using <b>OpenAI's GPT</b> model; applied debounce + async/await and React Hooks to cut query setup time significantly.</li>
+		<li>Created a data-filtering tool with <b>React Context API</b>, Redux, and React Router for seamless message exploration; used <b>SCSS</b> for responsive styling and virtualized lists for performance, increasing user engagement ~30%.</li>
+	</ul>
+</div>
+
+<div class="role-block">
+	<div class="role-line">
+		<span class="left">The Walt Disney Company &nbsp;|&nbsp; Software Engineering Intern</span>
+		<span class="right">Remote · May 2021 – Nov 2021</span>
+	</div>
+	<ul>
+		<li>Maintained and improved site quality across multiple <b>ABC news stations</b>: fixed broken links, improved navigation structures, and addressed responsive UI/UX issues using React and CSS Flexbox/Grid.</li>
+		<li>Developed a dynamic <b>Banner-Maker</b> tool for ESPN — reusable React banner components with Redux-managed state and team/player API integration — streamlining banner creation workflows by ~35%.</li>
+		<li>Led front-end design and implementation for a Student Loan Refinance project: responsive React UI, input validation, and API integration with the back-end team — reducing form validation errors by ~60%.</li>
+		<li>Partnered with <b>Applitools</b> stakeholders on accessibility: screen-reader testing and WCAG compliance, boosting accessibility coverage by ~70%.</li>
+	</ul>
+</div>
+
+<div class="role-block">
+	<div class="role-line">
+		<span class="left">Credit Karma &nbsp;|&nbsp; Full-Stack Web Developer Intern</span>
+		<span class="right">San Francisco, CA · Jan 2020 – Dec 2020</span>
+	</div>
+	<ul>
+		<li>Led front-end design and implementation for the Student Loan Refinance project, focusing on responsive UI components with React and input validation logic; integrated APIs with the back-end team — improving application performance and reducing form validation errors by ~60%.</li>
+		<li>Collaborated with <b>Applitools</b> stakeholders on accessibility best practices: thorough screen-reader testing and WCAG compliance — boosting accessibility coverage by ~70%.</li>
+	</ul>
+</div>
+
+<h2 class="section">Skills</h2>
+<table class="skills">
+	<tr>
+		<td class="label">Languages</td>
+		<td>TypeScript, JavaScript (ES6+), Python, Ruby, HTML5, CSS3, SQL</td>
+	</tr>
+	<tr>
+		<td class="label">Frameworks &amp; UI</td>
+		<td>React 19, Next.js, Ember.js (Octane / Glimmer / GTS), Ruby on Rails, FastAPI, Node.js, Express, Tailwind, Radix UI, SCSS, Three.js, Framer Motion</td>
+	</tr>
+	<tr>
+		<td class="label">AI &amp; Data</td>
+		<td>Model Context Protocol (MCP), Anthropic Claude SDK, OpenAI SDK, Amazon Bedrock, S3 Vectors, Titan Text Embeddings V2, Tree-sitter AST chunking, ChromaDB, Pinecone, LangChain</td>
+	</tr>
+	<tr>
+		<td class="label">Cloud &amp; Infra</td>
+		<td>AWS (Bedrock, S3, IAM), Pulumi, Terraform, Kubernetes, Docker, OpenTelemetry, Datadog, Vercel</td>
+	</tr>
+	<tr>
+		<td class="label">Data Stores</td>
+		<td>PostgreSQL, Redis, Kafka, Sidekiq, MongoDB</td>
+	</tr>
+	<tr>
+		<td class="label">Build &amp; State</td>
+		<td>Module Federation 2.0, Vite, Webpack 5, TanStack Query v5, Redux Toolkit, MSW v2, GraphQL, REST</td>
+	</tr>
+	<tr>
+		<td class="label">Testing &amp; CI</td>
+		<td>Vitest, RSpec, Playwright, Jest, Cypress, Graphite (stacked PRs), GitHub Actions, CircleCI</td>
+	</tr>
+	<tr>
+		<td class="label">AuthZ &amp; Security</td>
+		<td>Cerbos, OAuth, JWT, WCAG accessibility</td>
+	</tr>
+</table>
+
+<h2 class="section">Education</h2>
+<div class="role-line">
+	<span class="left">Dominican University</span>
+	<span class="right">River Forest, IL</span>
+</div>
+<div class="subrole-line">
+	<span>B.S. Computer Science</span>
+	<span>Aug 2018 – May 2022</span>
+</div>
+
+<h2 class="section">Projects</h2>
+
+<div class="role-block">
+	<div class="project-line">
+		<span class="left">TraderDan — Automated Trading System &nbsp;<a href="https://github.com/tjreese90">[github]</a></span>
+		<span class="right">Python · Next.js · FastAPI · Anthropic Claude · TradeLocker · PostgreSQL · Optuna · ChromaDB</span>
+	</div>
+	<div class="project-body">
+		Production trading system managing real capital across five active prop-firm accounts and trading XAUUSD on H1/M15 via TradeLocker. Architecture spans a backtest engine, live signal generator, FastAPI webhook execution server with prop-firm risk gates (daily-loss, drawdown, ATR-spike, news blackout, weekend closer), a 14-agent AI team led by an OpenClaw CEO orchestrator (Anthropic Claude tool use + Gemini Flash routing), an eval harness with drift detection, semantic memory in ChromaDB, and a Next.js 15 dashboard with 17 pages for live monitoring. 5,696+ tests; stacked-PR workflow.
+	</div>
+</div>
+
+<div class="role-block">
+	<div class="project-line">
+		<span class="left">Blue Ridge Canine Academy &nbsp;<a href="https://blueridgecanineacademy.com/">[link]</a></span>
+		<span class="right">React · Node.js · Express · MongoDB · Acuity Scheduling</span>
+	</div>
+	<div class="project-body">
+		Freelance build ($800) for a local dog trainer: a full-stack scheduling and payments platform. React frontend, Node.js / Express backend, MongoDB persistence; wireframed in Figma and hosted on GoDaddy.
+	</div>
+</div>
+
+<h2 class="section">Certifications</h2>
+<ul class="tight">
+	<li>React — The Complete Guide (Hooks, React Router, Redux), Second Edition — <i>O'Reilly</i></li>
+	<li>React 101 Basics — <i>Codecademy</i></li>
+	<li>Problem Solving Basics — <i>HackerRank</i></li>
+	<li>Technical Support Fundamentals — <i>Coursera</i></li>
+	<li>Android Studio 101 — <i>Team Tree House</i></li>
+</ul>
+
+<h2 class="section">Honors &amp; Awards</h2>
+<ul class="tight">
+	<li>Won <b>1st place</b> at the Google × Code Nation Hackathon, guiding local students in HTML, CSS, and JavaScript to build passion projects.</li>
+	<li>Won the <b>24-hour Code for Good Hackathon</b> by JP Morgan, leading a front-end team to ship a dynamic site for the Girls in the Game non-profit.</li>
+	<li>Won <b>2nd place</b> at the ACCA Programming Contest (Associated Colleges of the Chicago Area) — a result-setting finish for Dominican University.</li>
+	<li>Completed the <b>MLT Career Program</b>, sharpening leadership, networking, and communication skills.</li>
+	<li>Mentored high school students in STEM and technology at <b>Code Nation</b>.</li>
+	<li>Featured in a <b>Credit Karma</b> commercial on personal credit recovery; also appeared in a <b>JumpStart</b> rebranding spot on early-career recruiting.</li>
+</ul>
+
+</body>
+</html>
