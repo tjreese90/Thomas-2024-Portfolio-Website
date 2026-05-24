@@ -77,10 +77,12 @@
 
 	&__section {
 		animation: fadeInUp 2s forwards;
-		height: 40rem;
+		min-height: 36rem;
 		display: flex;
 		position: relative;
-		margin-bottom: 15rem;
+		margin-bottom: 8rem;
+		gap: 3rem;
+		align-items: center;
 
 		// Hide desktop sections on smaller screens
 		@include respond(phone) {
@@ -92,7 +94,7 @@
 		}
 
 		@include respond(tab-land) {
-			margin-bottom: 7.5rem;
+			margin-bottom: 5rem;
 		}
 	}
 

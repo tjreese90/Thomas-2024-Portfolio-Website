@@ -29,15 +29,22 @@
 }
 
 .about {
-	padding: 4rem 2rem;
+	padding: 6rem 2rem 4rem;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
-	min-height: 56.6rem;
+	align-items: flex-start;
+	min-height: auto;
 	animation: fadeIn 1s forwards;
+	max-width: 120rem;
+	margin: 0 auto;
 
 	@include respond(tab-port) {
 		flex-direction: column;
+		gap: 2rem;
+	}
+
+	@include respond(phone) {
+		padding: 3rem 1.5rem 1rem;
 	}
 
 	&__left {
@@ -205,10 +212,15 @@
 }
 
 .stage-cube-cont {
-	margin-bottom: 28rem;
+	margin-bottom: 4rem;
 
 	@include respond(tab-port) {
-		margin-top: 6rem;
+		margin-top: 4rem;
+		margin-bottom: 2rem;
+	}
+
+	@include respond(phone) {
+		display: none;
 	}
 }
 
