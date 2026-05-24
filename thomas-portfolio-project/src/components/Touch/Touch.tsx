@@ -22,27 +22,30 @@ const workExperience = [
 	},
 	{
 		company: 'Sprout Social',
-		role: 'Front-End Web Developer',
-		duration: 'Jan 2022 - March 2024',
+		role: 'Front-End Engineer',
+		duration: 'May 2022 - April 2024',
 		icon: 'fas fa-code',
-		techStack: 'JavaScript, HTML, CSS, React, TypeScript',
-		description: '',
+		techStack: 'JavaScript, TypeScript, React, Redux, SCSS',
+		description:
+			'Migrated key components from Flow to TypeScript, built reusable React components in the Seeds shared library, and shipped a bulk sentiment reclassification UI handling up to 1,000 messages per batch.',
 	},
 	{
 		company: 'The Walt Disney Company',
 		role: 'Software Engineering Intern',
-		duration: 'Apr 2021 - Nov 2021',
+		duration: 'May 2021 - Nov 2021',
 		icon: 'fas fa-graduation-cap',
-		techStack: 'Python, BigQuery, Kubernetes, React',
-		description: '',
+		techStack: 'React, Redux, CSS, JavaScript',
+		description:
+			"Improved site quality across ABC news stations, developed a dynamic Banner-Maker tool for ESPN, and partnered with Applitools on accessibility — boosting accessibility coverage by ~70%.",
 	},
 	{
 		company: 'Credit Karma',
-		role: 'Infrastructure Engineer / QA Intern',
-		duration: 'Jan 2020 - Jan 2021',
+		role: 'Full-Stack Web Developer Intern',
+		duration: 'Jan 2020 - Dec 2020',
 		icon: 'fas fa-briefcase',
-		techStack: 'React, Node.js, AWS, Ruby, Python',
-		description: '',
+		techStack: 'React, Node.js, Ruby, Python, AWS',
+		description:
+			'Contributed to internal full-stack tooling across React, Node.js, Ruby, and Python services on AWS, with a focus on infrastructure automation and front-end developer experience.',
 	},
 ];
 

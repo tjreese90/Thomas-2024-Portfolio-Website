@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './CommunityAndAchievements.scss';
 
-type VideoKey = 'creditKarma' | 'jumpStart';
+type VideoKey = 'creditKarma';
 
 const CommunityAndAchievements = () => {
 	const [letterClass, setLetterClass] = useState('text-animate-fast');
@@ -12,7 +12,6 @@ const CommunityAndAchievements = () => {
 
 	const [playingVideo, setPlayingVideo] = useState<Record<VideoKey, boolean>>({
 		creditKarma: false,
-		jumpStart: false,
 	});
 
 	const playVideo = (key: VideoKey) =>

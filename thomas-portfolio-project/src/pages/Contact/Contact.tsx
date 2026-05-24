@@ -33,10 +33,17 @@ const Contact = () => {
 	}, []);
 
 	useEffect(() => {
-		// Load chat messages from local storage
 		const savedChatMessages = localStorage.getItem('chatMessages');
-		if (savedChatMessages) {
-			setChatMessages(JSON.parse(savedChatMessages));
+		if (!savedChatMessages) return;
+		try {
+			const parsed = JSON.parse(savedChatMessages);
+			if (Array.isArray(parsed) && parsed.every((m) => typeof m === 'string')) {
+				setChatMessages(parsed);
+			} else {
+				localStorage.removeItem('chatMessages');
+			}
+		} catch {
+			localStorage.removeItem('chatMessages');
 		}
 	}, []);
 
@@ -87,11 +94,6 @@ const Contact = () => {
 		}, 2000);
 	};
 
-	const validateEmail = (email: string) => {
-		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return re.test(String(email).toLowerCase());
-	};
-
 	const summarizeChatHistory = (chatMessages: string[]): string => {
 		return chatMessages
 			.slice(-MAX_CHAT_HISTORY)
@@ -112,7 +114,6 @@ const Contact = () => {
 			const userMessage = `User: ${newMessage}`;
 			const previousMessages = summarizeChatHistory(chatMessages);
 			setChatMessages((prevMessages) => [...prevMessages, userMessage]);
-			saveChat(userMessage); // Save the user message
 			setNewMessage('');
 
 			const requestBody = {
@@ -145,36 +146,23 @@ const Contact = () => {
 							?.trim()
 							.replace(/[\r\n]+/g, ' ')}`;
 						setChatMessages((prevMessages) => [...prevMessages, aiMessage]);
-						saveChat(userMessage, aiMessage); // Save the AI response
 					} else {
 						const errorMessage =
 							'AI: It seems like there was an issue with generating a response. Let’s try again! 😅';
 						setChatMessages((prevMessages) => [...prevMessages, errorMessage]);
-						saveChat(userMessage, errorMessage); // Save the error response
 					}
 				} else {
 					const fallbackMessage =
 						'AI: Sorry, I couldn’t get a response at this time. How can I assist you further?';
 					setChatMessages((prevMessages) => [...prevMessages, fallbackMessage]);
-					saveChat(userMessage, fallbackMessage); // Save the fallback response
 				}
 			} catch (error) {
 				console.error('Error fetching AI response:', error);
 				const errorMessage =
 					'AI: Oops, something went wrong. I’m here to help if you need anything else!';
 				setChatMessages((prevMessages) => [...prevMessages, errorMessage]);
-				saveChat(userMessage, errorMessage); // Save the error response
 			}
 		}
-	};
-
-	const saveChat = (userMessage: string, aiMessage?: string) => {
-		const newChatMessage = { userMessage, aiMessage };
-		const updatedChatMessages = [
-			...chatMessages.slice(-MAX_CHAT_HISTORY),
-			newChatMessage,
-		];
-		localStorage.setItem('chatMessages', JSON.stringify(updatedChatMessages));
 	};
 
 	const clearChat = () => {
@@ -225,13 +213,6 @@ const Contact = () => {
 								id='email'
 								placeholder='Enter Your Email Address'
 								required
-								onBlur={(e) => {
-									if (!validateEmail(e.target.value)) {
-										e.target.setCustomValidity('Invalid email address');
-									} else {
-										e.target.setCustomValidity('');
-									}
-								}}
 							/>
 							<label htmlFor='email' className='form__label'>
 								Email Address
