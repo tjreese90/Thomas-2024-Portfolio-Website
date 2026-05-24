@@ -91,6 +91,20 @@ body {
   border-radius: 4px;
 }
 
+/* Global cursor contract — interactive = pointer, disabled = not-allowed */
+:where(a[href], button:not(:disabled), [role="button"]:not([aria-disabled="true"]), label[for], summary, select) {
+  cursor: pointer;
+}
+
+:where(button:disabled, [aria-disabled="true"], input:disabled, textarea:disabled, select:disabled) {
+  cursor: not-allowed;
+}
+
+/* Text inputs explicitly text cursor */
+:where(input[type="text"], input[type="email"], input[type="search"], input[type="url"], input[type="tel"], input[type="password"], textarea) {
+  cursor: text;
+}
+
 /* Respect prefers-reduced-motion (WCAG 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
   *,
