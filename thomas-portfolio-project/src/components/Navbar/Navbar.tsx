@@ -1,23 +1,9 @@
-import React, { useMemo, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import './navbar.scss';
 
 const Navbar = () => {
-	const navigate = useNavigate();
-
-	// Redirect to home on page refresh
-	useEffect(() => {
-		const [navigationEntry] = window.performance.getEntriesByType(
-			'navigation',
-		) as PerformanceNavigationTiming[];
-
-		// Check if page is refreshed
-		if (navigationEntry && navigationEntry.type === 'reload') {
-			navigate('/');
-		}
-	}, [navigate]);
-
 	const menuItems = useMemo(
 		() => [
 			{ id: '01.', name: 'About', link: '/#about' },

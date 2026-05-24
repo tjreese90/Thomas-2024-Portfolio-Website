@@ -47,30 +47,21 @@ const Introduction = () => {
 				<h2 className='intro__headingSecondary'>
 					<TypeAnimation
 						sequence={[
-							'I am a Front-End Developer',
-							2500,
-							'Expert Full Stack Developer',
-							2900,
-							'Creative Front-End & Full Stack Developer',
-							4000,
-							'JavaScript Ninja at your service',
-							2700,
-							'CSS Wizard with a touch of magic',
-							2900,
-							'Master Bug Exterminator',
-							3000,
-							'Passionate React Developer',
-							3200,
-							'Pine Script Developer extraordinaire',
-							3500,
-							'Innovative UI/UX Developer',
-							2500,
-							'Enchanted Code Sorcerer',
+							'I build full-stack web apps',
+							2800,
+							'Software Engineer at Envoy',
+							2800,
+							'React + TypeScript specialist',
+							2800,
+							'Trading systems & AI agents',
+							2800,
+							'Mobile-first UI/UX developer',
 							2800,
 						]}
 						wrapper='span'
 						speed={65}
 						repeat={Infinity}
+						cursor={false}
 					/>
 				</h2>
 				<Link to='/contact' className='intro__button'>

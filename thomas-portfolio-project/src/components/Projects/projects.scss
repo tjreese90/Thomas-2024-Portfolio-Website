@@ -5,6 +5,75 @@
 	min-height: 56.6rem;
 	animation: fadeIn 2s forwards;
 
+	&__section--featured {
+		height: auto;
+		margin-bottom: 8rem;
+
+		.project__featuredCard {
+			width: 100%;
+			padding: 4rem;
+			background: rgba(17, 81, 115, 0.15);
+			border: 1px solid rgba(255, 215, 0, 0.25);
+			border-radius: 0.8rem;
+			box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+
+			h3.project__headingTertiary {
+				color: #ffd700;
+				font-size: 1.4rem;
+				letter-spacing: 0.1rem;
+				text-transform: uppercase;
+				margin-bottom: 0.4rem;
+			}
+
+			h5 {
+				color: #ffd700;
+				font-size: 1.2rem;
+				margin-bottom: 1.2rem;
+				letter-spacing: 0.1rem;
+				text-transform: uppercase;
+			}
+
+			.project__featuredHeading {
+				font-size: 3.2rem;
+				color: var(--white);
+				margin-bottom: 2rem;
+				line-height: 1.2;
+			}
+
+			.project__description {
+				font-size: 1.6rem;
+				line-height: 1.7;
+				margin-bottom: 2rem;
+				color: rgba(255, 255, 255, 0.85);
+			}
+
+			.project__tags {
+				font-family: 'La Belle Aurore', cursive;
+				color: #ffd700;
+				font-size: 1.4rem;
+				letter-spacing: 0.05rem;
+			}
+		}
+
+		@include respond(phone) {
+			display: block;
+			.project__featuredCard {
+				padding: 2.4rem 2rem;
+				.project__featuredHeading {
+					font-size: 2.4rem;
+				}
+			}
+		}
+
+		@include respond(tab-port) {
+			display: block;
+		}
+
+		@include respond(tab-land) {
+			margin-bottom: 5rem;
+		}
+	}
+
 	&__section {
 		animation: fadeInUp 2s forwards;
 		height: 40rem;

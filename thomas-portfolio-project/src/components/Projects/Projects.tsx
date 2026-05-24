@@ -28,34 +28,24 @@ const Project = () => {
 			{/* ----------------------------------------- for desktops -------------------------- */}
 
 			<LazyLoad once height={400}>
-				<section className='project__section'>
-					<div className='project__left'>
-						<img
-							className='project__img'
-							src='/images/project-traderdan.png'
-							alt='TraderDan automated trading system'
-						/>
-					</div>
-					<div className='project__right'>
+				<section className='project__section project__section--featured'>
+					<div className='project__featuredCard'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
 						<h5>Live</h5>
-						<span className='project__headingSecondary'>
-							<h2>TraderDan — Automated Trading System</h2>
-						</span>
-						<div className='project__descriptionContainer'>
-							<p className='project__description'>
-								TraderDan is a sophisticated multi-asset automated trading
-								system built on OANDA&apos;s API. It features multi-agent AI
-								orchestration for strategy development, real-time risk
-								management across FX and crypto markets, meticulously
-								backtested strategies, and a Next.js dashboard for live
-								monitoring and performance analytics.
-							</p>
-							<div className='project__tags'>
-								{' '}
-								Python &nbsp; Next.js &nbsp; TypeScript &nbsp; OANDA API &nbsp;
-								Multi-Agent AI &nbsp; PostgreSQL &nbsp;
-							</div>
+						<h2 className='project__featuredHeading'>
+							TraderDan — Automated Trading System
+						</h2>
+						<p className='project__description'>
+							A sophisticated multi-asset automated trading system built on
+							OANDA&apos;s API. Features multi-agent AI orchestration for
+							strategy development, real-time risk management across FX and
+							crypto markets, meticulously backtested strategies, and a
+							Next.js dashboard for live monitoring and performance
+							analytics.
+						</p>
+						<div className='project__tags'>
+							Python &nbsp; Next.js &nbsp; TypeScript &nbsp; OANDA API &nbsp;
+							Multi-Agent AI &nbsp; PostgreSQL
 						</div>
 					</div>
 				</section>
