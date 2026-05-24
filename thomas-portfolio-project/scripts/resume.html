@@ -64,6 +64,13 @@
 		font-weight: 400;
 	}
 
+	/* ============ Summary ============ */
+	.summary {
+		text-align: justify;
+		font-size: 10pt;
+		margin: 2pt 0 4pt 0;
+	}
+
 	/* ============ Experience entries ============ */
 	.role-line {
 		display: flex;
@@ -138,10 +145,9 @@
 		text-align: justify;
 	}
 
-	/* ============ Tight list (certs / honors) ============ */
+	/* ============ Tight list (honors) ============ */
 	.tight li { margin-bottom: 1.5pt; }
 
-	/* Keep section blocks together where possible */
 	h2.section { page-break-after: avoid; }
 	.role-block { page-break-inside: avoid; }
 </style>
@@ -160,6 +166,11 @@
 	<a href="https://leetcode.com/u/tjreese90/">LeetCode</a>
 </div>
 
+<h2 class="section">Summary</h2>
+<p class="summary">
+	Full-stack engineer (4+ yrs) shipping AI-native systems on AWS Bedrock and the Model Context Protocol. Currently at Envoy building Codebase Intelligence: an 87,500-chunk vector index serving 22 repos at ~$0.03/month. Production stack spans Ruby on Rails, Ember.js, React 19, and Python; comfortable from infra (Pulumi/Terraform) to model eval (RAG, MCP tool use, embeddings).
+</p>
+
 <h2 class="section">Experience</h2>
 
 <div class="role-block">
@@ -169,13 +180,13 @@
 	</div>
 	<ul>
 		<li>Designed and shipped <b>Envoy's Codebase Intelligence platform</b> end-to-end across four phases: <b>Amazon S3 Vectors</b> infrastructure on AWS (Pulumi/Terraform), an <b>Amazon Bedrock Knowledge Bases</b> store using <b>Titan Text Embeddings V2</b>, and a Python <b>MCP server</b> exposing six retrieval tools to <b>Anthropic Claude</b>. Indexed 22 internal repositories (~87,500 <b>Tree-sitter</b> AST chunks) with top-1 retrieval averaging <b>0.785</b> at ~<b>$0.03/month</b>, replacing per-engineer 6–8 GB local vector databases.</li>
-		<li>Led the migration of the visitor-management dashboard from <b>Ember.js / Glimmer</b> to <b>React 19</b> across the visitor profile, printer overview, and new screeners, visits, matching-rules, and documents tabs — using <b>Module Federation 2.0</b>, <b>TanStack Query v5</b>, <b>Radix UI</b>, <b>Tailwind</b>, Luxon, and <b>MSW v2</b>.</li>
+		<li>Drove the migration of the visitor-management dashboard from <b>Ember.js / Glimmer</b> to <b>React 19</b> across the visitor profile, printer overview, and new screeners, visits, matching-rules, and documents tabs, using <b>Module Federation 2.0</b>, <b>TanStack Query v5</b>, <b>Radix UI</b>, <b>Tailwind</b>, Luxon, and <b>MSW v2</b>.</li>
 		<li>Shipped the <b>Visitor Profile Merge</b> feature end-to-end across ~20 tickets (visitor directory, merge UI, Rails APIs) and the <b>Block List V2</b> identity-matching lifecycle (expiration dates, disable toggle, search, deletion) across two quarters.</li>
-		<li>Owned the frontend for a ChargeBee-feature-code-driven subscription gate on Envoy's Visitors Basic plan — replacing fragile SKU-name matching with a counter table, gate-state API, 75% / 100% threshold mailer, and reset cron — shipped across six PRs spanning Rails and Ember in a single sprint.</li>
-		<li>Scoped Envoy's Visitors AI roadmap (~30 child tickets covering AI drafting, fuzzy matching, NL analytics, audit log, and smart dedup) and the <b>AgentLock</b> initiative for phase-based agent permissions with observability-first risk gating.</li>
-		<li>Resolved ~20 customer-facing bug tickets affecting Fortune 500 accounts including <b>Blue Origin</b>, <b>Tesla</b>, and <b>NVIDIA</b> — using TDD with <b>RSpec</b> on the Rails side and <b>Vitest + MSW</b> on the React side, with mutation-tested verification against staging via Kubernetes pod exec.</li>
-		<li>Authored <b>28+ internal technical documents</b> adopted cross-team — including an AI-tooling onboarding guide, a six-layer AI memory architecture reference, an AI coding-agent observability writeup, and the Engineering Innovation Program's cross-team companion guide.</li>
-		<li>Shipped <b>337 merged pull requests</b> across nine internal repositories in 18 months — Ruby on Rails, Ember Octane / Glimmer / GTS, React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM — sustaining 5+ PR/week cadence on stacked-PR (<b>Graphite</b>) and worktree-based parallel-dev workflows.</li>
+		<li>Owned the frontend for a ChargeBee-feature-code-driven subscription gate on Envoy's Visitors Basic plan, replacing fragile SKU-name matching with a counter table, gate-state API, 75% / 100% threshold mailer, and reset cron. Shipped across six PRs spanning Rails and Ember in a single sprint.</li>
+		<li>Scoped Envoy's Visitors AI roadmap of ~30 child tickets (AI drafting, fuzzy matching, NL analytics, audit log, smart dedup) and the <b>AgentLock</b> initiative defining phase-based agent permissions for the 14 AI tools used across the Visitors product.</li>
+		<li>Resolved ~20 customer-facing bug tickets affecting Fortune 500 accounts including <b>Blue Origin</b>, <b>Tesla</b>, and <b>NVIDIA</b>, using TDD with <b>RSpec</b> on the Rails side and <b>Vitest + MSW</b> on the React side, with mutation-tested verification against staging via Kubernetes pod exec.</li>
+		<li>Authored <b>28+ internal technical documents</b> adopted cross-team, including an AI-tooling onboarding guide, a six-layer AI memory architecture reference, an AI coding-agent observability writeup, and the Engineering Innovation Program's cross-team companion guide.</li>
+		<li>Sustained <b>337 merged pull requests</b> across nine internal repositories in 18 months on a stacked-PR (<b>Graphite</b>) and worktree-based workflow, shipping Ruby on Rails, Ember Octane / Glimmer / GTS, React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM changes at a 5+ PR/week cadence without rollback.</li>
 	</ul>
 	<div style="font-size: 9.5pt; font-style: italic; margin-top: 1pt;">
 		<b>Tech:</b> Ruby on Rails · Ember.js (Octane / Glimmer / GTS) · React 19 · TypeScript · PostgreSQL · Redis · Kafka · Sidekiq · Cerbos · TanStack Query · Module Federation · Tailwind · Radix UI · MSW · Vitest · RSpec · Playwright · AWS (Bedrock, S3 Vectors, IAM) · Kubernetes · Pulumi · Terraform · OpenTelemetry · Datadog · Graphite · Anthropic Claude / Model Context Protocol
@@ -188,12 +199,12 @@
 		<span class="right">Chicago, IL · May 2022 – April 2024</span>
 	</div>
 	<ul>
-		<li>Led front-end migration of key components from <b>Flow</b> to <b>TypeScript</b>, improving code quality through stricter type checking and cutting daily-workflow debugging time by ~20%.</li>
+		<li>Drove the front-end migration of key components from <b>Flow</b> to <b>TypeScript</b>, improving code quality through stricter type checking and cutting daily-workflow debugging time by ~20%.</li>
 		<li>Built and maintained reusable <b>React</b> components in the <b>Seeds</b> shared library, standardizing UI patterns across teams and reducing feature development time by 3+ days per project.</li>
-		<li>Collaborated with product managers and designers to integrate UX/UI improvements across the platform; conducted code reviews and mentored junior developers on best practices.</li>
-		<li>Built a React UI for bulk sentiment updates, allowing users to reclassify up to <b>1,000 messages</b> at once with Redux state management and Axios — improving workflow speed by ~30%; optimized component rendering with React memoization.</li>
-		<li>Developed dynamic <b>Query Builder Form</b> components in React + TypeScript for AI-driven keyword suggestions using <b>OpenAI's GPT</b> model; applied debounce + async/await and React Hooks to cut query setup time significantly.</li>
-		<li>Created a data-filtering tool with <b>React Context API</b>, Redux, and React Router for seamless message exploration; used <b>SCSS</b> for responsive styling and virtualized lists for performance, increasing user engagement ~30%.</li>
+		<li>Partnered with product managers and designers to integrate UX/UI improvements across the platform. Conducted code reviews and mentored junior developers on best practices.</li>
+		<li>Built a React UI for bulk sentiment reclassification, allowing users to reclassify up to <b>1,000 messages</b> per batch with Redux state and Axios, cutting per-batch handle time ~30%. Optimized rendering with React memoization and virtualized lists.</li>
+		<li>Developed dynamic <b>Query Builder Form</b> components in React + TypeScript for AI-driven keyword suggestions using <b>OpenAI's GPT</b> model, applying debounce, async/await, and React Hooks to reduce query setup time.</li>
+		<li>Created a faceted message-exploration tool with <b>React Context API</b>, Redux, and React Router, using SCSS for responsive styling and virtualized lists for performance, increasing user engagement ~30%.</li>
 	</ul>
 </div>
 
@@ -203,9 +214,9 @@
 		<span class="right">Remote · May 2021 – Nov 2021</span>
 	</div>
 	<ul>
-		<li>Maintained and improved site quality across multiple <b>ABC news stations</b>: fixed broken links, improved navigation structures, and addressed responsive UI/UX issues using React and CSS Flexbox/Grid.</li>
-		<li>Developed a dynamic <b>Banner-Maker</b> tool for ESPN — reusable React banner components with Redux-managed state and team/player API integration — streamlining banner creation workflows by ~35%.</li>
-		<li>Led front-end design and implementation for a Student Loan Refinance project: responsive React UI, input validation, and API integration with the back-end team — reducing form validation errors by ~60%.</li>
+		<li>Improved site quality across multiple <b>ABC news stations</b>: fixed broken links, restructured navigation, and addressed responsive UI/UX issues using React and CSS Flexbox/Grid.</li>
+		<li>Developed a dynamic <b>Banner-Maker</b> tool for ESPN: reusable React banner components with Redux-managed state and team/player API integration, streamlining banner creation workflows by ~35%.</li>
+		<li>Owned front-end design and implementation for a Student Loan Refinance project: responsive React UI, input validation, and API integration with the back-end team, reducing form validation errors by ~60%.</li>
 		<li>Partnered with <b>Applitools</b> stakeholders on accessibility: screen-reader testing and WCAG compliance, boosting accessibility coverage by ~70%.</li>
 	</ul>
 </div>
@@ -216,8 +227,9 @@
 		<span class="right">San Francisco, CA · Jan 2020 – Dec 2020</span>
 	</div>
 	<ul>
-		<li>Led front-end design and implementation for the Student Loan Refinance project, focusing on responsive UI components with React and input validation logic; integrated APIs with the back-end team — improving application performance and reducing form validation errors by ~60%.</li>
-		<li>Collaborated with <b>Applitools</b> stakeholders on accessibility best practices: thorough screen-reader testing and WCAG compliance — boosting accessibility coverage by ~70%.</li>
+		<li>Contributed to internal full-stack tooling across <b>React</b>, <b>Node.js</b>, <b>Ruby</b>, and <b>Python</b> services on AWS, with a focus on infrastructure automation and front-end developer experience.</li>
+		<li>Built and reviewed pull requests across multiple repositories, partnering with engineers and QA on test coverage and code quality.</li>
+		<li>Featured as the credit-recovery story in a <b>Credit Karma</b> brand commercial focused on personal finance impact.</li>
 	</ul>
 </div>
 
@@ -275,7 +287,7 @@
 		<span class="right">Python · Next.js · FastAPI · Anthropic Claude · TradeLocker · PostgreSQL · Optuna · ChromaDB</span>
 	</div>
 	<div class="project-body">
-		Production trading system managing real capital across five active prop-firm accounts and trading XAUUSD on H1/M15 via TradeLocker. Architecture spans a backtest engine, live signal generator, FastAPI webhook execution server with prop-firm risk gates (daily-loss, drawdown, ATR-spike, news blackout, weekend closer), a 14-agent AI team led by an OpenClaw CEO orchestrator (Anthropic Claude tool use + Gemini Flash routing), an eval harness with drift detection, semantic memory in ChromaDB, and a Next.js 15 dashboard with 17 pages for live monitoring. 5,696+ tests; stacked-PR workflow.
+		Production trading system managing real capital across five active prop-firm accounts, trading XAUUSD on H1/M15 via TradeLocker. Architecture spans a backtest engine, live signal generator, FastAPI webhook execution server with prop-firm risk gates (daily-loss, drawdown, ATR-spike, news blackout, weekend closer), a 14-agent AI team led by an OpenClaw CEO orchestrator (Anthropic Claude tool use + Gemini Flash routing), an eval harness with drift detection, semantic memory in ChromaDB, and a Next.js 15 dashboard with 17 pages for live monitoring. 5,696+ tests on a stacked-PR workflow.
 	</div>
 </div>
 
@@ -285,24 +297,15 @@
 		<span class="right">React · Node.js · Express · MongoDB · Acuity Scheduling</span>
 	</div>
 	<div class="project-body">
-		Freelance build ($800) for a local dog trainer: a full-stack scheduling and payments platform. React frontend, Node.js / Express backend, MongoDB persistence; wireframed in Figma and hosted on GoDaddy.
+		Freelance build ($800) for a local dog trainer: a full-stack scheduling and payments platform. React frontend, Node.js / Express backend, MongoDB persistence. Wireframed in Figma and hosted on GoDaddy.
 	</div>
 </div>
-
-<h2 class="section">Certifications</h2>
-<ul class="tight">
-	<li>React — The Complete Guide (Hooks, React Router, Redux), Second Edition — <i>O'Reilly</i></li>
-	<li>React 101 Basics — <i>Codecademy</i></li>
-	<li>Problem Solving Basics — <i>HackerRank</i></li>
-	<li>Technical Support Fundamentals — <i>Coursera</i></li>
-	<li>Android Studio 101 — <i>Team Tree House</i></li>
-</ul>
 
 <h2 class="section">Honors &amp; Awards</h2>
 <ul class="tight">
 	<li>Won <b>1st place</b> at the Google × Code Nation Hackathon, guiding local students in HTML, CSS, and JavaScript to build passion projects.</li>
-	<li>Won the <b>24-hour Code for Good Hackathon</b> by JP Morgan, leading a front-end team to ship a dynamic site for the Girls in the Game non-profit.</li>
-	<li>Won <b>2nd place</b> at the ACCA Programming Contest (Associated Colleges of the Chicago Area) — a result-setting finish for Dominican University.</li>
+	<li>Won the <b>24-hour Code for Good Hackathon</b> by JP Morgan, leading a front-end team that shipped a dynamic site for the Girls in the Game non-profit.</li>
+	<li>Won <b>2nd place</b> at the ACCA Programming Contest (Associated Colleges of the Chicago Area), a record-setting finish for Dominican University.</li>
 	<li>Completed the <b>MLT Career Program</b>, sharpening leadership, networking, and communication skills.</li>
 	<li>Mentored high school students in STEM and technology at <b>Code Nation</b>.</li>
 	<li>Featured in a <b>Credit Karma</b> commercial on personal credit recovery; also appeared in a <b>JumpStart</b> rebranding spot on early-career recruiting.</li>
