@@ -6,7 +6,7 @@
 <style>
 	@page {
 		size: Letter;
-		margin: 0.5in 0.65in 0.55in 0.65in;
+		margin: 0.5in 0.7in 0.55in 0.7in;
 	}
 
 	* { box-sizing: border-box; }
@@ -16,7 +16,7 @@
 		padding: 0;
 		font-family: 'Latin Modern Roman', 'Computer Modern Serif', 'CMU Serif', Georgia, 'Times New Roman', serif;
 		font-size: 10.5pt;
-		line-height: 1.32;
+		line-height: 1.22;
 		color: #000;
 		background: #fff;
 		-webkit-font-smoothing: antialiased;
@@ -29,7 +29,7 @@
 		text-align: center;
 		font-variant: small-caps;
 		font-size: 24pt;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.03em;
 		margin: 0 0 1pt 0;
 		font-weight: 400;
 	}
@@ -46,7 +46,7 @@
 	.links {
 		text-align: center;
 		font-size: 10pt;
-		margin-bottom: 8pt;
+		margin-bottom: 10pt;
 	}
 	.links a, .contact a {
 		color: #000;
@@ -56,27 +56,35 @@
 	/* ============ Section headers ============ */
 	h2.section {
 		font-variant: small-caps;
-		font-size: 12.5pt;
-		letter-spacing: 0.06em;
-		margin: 11pt 0 4pt 0;
+		font-size: 12pt;
+		letter-spacing: 0.05em;
+		margin: 12pt 0 4pt 0;
 		padding-bottom: 1pt;
-		border-bottom: 0.6pt solid #000;
+		border-bottom: 0.6pt solid #1F3A5F;
 		font-weight: 400;
+		color: #1F3A5F;
 	}
 
 	/* ============ Summary ============ */
 	.summary {
-		text-align: justify;
+		text-align: left;
 		font-size: 10pt;
+		line-height: 1.30;
 		margin: 2pt 0 4pt 0;
 	}
 
 	/* ============ Experience entries ============ */
+	.role-block {
+		margin-top: 5pt;
+	}
+	.role-block:first-of-type {
+		margin-top: 0;
+	}
 	.role-line {
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
-		margin-top: 3pt;
+		margin-top: 6pt;
 	}
 	.role-line .left {
 		font-weight: 700;
@@ -91,17 +99,16 @@
 		align-items: baseline;
 		font-size: 10pt;
 		font-style: italic;
-		margin-bottom: 2pt;
+		margin-bottom: 3pt;
 	}
 
 	ul {
-		margin: 2pt 0 4pt 16pt;
+		margin: 3pt 0 4pt 15pt;
 		padding: 0;
 	}
 	ul li {
-		margin-bottom: 2.5pt;
-		text-align: justify;
-		text-justify: inter-word;
+		margin-bottom: 3pt;
+		text-align: left;
 	}
 	ul li b, ul li strong { font-weight: 700; }
 
@@ -114,10 +121,10 @@
 	}
 	table.skills td {
 		vertical-align: top;
-		padding: 1.5pt 0;
+		padding: 3pt 0;
 	}
 	table.skills td.label {
-		width: 22%;
+		width: 20%;
 		font-style: italic;
 		padding-right: 8pt;
 	}
@@ -127,7 +134,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
-		margin-top: 3pt;
+		margin-top: 6pt;
 	}
 	.project-line .left {
 		font-weight: 700;
@@ -141,8 +148,9 @@
 	}
 	.project-body {
 		font-size: 10pt;
+		line-height: 1.30;
 		margin: 2pt 0 4pt 0;
-		text-align: justify;
+		text-align: left;
 	}
 
 	/* ============ Tight list (honors) ============ */
@@ -176,7 +184,7 @@
 <div class="role-block">
 	<div class="role-line">
 		<span class="left">Envoy &nbsp;|&nbsp; Software Engineer, Visitor Management</span>
-		<span class="right">Remote · Nov 2024 – Present</span>
+		<span class="right">San Francisco, CA · Nov 2024 – Present</span>
 	</div>
 	<ul>
 		<li>Architected <b>Codebase Intelligence</b>, a RAG platform indexing 22 repos (~87,500 Tree-sitter AST chunks) on <b>Amazon S3 Vectors</b> and <b>Bedrock Knowledge Bases</b> (Titan Text Embeddings V2), with a Python <b>MCP server</b> exposing six retrieval tools to Anthropic <b>Claude</b>. Hit <b>0.785 top-1 recall</b> at <b>$0.03/month</b>, retiring 6–8 GB per-engineer local vector DBs.</li>
