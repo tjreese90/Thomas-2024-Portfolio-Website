@@ -8,7 +8,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import AnimatedLettersFast from '../AnimatedLettersFast/AnimatedLettersFast';
 import './touch.scss';
-//TODO: Fix description and flip logic
+
 const workExperience = [
 	{
 		company: 'Envoy',
@@ -16,27 +16,28 @@ const workExperience = [
 		duration: 'Nov 2024 - Present',
 		icon: 'fas fa-rocket',
 		techStack:
-			'Rails, Ember.js, React 19, TypeScript, Amazon Bedrock, MCP, Pulumi, Cerbos',
+			'Rails, Ember.js, React 19, TypeScript, AWS Bedrock, Model Context Protocol, Pulumi, Cerbos',
 		description:
-			"Built Envoy's Codebase Intelligence platform end-to-end (Amazon S3 Vectors + Bedrock Knowledge Bases + MCP server for Claude) indexing 22 repos at ~$0.03/mo. Led the Ember-to-React 19 migration via Module Federation 2.0. Shipped 337 PRs in 18 months and fixed customer issues for Blue Origin, Tesla, and NVIDIA.",
+			"Architected Codebase Intelligence: a RAG platform indexing 22 repos (~87,500 Tree-sitter AST chunks) on Amazon S3 Vectors and Bedrock Knowledge Bases, with a Python MCP server exposing six retrieval tools to Anthropic Claude — 0.785 top-1 recall at $0.03/month. Migrated the visitor-management dashboard from Ember/Glimmer to React 19 via Module Federation 2.0. Shipped at 5+ PRs/week with zero rollbacks; resolved customer issues for Blue Origin, Tesla, and NVIDIA.",
 	},
 	{
 		company: 'Sprout Social',
 		role: 'Front-End Engineer',
-		duration: 'May 2022 - April 2024',
+		duration: 'May 2022 - Apr 2024',
 		icon: 'fas fa-code',
-		techStack: 'JavaScript, TypeScript, React, Redux, SCSS',
+		techStack:
+			'JavaScript, TypeScript, React, Redux, React Context, Axios, SCSS',
 		description:
-			'Migrated key components from Flow to TypeScript, built reusable React components in the Seeds shared library, and shipped a bulk sentiment reclassification UI handling up to 1,000 messages per batch.',
+			"Migrated core front-end components from Flow to TypeScript. Built and maintained the Seeds shared React component library. Shipped a bulk sentiment reclassification UI (1,000 messages/batch) with Redux and virtualized lists, cutting analyst handle time ~30%. Built a Query Builder backed by OpenAI GPT keyword suggestions, and a faceted message-exploration tool (React Context, Redux, React Router) that lifted session engagement ~30%.",
 	},
 	{
 		company: 'The Walt Disney Company',
 		role: 'Software Engineering Intern',
 		duration: 'May 2021 - Nov 2021',
 		icon: 'fas fa-graduation-cap',
-		techStack: 'React, Redux, CSS, JavaScript',
+		techStack: 'React, Redux, CSS, JavaScript, Applitools',
 		description:
-			"Improved site quality across ABC news stations, developed a dynamic Banner-Maker tool for ESPN, and partnered with Applitools on accessibility — boosting accessibility coverage by ~70%.",
+			"Shipped React and responsive-CSS fixes across multiple ABC News station sites. Built ESPN's Banner-Maker (reusable React components with Redux state and team/player API integration), cutting editorial banner-creation time ~35%. Owned the React front-end for a Student Loan Refinance product, cutting form-validation errors ~60%. Drove WCAG accessibility work with Applitools, raising automated a11y coverage ~70%.",
 	},
 	{
 		company: 'Credit Karma',
@@ -45,7 +46,7 @@ const workExperience = [
 		icon: 'fas fa-briefcase',
 		techStack: 'React, Node.js, Ruby, Python, AWS',
 		description:
-			'Contributed to internal full-stack tooling across React, Node.js, Ruby, and Python services on AWS, with a focus on infrastructure automation and front-end developer experience.',
+			'Built internal full-stack tooling across React, Node.js, Ruby, and Python services on AWS, focused on infrastructure automation and front-end developer experience. Partnered with platform engineers on shared library and CI pipeline improvements.',
 	},
 ];
 
@@ -91,55 +92,54 @@ const Touch = () => {
 		<section className='my-journey' id='my-journey'>
 			<span className='sectiontag'>&lt;section&gt;</span>
 			<div className='my-journey__content'>
-				<label htmlFor='myJourneyLabel' className='my-journey__label'>
-					<h1 className='my-journey__headingPrimary'>
-						<AnimatedLettersFast
-							letterClass={letterClass}
-							strArray={nameArray}
-							idx={15}
-						/>
-					</h1>
-				</label>
+				<h1 className='my-journey__headingPrimary'>
+					<AnimatedLettersFast
+						letterClass={letterClass}
+						strArray={nameArray}
+						idx={15}
+					/>
+				</h1>
 				<div className='banner'>
 					<h2 className='goals-banner'>Goals and Aspirations</h2>
 					<ul>
-						{goals.map((goal, index) => (
-							<li key={index}>{goal}</li>
+						{goals.map((goal) => (
+							<li key={goal}>{goal}</li>
 						))}
 					</ul>
 				</div>
 				<h2 className='my-journey__subheading'>Work Experience</h2>
+				<p className='my-journey__hint'>
+					Tap a card to flip and see the tech stack and details.
+				</p>
 				<VerticalTimeline>
 					{workExperience.map((job, index) => (
 						<VerticalTimelineElement
-							key={index}
+							key={job.company}
 							date={job.duration}
 							iconStyle={{ background: 'var(--primary)', color: '#fff' }}
-							icon={<i className={job.icon}></i>}
+							icon={<i className={job.icon} aria-hidden='true'></i>}
 						>
 							<motion.div
 								className={`vertical-timeline-element-content ${
 									flippedIndex === index ? 'flipped' : ''
 								}`}
+								role='button'
+								tabIndex={0}
+								aria-pressed={flippedIndex === index}
+								aria-label={`${job.company} — ${job.role}. Activate to view tech stack and details.`}
 								onClick={() => handleCardClick(index)}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter' || e.key === ' ') {
+										e.preventDefault()
+										handleCardClick(index)
+									}
+								}}
 							>
 								<div className='vertical-timeline-element-front'>
-									<h3
-										className={`vertical-timeline-element-title ${
-											index === 1
-												? 'vertical-timeline-element-title-second'
-												: ''
-										}`}
-									>
+									<h3 className='vertical-timeline-element-title'>
 										{job.company}
 									</h3>
-									<h4
-										className={`vertical-timeline-element-subtitle ${
-											index === 1
-												? 'vertical-timeline-element-subtitle-second'
-												: ''
-										}`}
-									>
+									<h4 className='vertical-timeline-element-subtitle'>
 										{job.role}
 									</h4>
 								</div>
@@ -151,13 +151,11 @@ const Touch = () => {
 						</VerticalTimelineElement>
 					))}
 				</VerticalTimeline>
-				<h2 className='my-journey__subheading'>
-					Current Projects in Development
-				</h2>
+				<h2 className='my-journey__subheading'>Personal Projects</h2>
 				<div className='my-journey__projects'>
 					{personalProjects.map((project, index) => (
 						<motion.div
-							key={index}
+							key={project.name}
 							className='my-journey__projects-item'
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}

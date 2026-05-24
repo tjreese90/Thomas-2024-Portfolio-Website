@@ -64,6 +64,7 @@ const Project = () => {
 				<section className='project__section'>
 					<div className='project__left1'>
 						<h3 className='project__headingTertiary'>Featured Project</h3>
+						<h5>Live</h5>
 						<a
 							href='https://blueridgecanineacademy.com/'
 							target='_blank'
@@ -74,14 +75,10 @@ const Project = () => {
 						</a>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>
-								Blue Ridge Canine Academy is a comprehensive dog training
-								platform with integrated scheduling and payment functionalities.
-								The application leverages modern web technologies to offer a
-								seamless user experience, enabling clients to effortlessly book
-								training sessions and manage payments. The project showcases
-								proficiency in full stack development, integrating React for the
-								frontend, Node.js and Express.js for the backend, and MongoDB
-								for data persistence.
+								A freelance full-stack scheduling and payments platform for a
+								local dog trainer. React frontend, Node.js + Express backend,
+								MongoDB persistence, and Acuity Scheduling integration.
+								Wireframed in Figma and hosted on GoDaddy.
 							</p>
 							<div className='project__tags'>
 								{' '}
@@ -106,7 +103,7 @@ const Project = () => {
 						<img
 							className='project__img'
 							src='/images/project-1.png'
-							alt='Blue Ridge Canine Academy'
+							alt='Blue Ridge Canine Academy — scheduling and payments site'
 						/>
 					</div>
 				</section>
@@ -133,8 +130,8 @@ const Project = () => {
 								frontend for the form-builder UX.
 							</p>
 							<div className='project__tags'>
-								React.js &nbsp; Node.js &nbsp; Vue.js &nbsp; MongoDB &nbsp;
-								Gemini AI &nbsp; SCSS/SASS &nbsp; API
+								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
+								Gemini AI &nbsp; SCSS
 							</div>
 							<div className='project__icons project__icons1'>
 								<a
@@ -154,7 +151,7 @@ const Project = () => {
 						<img
 							className='project__img'
 							src='/images/project-2.png'
-							alt='AI Form Builder'
+							alt='AI Form Builder — Gemini-powered dynamic form generator'
 						/>
 					</div>
 				</section>
@@ -166,7 +163,7 @@ const Project = () => {
 						<img
 							className='project__img'
 							src='/images/project-3.png'
-							alt='UFC Fight Prediction Generator'
+							alt='UFC Fight Prediction Generator — ML-driven matchup predictor'
 						/>
 					</div>
 					<div className='project__right'>
@@ -218,6 +215,19 @@ const Project = () => {
 							<svg className='projectResp__cardFolder'>
 								<use href='icons/symbol-defs.svg#icon-folder' />
 							</svg>
+							<div className='projectResp__cardLink'>
+								<a
+									href='https://github.com/tjreese90'
+									target='_blank'
+									rel='noreferrer'
+									style={{ marginRight: '1.6rem' }}
+									aria-label='View Thomas Reese GitHub for TraderDan and related projects'
+								>
+									<svg className='projectResp__icon'>
+										<use href='/icons/symbol-defs.svg#icon-github' />
+									</svg>
+								</a>
+							</div>
 						</div>
 						<div className='projectResp__cardBody'>
 							<div className='projectResp__cardBodyHeading'>
@@ -234,7 +244,7 @@ const Project = () => {
 							<div className='projectResp__tags'>
 								{' '}
 								Python &nbsp; Next.js &nbsp; FastAPI &nbsp; PostgreSQL &nbsp;
-								Anthropic Claude &nbsp; ChromaDB
+								Anthropic Claude &nbsp; ChromaDB &nbsp; Optuna
 							</div>
 						</div>
 					</div>

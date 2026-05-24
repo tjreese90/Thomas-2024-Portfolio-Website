@@ -42,16 +42,21 @@ for (const viewport of VIEWPORTS) {
 	await page.goto(`${BASE_URL}/`, { waitUntil: 'networkidle', timeout: 45000 })
 	await page.waitForTimeout(2500) // animations settle
 
-	// Scroll the whole page once to trigger LazyLoad mounts
-	await page.evaluate(async () => {
-		const max = document.documentElement.scrollHeight
-		for (let y = 0; y < max; y += 400) {
-			window.scrollTo(0, y)
-			await new Promise((r) => setTimeout(r, 80))
-		}
-		window.scrollTo(0, 0)
-	})
-	await page.waitForTimeout(1500)
+	// Scroll the whole page TWICE to trigger LazyLoad mounts in deeper sections
+	for (let pass = 0; pass < 2; pass++) {
+		await page.evaluate(async () => {
+			const max = document.documentElement.scrollHeight
+			for (let y = 0; y < max; y += 300) {
+				window.scrollTo(0, y)
+				await new Promise((r) => setTimeout(r, 120))
+			}
+			window.scrollTo(0, document.documentElement.scrollHeight)
+			await new Promise((r) => setTimeout(r, 600))
+		})
+		await page.waitForTimeout(1200)
+	}
+	await page.evaluate(() => window.scrollTo(0, 0))
+	await page.waitForTimeout(1200)
 
 	for (const section of HOME_SECTIONS) {
 		try {
