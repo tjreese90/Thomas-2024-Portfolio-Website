@@ -20,9 +20,10 @@ const Navbar = () => {
 	return (
 		<nav className='navbar'>
 			<div className='navbar__left'>
-				<Link to='/' className='navbar__link'>
+				<Link to='/' className='navbar__link' aria-label='Thomas Reese — Home'>
 					<img
-						alt='logo'
+						alt=''
+						aria-hidden='true'
 						src='https://img.icons8.com/?size=100&id=n1oME711GbEH&format=png&color=000000'
 						className='navbar__img'
 					/>

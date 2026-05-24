@@ -20,6 +20,10 @@ const Contact = () => {
 	const [newMessage, setNewMessage] = useState('');
 	const [isStreaming, setIsStreaming] = useState(false);
 	const [chatError, setChatError] = useState<string | null>(null);
+	const [formStatus, setFormStatus] = useState<{
+		kind: 'idle' | 'success' | 'error'
+		message: string
+	}>({ kind: 'idle', message: '' });
 	const form = useRef<HTMLFormElement>(null);
 	const inputRef1 = useRef<HTMLInputElement>(null);
 	const inputRef2 = useRef<HTMLInputElement>(null);
@@ -64,6 +68,7 @@ const Contact = () => {
 
 	const sendEmail = (e: any) => {
 		e.preventDefault();
+		setFormStatus({ kind: 'idle', message: 'Sending…' });
 
 		if (form.current !== null) {
 			emailjs
@@ -75,27 +80,23 @@ const Contact = () => {
 				)
 				.then(
 					() => {
-						window.alert('Mail Sent Successfully!!!');
-						playSuccessAnimation();
+						setFormStatus({
+							kind: 'success',
+							message: 'Message sent — thanks! I\'ll get back to you soon.',
+						});
+						if (inputRef1.current !== null) inputRef1.current.value = '';
+						if (inputRef2.current !== null) inputRef2.current.value = '';
+						if (inputRef3.current !== null) inputRef3.current.value = '';
 					},
-					(e) => {
-						window.alert(`Mail Not Sent!!! ${e}`);
+					() => {
+						setFormStatus({
+							kind: 'error',
+							message:
+								'Couldn\'t send the message. Email ThomasReeseCareers@gmail.com directly?',
+						});
 					},
 				);
 		}
-
-		if (inputRef1.current !== null) inputRef1.current.value = '';
-		if (inputRef2.current !== null) inputRef2.current.value = '';
-		if (inputRef3.current !== null) inputRef3.current.value = '';
-	};
-
-	const playSuccessAnimation = () => {
-		const successDiv = document.createElement('div');
-		successDiv.className = 'success-animation';
-		document.body.appendChild(successDiv);
-		setTimeout(() => {
-			successDiv.remove();
-		}, 2000);
 	};
 
 	const sendChatMessage = async (text: string) => {
@@ -237,6 +238,15 @@ const Contact = () => {
 							Send Mail
 						</button>
 					</form>
+					{formStatus.message && (
+						<p
+							className={`form__status form__status--${formStatus.kind}`}
+							role={formStatus.kind === 'error' ? 'alert' : 'status'}
+							aria-live='polite'
+						>
+							{formStatus.message}
+						</p>
+					)}
 				</div>
 				<div className='chat-widget'>
 					<div className='chat-widget__header'>
@@ -264,15 +274,22 @@ const Contact = () => {
 					)}
 
 					{chatMessages.length > 0 && (
-						<div className='chat-messages'>
+						<div
+							className='chat-messages'
+							aria-live='polite'
+							aria-busy={isStreaming}
+						>
 							{chatMessages.map((msg, idx) => (
 								<div
 									key={idx}
 									className={`chat-message chat-message--${msg.role}`}
 								>
+									<span className='sr-only'>
+										{msg.role === 'user' ? 'You said: ' : 'Assistant: '}
+									</span>
 									{msg.content ||
 										(msg.role === 'assistant' && isStreaming
-											? '…'
+											? 'Thinking…'
 											: '')}
 								</div>
 							))}
@@ -302,6 +319,7 @@ const Contact = () => {
 							type='submit'
 							className='chat-send'
 							disabled={isStreaming || !newMessage.trim()}
+							aria-label='Send message'
 						>
 							{isStreaming ? '…' : 'Send'}
 						</button>

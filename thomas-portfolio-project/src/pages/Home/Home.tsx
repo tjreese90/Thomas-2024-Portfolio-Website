@@ -13,9 +13,9 @@ const Home: React.FC = () => (
 			<div className='page__left'>
 				<LeftSideBar />
 			</div>
-			<div className='page__center'>
+			<main id='main-content' className='page__center'>
 				<Center />
-			</div>
+			</main>
 			<div className='page__right'>
 				<RightSideBar />
 			</div>

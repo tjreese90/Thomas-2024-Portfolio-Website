@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import './rightSidebar.scss';
 
 const RightSideBar = () => (
-	<div className='right'>
-		<main className='right__main'>
+	<aside className='right' aria-label='Contact email'>
+		<div className='right__main'>
 			<div>
 				<Link to='/contact' className='right__email'>
 					ThomasReeseCareers@gmail.com
 				</Link>
 			</div>
 			<div className='right__line' />
-		</main>
-	</div>
+		</div>
+	</aside>
 );
 
 export default RightSideBar;

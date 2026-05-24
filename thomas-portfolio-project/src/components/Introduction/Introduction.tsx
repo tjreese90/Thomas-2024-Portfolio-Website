@@ -19,30 +19,32 @@ const Introduction = () => {
 		<div className='intro'>
 			<div className='intro__left'>
 				<span className='sectiontag'>&lt;section&gt;</span>
-				<h1 className='intro__headingPrimary'>
-					<span className={letterClass}>H</span>
-					<span className={`${letterClass} _12`}>i,</span>
-					&nbsp;
-					<br />
-					<span className={`${letterClass} _13`}>I</span>
-					<span className={`${letterClass} _14`}>&apos;m</span>
-					&nbsp;
-					<AnimatedLetters
-						letterClass={letterClass}
-						strArray={nameArray}
-						idx={25}
-					/>
-					<br />
-					<img
-						src='https://res.cloudinary.com/dhbiouaym/image/upload/v1663667972/Portfolio/logo-s_fna9e6.png'
-						className='intro__logos'
-						alt=''
-					/>
-					<AnimatedLetters
-						letterClass={letterClass}
-						strArray={jobArray}
-						idx={25}
-					/>
+				<h1 className='intro__headingPrimary' aria-label="Hi, I'm Thomas, Software Developer">
+					<span className='intro__line' aria-hidden='true'>
+						<span className={letterClass}>H</span>
+						<span className={`${letterClass} _12`}>i,</span>
+					</span>
+					<span className='intro__line' aria-hidden='true'>
+						<span className={`${letterClass} _13`}>I</span>
+						<span className={`${letterClass} _14`}>'m </span>
+						<AnimatedLetters
+							letterClass={letterClass}
+							strArray={nameArray}
+							idx={25}
+						/>
+					</span>
+					<span className='intro__line' aria-hidden='true'>
+						<img
+							src='https://res.cloudinary.com/dhbiouaym/image/upload/v1663667972/Portfolio/logo-s_fna9e6.png'
+							className='intro__logos'
+							alt=''
+						/>
+						<AnimatedLetters
+							letterClass={letterClass}
+							strArray={jobArray}
+							idx={25}
+						/>
+					</span>
 				</h1>
 				<h2 className='intro__headingSecondary'>
 					<TypeAnimation

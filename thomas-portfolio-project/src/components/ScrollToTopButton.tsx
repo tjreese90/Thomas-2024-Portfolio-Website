@@ -28,11 +28,13 @@ const ScrollToTopButton: React.FC = () => {
 		<div className='scroll-to-top'>
 			<button
 				onClick={scrollToTop}
+				type='button'
+				aria-label='Scroll to top of page'
 				className={`scroll-to-top__button ${
 					isVisible ? 'scroll-to-top__button--visible' : ''
 				}`}
 			>
-				↑
+				<span aria-hidden='true'>↑</span>
 			</button>
 		</div>
 	);

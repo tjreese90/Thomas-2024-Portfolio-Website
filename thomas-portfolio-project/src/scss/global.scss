@@ -62,3 +62,37 @@ body {
   background: #233554;
   border-radius: 100px;
 }
+
+/* ============ Accessibility ============ */
+
+/* Visually-hidden utility class — content readable by AT but not visible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Global focus-visible — every interactive element gets a visible focus ring */
+:where(a, button, [role="button"], input, textarea, select, summary):focus-visible {
+  outline: 2px solid #ffd700;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Respect prefers-reduced-motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

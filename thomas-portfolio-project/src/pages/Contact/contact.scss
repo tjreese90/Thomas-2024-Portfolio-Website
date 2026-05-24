@@ -275,7 +275,8 @@ textarea {
 	margin-top: 2rem;
 	padding: 0.5rem 1.5rem;
 	background-color: $primary-color;
-	color: #fff;
+	color: #0a192f;
+	font-weight: 600;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
@@ -314,6 +315,32 @@ textarea {
 
 	&:hover {
 		background-color: darken($primary-color, 10%);
+	}
+}
+
+.form__status {
+	margin-top: 1.2rem;
+	padding: 0.9rem 1.2rem;
+	font-size: 1.3rem;
+	border-radius: 0.5rem;
+	border: 1px solid;
+
+	&--success {
+		color: #4ade80;
+		background: rgba(74, 222, 128, 0.08);
+		border-color: rgba(74, 222, 128, 0.35);
+	}
+
+	&--error {
+		color: #ff6b6b;
+		background: rgba(255, 107, 107, 0.08);
+		border-color: rgba(255, 107, 107, 0.35);
+	}
+
+	&--idle {
+		color: var(--light-slate);
+		background: rgba(204, 214, 246, 0.06);
+		border-color: rgba(204, 214, 246, 0.15);
 	}
 }
 

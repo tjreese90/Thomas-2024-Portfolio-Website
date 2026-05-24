@@ -1,8 +1,8 @@
 import './leftSidebar.scss';
 
 const LeftSideBar = () => (
-	<div className='left'>
-		<main className='left__main'>
+	<aside className='left' aria-label='Social links'>
+		<div className='left__main'>
 			<ul className='left__social'>
 				<li className='left__linkItems'>
 					<a
@@ -10,8 +10,9 @@ const LeftSideBar = () => (
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
+						aria-label='TradingView profile'
 					>
-						<svg className='left__icon'>
+						<svg className='left__icon' aria-hidden='true'>
 							<use href='icons/symbol-defs.svg#icon-tradingview' />
 						</svg>
 					</a>
@@ -22,8 +23,9 @@ const LeftSideBar = () => (
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
+						aria-label='CodePen profile'
 					>
-						<svg className='left__icon'>
+						<svg className='left__icon' aria-hidden='true'>
 							<use href='/icons/symbol-defs.svg#icon-codepen' />
 						</svg>
 					</a>
@@ -34,8 +36,9 @@ const LeftSideBar = () => (
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
+						aria-label='GitHub profile'
 					>
-						<svg className='left__icon'>
+						<svg className='left__icon' aria-hidden='true'>
 							<use href='/icons/symbol-defs.svg#icon-github' />
 						</svg>
 					</a>
@@ -46,8 +49,9 @@ const LeftSideBar = () => (
 						className='left__links'
 						target='_blank'
 						rel='noreferrer'
+						aria-label='Instagram profile'
 					>
-						<svg className='left__icon'>
+						<svg className='left__icon' aria-hidden='true'>
 							<use href='/icons/symbol-defs.svg#icon-instagram' />
 						</svg>
 					</a>
@@ -58,16 +62,17 @@ const LeftSideBar = () => (
 						target='_blank'
 						rel='noreferrer'
 						className='left__links'
+						aria-label='LinkedIn profile'
 					>
-						<svg className='left__icon'>
+						<svg className='left__icon' aria-hidden='true'>
 							<use href='/icons/symbol-defs.svg#icon-linkedin' />
 						</svg>
 					</a>
 				</li>
 			</ul>
 			<div className='left__line' />
-		</main>
-	</div>
+		</div>
+	</aside>
 );
 
 export default LeftSideBar;
