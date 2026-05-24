@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './contact.scss';
 import emailjs from '@emailjs/browser';
+import { answerAboutThomas } from '@lib/aboutThomas';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string }
 
@@ -102,6 +103,19 @@ const Contact = () => {
 		setNewMessage('')
 		setIsStreaming(true)
 
+		const fallbackToLocal = (reason?: string) => {
+			const local = answerAboutThomas(trimmed)
+			setChatMessages((prev) => {
+				const copy = [...prev]
+				copy[copy.length - 1] = { role: 'assistant', content: local }
+				return copy
+			})
+			if (reason && process.env.NODE_ENV !== 'production') {
+				// eslint-disable-next-line no-console
+				console.warn('[chat] fell back to local:', reason)
+			}
+		}
+
 		try {
 			const res = await fetch('/api/chat', {
 				method: 'POST',
@@ -109,15 +123,10 @@ const Contact = () => {
 				body: JSON.stringify({ messages: nextHistory }),
 			})
 
-			if (!res.ok) {
-				const errBody = await res.json().catch(() => ({}))
-				throw new Error(
-					errBody.error ||
-						`Chat service returned ${res.status}. Try again, or reach Thomas at ThomasReeseCareers@gmail.com.`,
-				)
+			if (!res.ok || !res.body) {
+				fallbackToLocal(`status=${res.status} body=${!!res.body}`)
+				return
 			}
-
-			if (!res.body) throw new Error('No response stream from the assistant.')
 
 			const reader = res.body.getReader()
 			const decoder = new TextDecoder()
@@ -136,13 +145,14 @@ const Contact = () => {
 					return copy
 				})
 			}
+
+			// Empty stream — server returned 200 with no tokens (Gateway misconfigured)
+			if (!assistantContent.trim()) {
+				fallbackToLocal('empty stream')
+			}
 		} catch (err) {
-			const message =
-				err instanceof Error
-					? err.message
-					: 'Something went wrong. Please email Thomas at ThomasReeseCareers@gmail.com.'
-			setChatError(message)
-			setChatMessages((prev) => prev.slice(0, -1))
+			const reason = err instanceof Error ? err.message : 'unknown'
+			fallbackToLocal(reason)
 		} finally {
 			setIsStreaming(false)
 		}
