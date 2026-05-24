@@ -174,7 +174,7 @@
 
 <h2 class="section">Summary</h2>
 <p class="summary">
-	Full-stack software engineer (4+ yrs) building production AI systems, agentic <b>LLM</b> tooling, and developer infrastructure. Currently at Envoy, where I built <b>Codebase Intelligence</b>: an 87,500-chunk vector index serving 22 repos through an <b>MCP</b> server on <b>AWS Bedrock</b>. Production stack spans Ruby on Rails, Ember.js, React 19, and Python — comfortable across <b>Pulumi/Terraform</b> IaC, <b>RAG</b> retrieval, <b>LLM evals</b>, and tool-use guardrails.
+	Built and shipped <b>Codebase Intelligence</b> at Envoy: an 87,500-chunk <b>RAG</b> index over 22 repos via a Python <b>MCP server</b> on <b>AWS Bedrock</b>, hitting <b>Hit@1 0.785</b> at <b>~$0.03/month</b> on a 200-query human-labeled eval. Four years across production Ruby on Rails, Ember.js, React 19, and Python. Daily work: <b>Pulumi/Terraform</b> IaC, RAG retrieval, <b>LLM evals</b>, and tool-use guardrails. Side project: <b>TraderDan</b>, a 14-agent live prop-firm trading system with 5,000+ tests.
 </p>
 
 <h2 class="section">Professional Experience</h2>
@@ -185,13 +185,13 @@
 		<span class="right">San Francisco, CA | Nov 2024 – Present</span>
 	</div>
 	<ul>
-		<li>Built <b>Codebase Intelligence</b>, a <b>RAG</b> platform indexing 22 internal repos (~87,500 AST-aware code chunks, tree-sitter parsed) on <b>Amazon S3 Vectors</b> and <b>Bedrock Knowledge Bases</b> (<b>Titan Text Embeddings V2</b>), with a Python <b>MCP server</b> exposing six retrieval tools to Anthropic <b>Claude</b>. Hit <b>Hit@1 = 0.785</b> on a 200-query human-labeled eval set at ~$0.03/month, replacing per-engineer 6–8 GB local vector DBs.</li>
+		<li>Shipped <b>Codebase Intelligence</b> at <b>Hit@1 0.785</b> / <b>~$0.03/month</b>: a <b>RAG</b> platform indexing 22 internal repos (~87,500 AST-aware code chunks, tree-sitter parsed) on <b>Amazon S3 Vectors</b> and <b>Bedrock Knowledge Bases</b> (<b>Titan Text Embeddings V2</b>), with a Python <b>MCP server</b> exposing six retrieval tools to Anthropic <b>Claude</b>. Retired per-engineer 6–8 GB local vector DBs across the eng org.</li>
 		<li>Migrated the visitor-management dashboard from <b>Ember/Glimmer to React 19</b> across six surfaces (profile, printers, screeners, visits, matching-rules, documents) using <b>Module Federation 2.0</b>, <b>TanStack Query v5</b>, and <b>Radix UI</b>, shipping incrementally behind feature flags.</li>
 		<li>Designed <b>AgentLock</b>, a phase-based <b>guardrails</b> and permission model for the 14 <b>agentic</b> AI tools embedded in the Visitors product — capability gating per request lifecycle, observability hooks, and policy enforcement at the MCP boundary.</li>
 		<li>Delivered <b>Visitor Profile Merge</b> and <b>Block List V2</b> end-to-end across two quarters: Rails APIs, React merge UI, and the identity-matching lifecycle (expiration, disable toggle, search, deletion). Validated with TDD: <b>RSpec</b> on Rails, <b>Vitest + MSW</b> on React, plus staging-pod-exec mutation testing.</li>
 		<li>Replaced fragile SKU-name string matching with a <b>ChargeBee feature-code subscription gate</b> on the Visitors Basic plan: counter table, gate-state API, 75% / 100% threshold mailer, and reset cron, spanning Rails and Ember in one sprint.</li>
 		<li>Authored Envoy's internal AI playbook: AI-tooling onboarding guide, a six-layer agent memory reference, and a coding-agent <b>observability</b> writeup adopted by Envoy's Engineering Innovation Program.</li>
-		<li>Sustained <b>5+ PRs/week</b> across nine repos on a stacked-PR (<b>Graphite</b>) and worktree workflow, shipping Rails, Ember (Octane / Glimmer / GTS), React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM.</li>
+		<li>Sustained <b>5+ merged PRs/week</b> across nine repos on a stacked-PR (<b>Graphite</b>) and worktree workflow, spanning Rails, Ember (Octane / Glimmer / GTS), React 19, <b>Cerbos</b> authorization, and Pulumi / Terraform IAM.</li>
 	</ul>
 </div>
 
@@ -233,12 +233,6 @@
 
 <h2 class="section">Skills</h2>
 <dl class="skills">
-	<dt>Languages:</dt>
-	<dd>TypeScript, JavaScript (ES6+), Python, Ruby, HTML5, CSS3, SQL, Flow (legacy)</dd>
-
-	<dt>Frameworks &amp; UI:</dt>
-	<dd>React 19, Next.js, Ember.js (Octane / Glimmer / GTS), Ruby on Rails, FastAPI, Node.js, Express, Tailwind, Radix UI, SCSS, Luxon, Three.js, Framer Motion</dd>
-
 	<dt>AI &amp; LLM:</dt>
 	<dd>Model Context Protocol (MCP), Anthropic Claude SDK, OpenAI SDK, Gemini Flash, Amazon Bedrock, S3 Vectors, Titan Text Embeddings V2, RAG, agentic tool use, LLM evals, prompt engineering, function calling, AI guardrails, tree-sitter AST chunking, LangChain, LangGraph</dd>
 
@@ -247,6 +241,12 @@
 
 	<dt>Cloud &amp; Infra:</dt>
 	<dd>AWS (Bedrock, S3, IAM), Pulumi, Terraform, Kubernetes, Docker, OpenTelemetry, Datadog, Vercel</dd>
+
+	<dt>Languages:</dt>
+	<dd>TypeScript, JavaScript (ES6+), Python, Ruby, HTML5, CSS3, SQL, Flow (legacy)</dd>
+
+	<dt>Frameworks &amp; UI:</dt>
+	<dd>React 19, Next.js, Ember.js (Octane / Glimmer / GTS), Ruby on Rails, FastAPI, Node.js, Express, Tailwind, Radix UI, SCSS, Luxon</dd>
 
 	<dt>Build &amp; State:</dt>
 	<dd>Module Federation 2.0, Vite, Webpack 5, TanStack Query v5, Redux Toolkit, Axios, MSW v2, GraphQL, REST</dd>
