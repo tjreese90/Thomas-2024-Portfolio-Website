@@ -125,5 +125,14 @@
 		color: var(--light-slate);
 		margin-top: 1rem;
 		font-size: 1.4rem;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 1rem;
+		list-style: none;
+		padding: 0;
+
+		li {
+			display: inline;
+		}
 	}
 }

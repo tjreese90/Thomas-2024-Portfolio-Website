@@ -93,11 +93,11 @@ const OtherProjects = () => {
 								</p>
 							</div>
 							<div className='other__cardFooter'>
-								<div className='other__tags'>
+								<ul className='other__tags'>
 									{project.tags.map((tag) => (
-										<span key={tag}>{tag} &nbsp;</span>
+										<li key={tag}>{tag}</li>
 									))}
-								</div>
+								</ul>
 							</div>
 						</div>
 					</li>

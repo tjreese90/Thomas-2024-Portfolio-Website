@@ -1,9 +1,11 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import './navbar.scss';
 
 const Navbar = () => {
+	const [menuOpen, setMenuOpen] = useState(false);
+
 	const menuItems = useMemo(
 		() => [
 			{ id: '01.', name: 'About', link: '/#about' },
@@ -15,12 +17,34 @@ const Navbar = () => {
 		[],
 	);
 
-	const isActive = (hash: any) => window.location.hash === hash;
+	const isActive = (hash: string) =>
+		typeof window !== 'undefined' && window.location.hash === hash;
+
+	// Close on Escape, lock body scroll when open on mobile
+	useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') setMenuOpen(false);
+		};
+		document.addEventListener('keydown', onKey);
+		return () => document.removeEventListener('keydown', onKey);
+	}, []);
+
+	useEffect(() => {
+		document.body.classList.toggle('nav-open', menuOpen);
+		return () => document.body.classList.remove('nav-open');
+	}, [menuOpen]);
+
+	const closeMenu = () => setMenuOpen(false);
 
 	return (
-		<nav className='navbar'>
+		<nav className='navbar' aria-label='Primary'>
 			<div className='navbar__left'>
-				<Link to='/' className='navbar__link' aria-label='Thomas Reese — Home'>
+				<Link
+					to='/'
+					className='navbar__link'
+					aria-label='Thomas Reese — Home'
+					onClick={closeMenu}
+				>
 					<img
 						alt=''
 						aria-hidden='true'
@@ -29,14 +53,35 @@ const Navbar = () => {
 					/>
 				</Link>
 			</div>
-			<div className='navbar__right'>
+
+			<button
+				type='button'
+				className={`navbar__hamburger ${menuOpen ? 'is-open' : ''}`}
+				aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+				aria-expanded={menuOpen}
+				aria-controls='primary-nav'
+				onClick={() => setMenuOpen((o) => !o)}
+			>
+				<span aria-hidden='true' />
+				<span aria-hidden='true' />
+				<span aria-hidden='true' />
+			</button>
+
+			<div
+				id='primary-nav'
+				className={`navbar__right ${menuOpen ? 'is-open' : ''}`}
+			>
 				<ul className='navbar__list'>
 					{menuItems.map(({ id, name, link }) => (
 						<li
 							key={id}
 							className={`navbar__items ${isActive(link) ? 'active' : ''}`}
 						>
-							<HashLink to={link} className='navbar__itemsLink'>
+							<HashLink
+								to={link}
+								className='navbar__itemsLink'
+								onClick={closeMenu}
+							>
 								<span className='navbar__itemsLinkNumeric'>{id}</span>
 								{name}
 							</HashLink>
@@ -48,6 +93,7 @@ const Navbar = () => {
 					target='_blank'
 					rel='noreferrer'
 					className='navbar__button'
+					onClick={closeMenu}
 				>
 					Resume
 				</a>

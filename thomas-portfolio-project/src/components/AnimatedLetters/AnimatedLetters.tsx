@@ -8,13 +8,15 @@ interface AnimatedLettersprops {
 }
 
 const AnimatedLetters = ({ letterClass, strArray, idx }: AnimatedLettersprops) => (
-  <div style={{ display: 'inline' }}>
-    {strArray.map((char: string, i: number) => (
-      <span key={char + i} className={`${letterClass} _${i + idx}`}>
-        {char}
-      </span>
-    ))}
-  </div>
+  <span style={{ display: 'inline' }} aria-label={strArray.join('')}>
+    <span aria-hidden='true'>
+      {strArray.map((char: string, i: number) => (
+        <span key={char + i} className={`${letterClass} _${i + idx}`}>
+          {char}
+        </span>
+      ))}
+    </span>
+  </span>
 );
 
 export default AnimatedLetters;

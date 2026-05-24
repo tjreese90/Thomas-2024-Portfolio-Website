@@ -37,11 +37,11 @@ const Project = () => {
 						/>
 					</div>
 					<div className='project__right'>
-						<h3 className='project__headingTertiary'>Featured Project</h3>
-						<h5>Live</h5>
-						<span className='project__headingSecondary'>
-							<h2>TraderDan — Automated Trading System</h2>
-						</span>
+						<p className='project__headingTertiary'>Featured Project</p>
+						<span className='project__status'>Live</span>
+						<h3 className='project__headingSecondary'>
+							TraderDan — Automated Trading System
+						</h3>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>
 								A production trading system orchestrated by a 14-agent AI
@@ -50,11 +50,11 @@ const Project = () => {
 								risk engine, news filter, and a Next.js dashboard for live
 								monitoring across five active accounts.
 							</p>
-							<div className='project__tags'>
-								{' '}
-								Python &nbsp; Next.js &nbsp; FastAPI &nbsp; PostgreSQL &nbsp;
-								Anthropic Claude &nbsp; Optuna &nbsp; ChromaDB &nbsp;
-							</div>
+							<ul className='project__tags'>
+								{['Python', 'Next.js', 'FastAPI', 'PostgreSQL', 'Anthropic Claude', 'Optuna', 'ChromaDB'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 						</div>
 					</div>
 				</section>
@@ -63,16 +63,17 @@ const Project = () => {
 			<LazyLoad once height={400}>
 				<section className='project__section'>
 					<div className='project__left1'>
-						<h3 className='project__headingTertiary'>Featured Project</h3>
-						<h5>Live</h5>
-						<a
-							href='https://blueridgecanineacademy.com/'
-							target='_blank'
-							rel='noreferrer'
-							className='project__headingSecondary'
-						>
-							<h2>Blue Ridge Canine Academy</h2>
-						</a>
+						<p className='project__headingTertiary'>Featured Project</p>
+						<span className='project__status'>Live</span>
+						<h3 className='project__headingSecondary'>
+							<a
+								href='https://blueridgecanineacademy.com/'
+								target='_blank'
+								rel='noreferrer'
+							>
+								Blue Ridge Canine Academy
+							</a>
+						</h3>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>
 								A freelance full-stack scheduling and payments platform for a
@@ -80,11 +81,11 @@ const Project = () => {
 								MongoDB persistence, and Acuity Scheduling integration.
 								Wireframed in Figma and hosted on GoDaddy.
 							</p>
-							<div className='project__tags'>
-								{' '}
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								SCSS/SASS &nbsp; Acuity Scheduling &nbsp;
-							</div>
+							<ul className='project__tags'>
+								{['React.js', 'Node.js', 'Express.js', 'MongoDB', 'SCSS/SASS', 'Acuity Scheduling'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 							<div className='project__icons'>
 								<a
 									href='https://blueridgecanineacademy.com/'
@@ -112,16 +113,17 @@ const Project = () => {
 			<LazyLoad once height={400}>
 				<section className='project__section'>
 					<div className='project__left1'>
-						<h3 className='project__headingTertiary'>Featured Project</h3>
-						<h5>Live</h5>
-						<a
-							href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
-							target='_blank'
-							rel='noreferrer'
-							className='project__headingSecondary'
-						>
-							<h2>AI Form Builder</h2>
-						</a>
+						<p className='project__headingTertiary'>Featured Project</p>
+						<span className='project__status'>Live</span>
+						<h3 className='project__headingSecondary'>
+							<a
+								href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
+								target='_blank'
+								rel='noreferrer'
+							>
+								AI Form Builder
+							</a>
+						</h3>
 						<div className='project__descriptionContainer project__descriptionContainer1'>
 							<p className='project__description'>
 								A full-stack React app that uses Gemini to generate custom
@@ -129,10 +131,11 @@ const Project = () => {
 								backend with MongoDB for persistence, plus a clean React
 								frontend for the form-builder UX.
 							</p>
-							<div className='project__tags'>
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								Gemini AI &nbsp; SCSS
-							</div>
+							<ul className='project__tags'>
+								{['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Gemini AI', 'SCSS'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 							<div className='project__icons project__icons1'>
 								<a
 									href='https://github.com/tjreese90/AI-Form-Builder-Web-App'
@@ -167,16 +170,17 @@ const Project = () => {
 						/>
 					</div>
 					<div className='project__right'>
-						<h3 className='project__headingTertiary'>Featured Project</h3>
-						<h5>In Development</h5>
-						<a
-							href='https://github.com/tjreese90/UFC-Blog-Web-App'
-							target='_blank'
-							rel='noreferrer'
-							className='project__headingSecondary'
-						>
-							<h2>UFC Fight Prediction Generator</h2>
-						</a>
+						<p className='project__headingTertiary'>Featured Project</p>
+						<span className='project__status'>In Development</span>
+						<h3 className='project__headingSecondary'>
+							<a
+								href='https://github.com/tjreese90/UFC-Blog-Web-App'
+								target='_blank'
+								rel='noreferrer'
+							>
+								UFC Fight Prediction Generator
+							</a>
+						</h3>
 						<div className='project__descriptionContainer'>
 							<p className='project__description'>
 								A fight-prediction app powered by the UFC MMA V2 API. It
@@ -184,11 +188,11 @@ const Project = () => {
 								to produce per-matchup outcome estimates, surfaced through a
 								React + Vite frontend with MongoDB-backed match history.
 							</p>
-							<div className='project__tags'>
-								{' '}
-								React.js &nbsp; Node.js &nbsp; Vite.js &nbsp; MongoDB &nbsp; UFC
-								MMA V2 API &nbsp; SCSS/SASS
-							</div>
+							<ul className='project__tags'>
+								{['React.js', 'Node.js', 'Vite.js', 'MongoDB', 'UFC MMA V2 API', 'SCSS/SASS'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 							<div className='project__icons'>
 								<a
 									href='https://github.com/tjreese90/UFC-Blog-Web-App'
@@ -241,11 +245,11 @@ const Project = () => {
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
-							<div className='projectResp__tags'>
-								{' '}
-								Python &nbsp; Next.js &nbsp; FastAPI &nbsp; PostgreSQL &nbsp;
-								Anthropic Claude &nbsp; ChromaDB &nbsp; Optuna
-							</div>
+							<ul className='projectResp__tags'>
+								{['Python', 'Next.js', 'FastAPI', 'PostgreSQL', 'Anthropic Claude', 'ChromaDB', 'Optuna'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 						</div>
 					</div>
 				</li>
@@ -280,11 +284,11 @@ const Project = () => {
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
-							<div className='projectResp__tags'>
-								{' '}
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								SCSS/SASS
-							</div>
+							<ul className='projectResp__tags'>
+								{['React.js', 'Node.js', 'Express.js', 'MongoDB', 'SCSS/SASS'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 						</div>
 					</div>
 				</li>
@@ -318,10 +322,11 @@ const Project = () => {
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
-							<div className='projectResp__tags'>
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								Gemini AI &nbsp; SCSS/SASS
-							</div>
+							<ul className='projectResp__tags'>
+								{['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Gemini AI', 'SCSS/SASS'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 						</div>
 					</div>
 				</li>
@@ -356,11 +361,11 @@ const Project = () => {
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
-							<div className='projectResp__tags'>
-								{' '}
-								React.js &nbsp; Node.js &nbsp; Express.js &nbsp; MongoDB &nbsp;
-								UFC MMA V2 API &nbsp; SCSS/SASS
-							</div>
+							<ul className='projectResp__tags'>
+								{['React.js', 'Node.js', 'Express.js', 'MongoDB', 'UFC MMA V2 API', 'SCSS/SASS'].map((t) => (
+									<li key={t}>{t}</li>
+								))}
+							</ul>
 						</div>
 					</div>
 				</li>

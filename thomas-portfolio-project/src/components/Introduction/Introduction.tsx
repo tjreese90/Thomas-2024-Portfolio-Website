@@ -4,16 +4,45 @@ import AnimatedLetters from '@components/AnimatedLetters/AnimatedLetters';
 import { TypeAnimation } from 'react-type-animation';
 import './introduction.scss';
 
+const TYPE_PHRASES = [
+	'I build full-stack web apps',
+	2800,
+	'Software Engineer at Envoy',
+	2800,
+	'React + TypeScript specialist',
+	2800,
+	'Trading systems & AI agents',
+	2800,
+	'Mobile-first UI/UX developer',
+	2800,
+] as const
+
+const PHRASE_FALLBACK =
+	'I build full-stack web apps · Software Engineer at Envoy · React + TypeScript · Trading systems & AI agents · Mobile-first UI/UX'
+
 const Introduction = () => {
 	const [letterClass, setLetterClass] = useState('text-animate');
 	const nameArray = [...'Thomas,'];
 	const jobArray = [...'oftware Developer '];
+	const [typePaused, setTypePaused] = useState(false);
+	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
 	useEffect(() => {
 		setTimeout(() => {
 			setLetterClass('text-animate-hover');
 		}, 4000);
 	}, []);
+
+	useEffect(() => {
+		if (typeof window === 'undefined' || !window.matchMedia) return;
+		const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const update = () => setPrefersReducedMotion(mq.matches);
+		update();
+		mq.addEventListener('change', update);
+		return () => mq.removeEventListener('change', update);
+	}, []);
+
+	const isAnimating = !typePaused && !prefersReducedMotion;
 
 	return (
 		<div className='intro'>
@@ -47,24 +76,26 @@ const Introduction = () => {
 					</span>
 				</h1>
 				<h2 className='intro__headingSecondary'>
-					<TypeAnimation
-						sequence={[
-							'I build full-stack web apps',
-							2800,
-							'Software Engineer at Envoy',
-							2800,
-							'React + TypeScript specialist',
-							2800,
-							'Trading systems & AI agents',
-							2800,
-							'Mobile-first UI/UX developer',
-							2800,
-						]}
-						wrapper='span'
-						speed={65}
-						repeat={Infinity}
-						cursor={false}
-					/>
+					{isAnimating ? (
+						<TypeAnimation
+							sequence={[...TYPE_PHRASES]}
+							wrapper='span'
+							speed={65}
+							repeat={Infinity}
+							cursor={false}
+						/>
+					) : (
+						<span>{PHRASE_FALLBACK}</span>
+					)}
+					<button
+						type='button'
+						className='intro__typePauseToggle'
+						onClick={() => setTypePaused((p) => !p)}
+						aria-label={typePaused ? 'Resume animation' : 'Pause animation'}
+						aria-pressed={typePaused}
+					>
+						<span aria-hidden='true'>{typePaused ? '▶' : '❚❚'}</span>
+					</button>
 				</h2>
 				<Link to='/contact' className='intro__button'>
 					Contact Me
