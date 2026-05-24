@@ -20,6 +20,7 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  scroll-padding-top: 10rem;
 
   @include respond(tab-land) {
     font-size: 56.25%; // 1rem = 9px
@@ -82,6 +83,30 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Skip link — invisible until focused */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 0.8rem 1.6rem;
+  border-radius: 0 0 0.6rem 0.6rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+
+  &:focus,
+  &:focus-visible {
+    transform: translate(-50%, 0);
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
 }
 
 /* Global focus-visible — every interactive element gets a visible focus ring */

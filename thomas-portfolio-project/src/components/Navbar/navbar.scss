@@ -164,9 +164,14 @@
                 color: var(--primary);
             }
 
-            &:hover::after {
+            &:hover::after,
+            &.is-active::after {
                 transform: scaleX(1);
                 transform-origin: left;
+            }
+
+            &.is-active {
+                color: var(--primary);
             }
 
             &Active {

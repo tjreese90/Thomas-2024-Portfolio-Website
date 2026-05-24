@@ -1,95 +1,74 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { TypeAnimation } from 'react-type-animation';
+import { motion, useReducedMotion } from 'framer-motion';
+import { fadeUp, heroLetter, staggerParent } from '@lib/motion';
 import './introduction.scss';
 
-const TYPE_PHRASES = [
-	'Software Engineer at Envoy',
-	2800,
-	'I build full-stack web apps',
-	2800,
-	'React + TypeScript specialist',
-	2800,
-	'Trading systems & AI agents',
-	2800,
-	'Mobile-first UI/UX developer',
-	2800,
-] as const;
-
-const PHRASE_FALLBACK = 'Software Engineer at Envoy';
+const HERO_NAME = "Hi, I'm Thomas.";
+const HERO_ROLE = 'Full-Stack Software Engineer.';
+const ROLE_LINE = 'Software Engineer at Envoy · React, TypeScript, Rails, Python, MCP';
 
 const Introduction = () => {
-	const [typePaused, setTypePaused] = useState(false);
-	const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+	const reduced = useReducedMotion();
 
-	useEffect(() => {
-		if (typeof window === 'undefined' || !window.matchMedia) return;
-		const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-		const update = () => setPrefersReducedMotion(mq.matches);
-		update();
-		mq.addEventListener('change', update);
-		return () => mq.removeEventListener('change', update);
-	}, []);
-
-	const isAnimating = !typePaused && !prefersReducedMotion;
+	const nameLetters = [...HERO_NAME];
+	const parent = reduced ? { hidden: {}, visible: {} } : staggerParent;
+	const letter = reduced ? { hidden: { opacity: 0 }, visible: { opacity: 1 } } : heroLetter;
 
 	return (
-		<div className='intro'>
+		<section className='intro' aria-labelledby='hero-heading'>
 			<div className='intro__left'>
 				<span className='sectiontag'>&lt;section&gt;</span>
-				<h1 className='intro__headingPrimary'>
-					Hi, I'm Thomas.
-					<span className='intro__headingPrimaryRole'>
-						Full-Stack Software Engineer.
+				<motion.h1
+					id='hero-heading'
+					className='intro__headingPrimary'
+					variants={parent}
+					initial='hidden'
+					animate='visible'
+				>
+					<span className='intro__name' aria-label={HERO_NAME}>
+						{nameLetters.map((ch, i) => (
+							<motion.span
+								key={i}
+								className='intro__letter'
+								variants={letter}
+								aria-hidden='true'
+							>
+								{ch === ' ' ? ' ' : ch}
+							</motion.span>
+						))}
 					</span>
-				</h1>
-				<div className='intro__subheadingRow'>
-					<p
-						className='intro__headingSecondary'
-						aria-live='polite'
+					<motion.span
+						className='intro__headingPrimaryRole'
+						variants={fadeUp}
+						initial='hidden'
+						animate='visible'
+						transition={{ delay: 0.45 }}
 					>
-						{isAnimating ? (
-							<TypeAnimation
-								sequence={[...TYPE_PHRASES]}
-								wrapper='span'
-								speed={65}
-								repeat={Infinity}
-								cursor={false}
-							/>
-						) : (
-							<span>{PHRASE_FALLBACK}</span>
-						)}
-					</p>
-					<button
-						type='button'
-						className='intro__typePauseToggle'
-						onClick={() => setTypePaused((p) => !p)}
-						aria-label={typePaused ? 'Resume subtitle animation' : 'Pause subtitle animation'}
-						aria-pressed={typePaused}
-					>
-						<svg
-							viewBox='0 0 24 24'
-							width='14'
-							height='14'
-							aria-hidden='true'
-						>
-							{typePaused ? (
-								<path d='M8 5v14l11-7z' fill='currentColor' />
-							) : (
-								<>
-									<rect x='6' y='5' width='4' height='14' fill='currentColor' />
-									<rect x='14' y='5' width='4' height='14' fill='currentColor' />
-								</>
-							)}
-						</svg>
-					</button>
-				</div>
-				<Link to='/contact' className='intro__button'>
-					Contact Me
-				</Link>
+						{HERO_ROLE}
+					</motion.span>
+				</motion.h1>
+				<motion.p
+					className='intro__headingSecondary'
+					variants={fadeUp}
+					initial='hidden'
+					animate='visible'
+					transition={{ delay: 0.7 }}
+				>
+					{ROLE_LINE}
+				</motion.p>
+				<motion.div
+					variants={fadeUp}
+					initial='hidden'
+					animate='visible'
+					transition={{ delay: 0.85 }}
+				>
+					<Link to='/contact' className='intro__button'>
+						Get in touch
+					</Link>
+				</motion.div>
 				<span className='sectiontag'>&lt;/section&gt;</span>
 			</div>
-			<div className='intro__right'>
+			<div className='intro__right' aria-hidden='true'>
 				<div className='logo__outline'>
 					<svg
 						id='star-outline'
@@ -125,7 +104,7 @@ const Introduction = () => {
 					</svg>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

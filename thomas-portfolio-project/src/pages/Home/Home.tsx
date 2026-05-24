@@ -8,12 +8,15 @@ import './home.scss';
 
 const Home: React.FC = () => (
 	<div>
+		<a className='skip-link' href='#main-content'>
+			Skip to main content
+		</a>
 		<Navbar />
 		<div className='page'>
 			<div className='page__left'>
 				<LeftSideBar />
 			</div>
-			<main id='main-content' className='page__center'>
+			<main id='main-content' className='page__center' tabIndex={-1}>
 				<Center />
 			</main>
 			<div className='page__right'>

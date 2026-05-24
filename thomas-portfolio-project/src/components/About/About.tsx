@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue, useReducedMotion } from 'framer-motion';
 import './about.scss';
 
 const DOUBLE_TAP_TIMEOUT = 300; // Time window for detecting a double tap
@@ -45,6 +45,7 @@ interface DragConstraints {
 }
 
 const About = () => {
+	const reduced = useReducedMotion();
 	const [speedMode, setSpeedMode] = useState(0);
 	const [lastTap, setLastTap] = useState(0); // Store time of last tap
 	const rotateX = useMotionValue(0);
@@ -205,26 +206,27 @@ const About = () => {
 					{constraints && (
 						<motion.div
 							className='stage-cube-cont'
-							drag
+							drag={!reduced}
 							dragElastic={0.2}
-							dragConstraints={constraints} // Limit drag with looser constraints
+							dragConstraints={constraints}
 							style={{
 								rotateX,
 								rotateY,
 								x: dragX,
 								y: dragY,
 							}}
-							onClick={toggleSpeed} // Change speed on click
-							animate={{
+							onClick={toggleSpeed}
+							animate={reduced ? undefined : {
 								rotateX: [0, 360],
 								rotateY: [0, 360],
 							}}
-							transition={{
+							transition={reduced ? undefined : {
 								duration: getSpinDuration(),
 								ease: 'easeInOut',
 								repeat: Infinity,
 								repeatType: 'loop',
 							}}
+							aria-label='Rotating tech stack cube — click to change speed, drag to move'
 						>
 							<div className='cubespinner'>
 								{[

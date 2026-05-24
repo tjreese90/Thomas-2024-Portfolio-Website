@@ -20,7 +20,8 @@
 			"@components/*": ["src/components/*"],
 			"@pages/*": ["src/pages/*"],
 			"@assets/*": ["src/assets/*"],
-			"@layouts/*": ["src/layouts/*"]
+			"@layouts/*": ["src/layouts/*"],
+			"@lib/*": ["src/lib/*"]
 		}
 	},
 	"include": ["src"]
