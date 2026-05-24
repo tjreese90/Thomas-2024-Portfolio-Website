@@ -224,17 +224,17 @@ const Project = () => {
 								TraderDan — Automated Trading System
 							</div>
 							<p className='projectResp__cardBodyDescription'>
-								A sophisticated multi-asset automated trading system built on
-								OANDA&apos;s API. Features multi-agent AI orchestration, real-time
-								risk management across FX and crypto markets, and a Next.js
-								dashboard for live monitoring.
+								Production trading system orchestrated by a 14-agent AI team.
+								Built on TradeLocker with a FastAPI webhook execution server,
+								prop-firm risk engine, eval harness, ChromaDB memory, and a
+								Next.js dashboard for live monitoring.
 							</p>
 						</div>
 						<div className='projectResp__cardFooter'>
 							<div className='projectResp__tags'>
 								{' '}
-								Python &nbsp; Next.js &nbsp; TypeScript &nbsp; OANDA &nbsp;
-								Multi-Agent AI
+								Python &nbsp; Next.js &nbsp; FastAPI &nbsp; PostgreSQL &nbsp;
+								Anthropic Claude &nbsp; ChromaDB
 							</div>
 						</div>
 					</div>
