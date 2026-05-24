@@ -193,12 +193,13 @@
 	.vertical-timeline-element-content {
 		background: var(--surface-card);
 		border: 1px solid rgba(255, 215, 0, 0.18);
-		border-radius: 0.8rem;
+		border-radius: 1rem;
 		box-shadow: none;
-		padding: 2.4rem 2.6rem;
+		padding: 2.4rem 3rem;
 		transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 		color: var(--lightest-slate);
 		text-align: left;
+		width: auto !important;
 
 		&:hover {
 			transform: translateY(-5px);
@@ -208,39 +209,46 @@
 
 		.vertical-timeline-element-title {
 			color: #ffffff;
-			font-size: 1.9rem;
+			font-size: 2rem;
 			font-weight: 700;
 			margin: 0 0 0.4rem;
+			letter-spacing: -0.01em;
 		}
 
 		.vertical-timeline-element-subtitle {
 			color: var(--primary);
-			font-size: 1.35rem;
+			font-size: 1.45rem;
 			font-weight: 600;
-			margin: 0 0 1.2rem;
+			margin: 0 0 1rem;
 		}
 
 		.vertical-timeline-element-stack {
 			font-size: 1.25rem;
 			color: var(--light-slate);
-			margin: 0 0 1.2rem;
-			line-height: 1.65;
+			margin: 0 0 1.4rem;
+			line-height: 1.7;
+			padding: 0.8rem 1rem;
+			background: rgba(10, 25, 47, 0.4);
+			border-left: 2px solid var(--primary);
+			border-radius: 0.3rem;
 
 			&Label {
 				color: var(--primary);
 				font-weight: 700;
 				text-transform: uppercase;
-				letter-spacing: 0.06em;
+				letter-spacing: 0.08em;
 				font-size: 1.05rem;
+				display: inline-block;
+				margin-right: 0.3rem;
 			}
 		}
 
 		.vertical-timeline-element-description {
-			font-size: 1.35rem;
+			font-size: 1.4rem;
 			color: var(--lightest-slate);
-			line-height: 1.65;
+			line-height: 1.75;
 			margin: 0;
-			max-width: 65ch;
+			max-width: 78ch;
 		}
 
 		.vertical-timeline-element-date {

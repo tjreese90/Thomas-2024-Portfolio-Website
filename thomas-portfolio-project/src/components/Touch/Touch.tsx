@@ -77,7 +77,7 @@ const Touch = () => {
 				<h2 className='my-journey__headingPrimary'>
 					<span className='my-journey__sectionNumber'>02.</span> Experience
 				</h2>
-				<VerticalTimeline animate={true} layout='2-columns'>
+				<VerticalTimeline animate={true} layout='1-column-left' lineColor='rgba(255, 215, 0, 0.2)'>
 					{workExperience.map((job) => (
 						<VerticalTimelineElement
 							key={job.company}
