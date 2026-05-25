@@ -95,19 +95,20 @@ const CommunityAndAchievements = () => {
 							discussion and discovery.
 						</p>
 						<p>
-							In addition, I took part in{' '}
+							In addition, I competed in the{' '}
 							<a
-								href='https://codenation.org/recap-code-nation-new-york-hackathon-2023/'
+								href='https://accachicago.org/'
 								target='_blank'
 								rel='noreferrer'
 								className='highlight-link'
 							>
-								Google's Code Nation Hackathon
+								Associated Colleges of the Chicago Area (ACCA) Coding
+								Competition
 							</a>
-							, where I guided students in local schools to use HTML, CSS, and
-							JavaScript to create websites showcasing their passions. This
-							experience was a fantastic opportunity to give back to the
-							community and inspire the next generation of developers.
+							, where my team secured second place by solving complex
+							algorithms under timed pressure — one of the first experiences
+							that pushed me toward production-grade problem-solving and
+							away from coursework-style coding.
 						</p>
 						<p>
 							Moreover, I have volunteered at the{' '}
