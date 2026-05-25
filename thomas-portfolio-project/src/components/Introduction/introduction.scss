@@ -1,10 +1,16 @@
 @import 'animate.css';
 @import '../../scss/mixins';
 
-// Decorative <section>/</section> "code marker" — renders via CSS
-// content so the literal text never lives in the DOM (better for screen
-// readers and tighter HTML). Pass the desired text via data-tag="..."
-// on the span. user-select: none keeps it out of clipboard copies.
+// Decorative <section>/</section> "code marker" — rendered ENTIRELY in
+// CSS via ::before content. The literal "<section>" text never appears
+// in the JSX, the rendered HTML, or any DOM attribute. The closing
+// variant uses a class modifier (.sectiontag--close).
+//
+// This mirrors how .intro__headingPrimary already renders its <h1> /
+// </h1> markers — single CSS source of truth, no entity escapes in JSX,
+// no leakage to assistive tech (aria-hidden on the empty span).
+//
+// user-select: none keeps the decorator out of clipboard copies.
 .sectiontag {
 	font-size: 1.1rem;
 	font-family: 'La Belle Aurore', cursive;
@@ -17,7 +23,11 @@
 	user-select: none;
 
 	&::before {
-		content: attr(data-tag);
+		content: '<section>';
+	}
+
+	&--close::before {
+		content: '</section>';
 	}
 
 	@include respond(phone) {

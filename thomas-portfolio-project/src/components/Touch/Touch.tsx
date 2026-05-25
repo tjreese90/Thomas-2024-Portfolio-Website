@@ -71,10 +71,10 @@ const goals = [
 
 const Touch = () => {
 	return (
-		<section className='my-journey' id='experience'>
-			<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
+		<section className='my-journey' id='experience' aria-labelledby='experience-heading'>
+			<span className='sectiontag' aria-hidden='true' />
 			<div className='my-journey__content'>
-				<h2 className='my-journey__headingPrimary'>
+				<h2 id='experience-heading' className='my-journey__headingPrimary'>
 					<span className='my-journey__sectionNumber'>02.</span> Experience
 				</h2>
 				<VerticalTimeline animate={true} layout='1-column-left' lineColor='rgba(255, 215, 0, 0.2)'>
@@ -142,7 +142,7 @@ const Touch = () => {
 					Get In Touch
 				</Link>
 			</div>
-			<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
+			<span className='sectiontag sectiontag--close' aria-hidden='true' />
 		</section>
 	);
 };

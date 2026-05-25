@@ -53,7 +53,7 @@ const CommunityAndAchievements = () => {
 			aria-labelledby='community-achievements-heading'
 		>
 			<div className='community-achievements__left'>
-				<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
+				<span className='sectiontag' aria-hidden='true' />
 				<h2
 					id='community-achievements-heading'
 					className='community-achievements__headingPrimary'
@@ -61,8 +61,11 @@ const CommunityAndAchievements = () => {
 					<span className='about__sectionNumber'>04.</span> Community Impact
 				</h2>
 				<div className='community-achievements__description'>
-					<section>
-						<h3 className='community-achievements__subheading'>
+					<section aria-labelledby='community-involvement-heading'>
+						<h3
+							id='community-involvement-heading'
+							className='community-achievements__subheading'
+						>
 							Community Involvement
 						</h3>
 						<p>
@@ -138,8 +141,13 @@ const CommunityAndAchievements = () => {
 						</p>
 					</section>
 
-					<section>
-						<h3 className='community-achievements__subheading'>Achievements</h3>
+					<section aria-labelledby='achievements-heading'>
+						<h3
+							id='achievements-heading'
+							className='community-achievements__subheading'
+						>
+							Achievements
+						</h3>
 						<div className='community-achievements__cards'>
 							<article className='community-achievements__card'>
 								<h4 className='community-achievements__cardTitle'>
@@ -238,7 +246,7 @@ const CommunityAndAchievements = () => {
 						</div>
 					</section>
 				</div>
-				<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
+				<span className='sectiontag sectiontag--close' aria-hidden='true' />
 			</div>
 		</section>
 	);

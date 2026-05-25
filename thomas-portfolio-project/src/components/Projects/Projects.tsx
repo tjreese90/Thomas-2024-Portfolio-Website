@@ -22,7 +22,7 @@ const handleSpotlightLeave = (e: ReactMouseEvent<HTMLElement>) => {
 const Project = () => {
 	return (
 		<section className='project' id='projects' aria-labelledby='projects-heading'>
-			<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
+			<span className='sectiontag' aria-hidden='true' />
 			<h2 id='projects-heading' className='about__headingPrimary'>
 				<span className='about__sectionNumber'>03.</span> Projects
 			</h2>
@@ -454,7 +454,7 @@ const Project = () => {
 				</li>
 			</ul>
 
-			<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
+			<span className='sectiontag sectiontag--close' aria-hidden='true' />
 		</section>
 	);
 };

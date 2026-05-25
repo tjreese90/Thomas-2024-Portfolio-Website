@@ -96,10 +96,16 @@ const OtherProjects = () => {
 	};
 
 	return (
-		<section className='other-project' id='other-project'>
-			<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
+		<section
+			className='other-project'
+			id='other-project'
+			aria-labelledby='other-project-heading'
+		>
+			<span className='sectiontag' aria-hidden='true' />
 			<div className='other__container'>
-				<h3 className='other__headingPrimary'>Other Noteworthy Projects</h3>
+				<h2 id='other-project-heading' className='other__headingPrimary'>
+					Other Noteworthy Projects
+				</h2>
 			</div>
 
 			<div className='other__carousel'>
@@ -172,7 +178,7 @@ const OtherProjects = () => {
 				</button>
 			</div>
 
-			<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
+			<span className='sectiontag sectiontag--close' aria-hidden='true' />
 		</section>
 	);
 };

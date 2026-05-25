@@ -153,7 +153,7 @@ const About = () => {
 			onClick={handleTap} // Detect double tap on the whole section
 		>
 			<div className='about__left'>
-				<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
+				<span className='sectiontag' aria-hidden='true' />
 				<h2 id='about-heading' className='about__headingPrimary'>
 					<span className='about__sectionNumber'>01.</span> About Me
 				</h2>
@@ -194,7 +194,7 @@ const About = () => {
 						))}
 					</motion.ul>
 				</div>
-				<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
+				<span className='sectiontag sectiontag--close' aria-hidden='true' />
 			</div>
 			<div className='about__right'>
 				{/* Cube Spinner */}
