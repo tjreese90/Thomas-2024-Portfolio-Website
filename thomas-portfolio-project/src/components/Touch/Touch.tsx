@@ -16,7 +16,7 @@ const workExperience = [
 		techStack:
 			'Rails, Ember.js, React 19, TypeScript, AWS Bedrock, Model Context Protocol, Pulumi, Cerbos',
 		description:
-			"Built Codebase Intelligence: a RAG platform indexing 22 repos (~87,500 AST-aware code chunks, tree-sitter parsed) on Amazon S3 Vectors and Bedrock Knowledge Bases (Titan Text Embeddings V2), with a Python MCP server exposing six retrieval tools to Anthropic Claude — Hit@1 = 0.785 on a 200-query human-labeled eval set at ~$0.03/month. Migrated the visitor-management dashboard from Ember/Glimmer to React 19 via Module Federation 2.0. Designed AgentLock — a phase-based guardrails and permission model for the 14 agentic AI tools embedded in the Visitors product.",
+			"At Envoy I'm a full-stack engineer on the Visitor Management product, ranging between Python for AI infra, TypeScript + React 19 on the front-end, and Ruby on Rails on the back-end. Most of my time goes into the AI features the product is built around — I built Codebase Intelligence, the internal RAG system our engineers use to search the monorepo through Claude, and designed AgentLock, the authorization layer that governs the 14 agentic AI tools we ship to customers. I'm also leading the incremental migration of our dashboard from Ember/Glimmer to React 19, with feature work and customer fixes (Blue Origin, Tesla, NVIDIA among them) shipping in parallel.",
 	},
 	{
 		company: 'Sprout Social',
@@ -26,7 +26,7 @@ const workExperience = [
 		techStack:
 			'JavaScript, TypeScript, React, Redux, React Context, Axios, SCSS',
 		description:
-			"Migrated core front-end components from Flow to TypeScript. Built and maintained the Seeds shared React component library. Shipped a bulk sentiment reclassification UI (1,000 messages/batch) with Redux and virtualized lists, cutting analyst handle time ~30%. Built a Query Builder backed by OpenAI GPT keyword suggestions, and a faceted message-exploration tool (React Context, Redux, React Router) that lifted session engagement ~30%.",
+			"Two years on the social-listening team at Sprout. My focus was the analyst-facing dashboard — I owned the Flow → TypeScript migration for the core front-end and maintained the Seeds shared React component library that the whole engineering org consumes. I shipped two of the features analysts use daily: a bulk sentiment-reclassification UI that handles 1,000 messages at a time, and a faceted message-exploration tool that became central to listening workflows. I also built an early GPT-powered query builder back when LLM-assisted UX was just starting to be productized.",
 	},
 	{
 		company: 'The Walt Disney Company',
@@ -35,7 +35,7 @@ const workExperience = [
 		icon: 'fas fa-graduation-cap',
 		techStack: 'React, Redux, CSS, JavaScript, Applitools',
 		description:
-			"Shipped React and responsive-CSS fixes across multiple ABC News station sites. Built ESPN's Banner-Maker (reusable React components with Redux state and team/player API integration), cutting editorial banner-creation time ~35%. Owned the React front-end for a Student Loan Refinance product, cutting form-validation errors ~60%. Drove WCAG accessibility work with Applitools, raising automated a11y coverage ~70%.",
+			"Summer-into-fall internship embedded with ABC News and ESPN front-end teams. I shipped React and responsive-CSS fixes across multiple ABC News station sites and built ESPN's Banner-Maker — a reusable React + Redux tool that integrated team and player APIs to cut editorial banner-creation time substantially. On the consumer side I owned the React front-end for a Student Loan Refinance product, and worked with Applitools on the WCAG accessibility audit that gave me my first real exposure to a11y as an engineering discipline rather than a checklist.",
 	},
 	{
 		company: 'Credit Karma',
@@ -44,7 +44,7 @@ const workExperience = [
 		icon: 'fas fa-briefcase',
 		techStack: 'React, Node.js, Ruby, Python, AWS',
 		description:
-			'Built internal full-stack tooling across React, Node.js, Ruby, and Python services on AWS, focused on infrastructure automation and front-end developer experience. Partnered with platform engineers on shared library and CI pipeline improvements.',
+			"A full year at Credit Karma, split across two teams. I started on infrastructure — writing unit + regression test suites in Ruby and Jenkins and learning Kubernetes-based service deployment under platform engineers. Then I moved to product, shipping React components for the student-loan refinancing flow and consolidating the team's tribal QA notes into a single static knowledge site that became the canonical reference for new engineers joining the team.",
 	},
 ];
 
@@ -72,7 +72,7 @@ const goals = [
 const Touch = () => {
 	return (
 		<section className='my-journey' id='experience'>
-			<span className='sectiontag'>&lt;section&gt;</span>
+			<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
 			<div className='my-journey__content'>
 				<h2 className='my-journey__headingPrimary'>
 					<span className='my-journey__sectionNumber'>02.</span> Experience
@@ -142,7 +142,7 @@ const Touch = () => {
 					Get In Touch
 				</Link>
 			</div>
-			<span className='sectiontag'>&lt;/section&gt;</span>
+			<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
 		</section>
 	);
 };

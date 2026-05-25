@@ -1,6 +1,10 @@
 @import 'animate.css';
 @import '../../scss/mixins';
 
+// Decorative <section>/</section> "code marker" — renders via CSS
+// content so the literal text never lives in the DOM (better for screen
+// readers and tighter HTML). Pass the desired text via data-tag="..."
+// on the span. user-select: none keeps it out of clipboard copies.
 .sectiontag {
 	font-size: 1.1rem;
 	font-family: 'La Belle Aurore', cursive;
@@ -11,6 +15,10 @@
 	margin: 0.8rem 0rem;
 	letter-spacing: 0.05rem;
 	user-select: none;
+
+	&::before {
+		content: attr(data-tag);
+	}
 
 	@include respond(phone) {
 		display: none;
@@ -298,6 +306,7 @@
 
 	&__cta {
 		display: inline-block;
+		margin-left: 0.4rem; // align the visual edge with the badge's padding
 		// will-change hints the browser to GPU-composite the magnet transform
 		will-change: transform;
 	}

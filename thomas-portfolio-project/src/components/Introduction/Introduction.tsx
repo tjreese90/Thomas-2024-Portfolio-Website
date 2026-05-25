@@ -38,7 +38,7 @@ const Introduction = () => {
 	return (
 		<section className='intro' aria-labelledby='hero-heading'>
 			<div className='intro__left'>
-				<span className='sectiontag'>&lt;section&gt;</span>
+				<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
 				<motion.h1
 					id='hero-heading'
 					className='intro__headingPrimary'
@@ -109,7 +109,7 @@ const Introduction = () => {
 						Get in touch
 					</Link>
 				</motion.div>
-				<span className='sectiontag'>&lt;/section&gt;</span>
+				<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
 			</div>
 			<div className='intro__right' aria-hidden='true'>
 				<div className='logo__outline'>

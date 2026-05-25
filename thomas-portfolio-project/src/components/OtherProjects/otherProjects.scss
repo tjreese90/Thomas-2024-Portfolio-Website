@@ -1,3 +1,5 @@
+@import '../../scss/mixins';
+
 .other {
 	padding: 4rem 2rem;
 
@@ -16,30 +18,128 @@
 		text-align: center;
 	}
 
+	// Carousel viewport — wraps the scrollable rail + nav arrows together
+	&__carousel {
+		position: relative;
+		margin-top: 5rem;
+		animation: fadeInUp 2s forwards;
+
+		// Soft fade-out on the left/right edges so cards visually slide
+		// in/out of view rather than getting clipped abruptly.
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 4rem;
+			z-index: 2;
+			pointer-events: none;
+		}
+		&::before {
+			left: 0;
+			background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+		}
+		&::after {
+			right: 0;
+			background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+		}
+	}
+
+	&__navBtn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 3;
+		width: 4rem;
+		height: 4rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: rgba(10, 25, 47, 0.85);
+		border: 1px solid rgba(255, 215, 0, 0.3);
+		color: var(--primary);
+		cursor: pointer;
+		transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease,
+			opacity 0.2s ease;
+		backdrop-filter: blur(4px);
+
+		svg { width: 1.6rem; height: 1.6rem; }
+
+		&:hover:not(:disabled) {
+			background: rgba(255, 215, 0, 0.12);
+			border-color: var(--primary);
+			transform: translateY(-50%) scale(1.05);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--primary);
+			outline-offset: 3px;
+		}
+
+		&:disabled {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		&--prev { left: -1.4rem; }
+		&--next { right: -1.4rem; }
+
+		@include respond(phone) {
+			display: none; // touch swipe is the natural interaction on mobile
+		}
+	}
+
 	&__list {
 		list-style: none;
-		padding: 0px;
-		margin: 50px 0px 0px;
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 15px;
-		position: relative;
-		animation: fadeInUp 2s forwards;
+		padding: 0 1rem 1.6rem;
+		margin: 0;
+		display: flex;
+		gap: 1.5rem;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scroll-snap-type: x mandatory;
+		scroll-padding-left: 1rem;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+
+		// Slim, themed scrollbar (Firefox + Webkit)
+		scrollbar-width: thin;
+		scrollbar-color: rgba(255, 215, 0, 0.35) transparent;
+
+		&::-webkit-scrollbar {
+			height: 0.6rem;
+		}
+		&::-webkit-scrollbar-track {
+			background: transparent;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: rgba(255, 215, 0, 0.3);
+			border-radius: 999px;
+		}
+		&::-webkit-scrollbar-thumb:hover {
+			background: rgba(255, 215, 0, 0.55);
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			scroll-behavior: auto;
+		}
 	}
 
 	&__items {
 		box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
 		display: flex;
-		-webkit-box-pack: justify;
 		justify-content: space-between;
-		-webkit-box-align: center;
 		flex-direction: column;
 		align-items: flex-start;
-		height: 100%;
+		flex: 0 0 32rem; // fixed card width — drives the snap rhythm
+		min-height: 28rem;
 		padding: 2.4rem 2rem;
 		border-radius: 0.8rem;
 		background: var(--surface-card);
 		border: 1px solid rgba(255, 215, 0, 0.12);
+		scroll-snap-align: start;
 		transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1),
 			box-shadow 0.25s cubic-bezier(0.645, 0.045, 0.355, 1),
 			border-color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -48,6 +148,10 @@
 			transform: translateY(-6px);
 			border-color: var(--primary-border-strong);
 			box-shadow: 0 1rem 4rem -1rem rgba(0, 0, 0, 0.6);
+		}
+
+		@include respond(phone) {
+			flex: 0 0 26rem;
 		}
 	}
 

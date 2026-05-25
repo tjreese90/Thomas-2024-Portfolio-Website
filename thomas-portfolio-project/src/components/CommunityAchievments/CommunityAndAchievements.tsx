@@ -53,7 +53,7 @@ const CommunityAndAchievements = () => {
 			aria-labelledby='community-achievements-heading'
 		>
 			<div className='community-achievements__left'>
-				<span className='sectiontag'>&lt;section&gt;</span>
+				<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
 				<h2
 					id='community-achievements-heading'
 					className='community-achievements__headingPrimary'
@@ -142,20 +142,22 @@ const CommunityAndAchievements = () => {
 						<div className='community-achievements__cards'>
 							<article className='community-achievements__card'>
 								<h4 className='community-achievements__cardTitle'>
-									ACCA Coding Competition
+									Google's Code Nation Hackathon
 								</h4>
 								<p>
-									Participated in the{' '}
+									Mentored at{' '}
 									<a
-										href='https://accachicago.org/'
+										href='https://codenation.org/recap-code-nation-new-york-hackathon-2023/'
 										target='_blank'
 										rel='noreferrer'
 										className='highlight-link'
 									>
-										Associated Colleges of the Chicago Area (ACCA) competition
+										Google's Code Nation Hackathon
 									</a>
-									, where my team secured second place by solving complex
-									algorithms and showcasing our coding prowess.
+									, guiding local high-school students through a day-long
+									coding sprint where they built real websites in HTML, CSS,
+									and JavaScript showcasing causes and passions they chose
+									themselves.
 								</p>
 								<div
 									style={{
@@ -168,7 +170,7 @@ const CommunityAndAchievements = () => {
 								>
 									<img
 										src='./codenation.jpg'
-										alt='Code Nation'
+										alt='Mentoring students at Google’s Code Nation Hackathon'
 										className='community-achievements__image'
 										style={{
 											width: '45%',
@@ -235,7 +237,7 @@ const CommunityAndAchievements = () => {
 						</div>
 					</section>
 				</div>
-				<span className='sectiontag'>&lt;/section&gt;</span>
+				<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
 			</div>
 		</section>
 	);

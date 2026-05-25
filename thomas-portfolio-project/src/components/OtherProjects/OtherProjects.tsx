@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import './otherProjects.scss';
 
 const projects = [
@@ -60,53 +61,118 @@ const projects = [
 ];
 
 const OtherProjects = () => {
+	const listRef = useRef<HTMLUListElement | null>(null);
+	const [canScrollPrev, setCanScrollPrev] = useState(false);
+	const [canScrollNext, setCanScrollNext] = useState(true);
+
+	// Update arrow enabled-state whenever the rail scrolls or the viewport resizes.
+	useEffect(() => {
+		const el = listRef.current;
+		if (!el) return;
+		const update = () => {
+			const maxScroll = el.scrollWidth - el.clientWidth;
+			setCanScrollPrev(el.scrollLeft > 4);
+			setCanScrollNext(el.scrollLeft < maxScroll - 4);
+		};
+		update();
+		el.addEventListener('scroll', update, { passive: true });
+		const ro = new ResizeObserver(update);
+		ro.observe(el);
+		return () => {
+			el.removeEventListener('scroll', update);
+			ro.disconnect();
+		};
+	}, []);
+
+	// Scroll by one card's width — first child gives the rhythm (incl. gap).
+	const scrollByCard = (dir: 1 | -1) => {
+		const el = listRef.current;
+		if (!el) return;
+		const card = el.querySelector<HTMLLIElement>('.other__items');
+		const styles = window.getComputedStyle(el);
+		const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+		const step = card ? card.getBoundingClientRect().width + gap : el.clientWidth * 0.8;
+		el.scrollBy({ left: step * dir, behavior: 'smooth' });
+	};
+
 	return (
 		<section className='other-project' id='other-project'>
-			<span className='sectiontag'>&lt;section&gt;</span>
+			<span className='sectiontag' data-tag='<section>' aria-hidden='true' />
 			<div className='other__container'>
 				<h3 className='other__headingPrimary'>Other Noteworthy Projects</h3>
 			</div>
 
-			<ul className='other__list'>
-				{projects.map((project) => (
-					<li className='other__items' key={project.title}>
-						<div className='other__card'>
-							<div className='other__cardTop'>
-								<svg className='other__cardFolder'>
-									<use href='/icons/symbol-defs.svg#icon-folder' />
-								</svg>
-								<div className='other__cardLink'>
-									<a
-										href={project.link}
-										target='_blank'
-										rel='noreferrer'
-										aria-label={`Open ${project.title}`}
-									>
-										<svg className='other__icon'>
-											<use href='/icons/symbol-defs.svg#icon-github' />
-										</svg>
-									</a>
+			<div className='other__carousel'>
+				<button
+					type='button'
+					className='other__navBtn other__navBtn--prev'
+					onClick={() => scrollByCard(-1)}
+					disabled={!canScrollPrev}
+					aria-label='Scroll to previous projects'
+				>
+					<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5' strokeLinecap='round' strokeLinejoin='round'>
+						<polyline points='15 18 9 12 15 6' />
+					</svg>
+				</button>
+
+				<ul
+					className='other__list'
+					ref={listRef}
+					tabIndex={0}
+					aria-label='Other noteworthy projects (use arrow keys to navigate)'
+				>
+					{projects.map((project) => (
+						<li className='other__items' key={project.title}>
+							<div className='other__card'>
+								<div className='other__cardTop'>
+									<svg className='other__cardFolder'>
+										<use href='/icons/symbol-defs.svg#icon-folder' />
+									</svg>
+									<div className='other__cardLink'>
+										<a
+											href={project.link}
+											target='_blank'
+											rel='noreferrer'
+											aria-label={`Open ${project.title}`}
+										>
+											<svg className='other__icon'>
+												<use href='/icons/symbol-defs.svg#icon-github' />
+											</svg>
+										</a>
+									</div>
+								</div>
+								<div className='other__cardBody'>
+									<h4 className='other__cardBodyHeading'>{project.title}</h4>
+									<p className='other__cardBodyDescription'>
+										{project.description}
+									</p>
+								</div>
+								<div className='other__cardFooter'>
+									<ul className='other__tags'>
+										{project.tags.map((tag) => (
+											<li key={tag}>{tag}</li>
+										))}
+									</ul>
 								</div>
 							</div>
-							<div className='other__cardBody'>
-								<h4 className='other__cardBodyHeading'>{project.title}</h4>
-								<p className='other__cardBodyDescription'>
-									{project.description}
-								</p>
-							</div>
-							<div className='other__cardFooter'>
-								<ul className='other__tags'>
-									{project.tags.map((tag) => (
-										<li key={tag}>{tag}</li>
-									))}
-								</ul>
-							</div>
-						</div>
-					</li>
-				))}
-			</ul>
+						</li>
+					))}
+				</ul>
 
-			<span className='sectiontag'>&lt;/section&gt;</span>
+				<button
+					type='button'
+					className='other__navBtn other__navBtn--next'
+					onClick={() => scrollByCard(1)}
+					disabled={!canScrollNext}
+					aria-label='Scroll to next projects'
+				>
+					<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5' strokeLinecap='round' strokeLinejoin='round'>
+						<polyline points='9 18 15 12 9 6' />
+					</svg>
+				</button>
+			</div>
+
+			<span className='sectiontag' data-tag='</section>' aria-hidden='true' />
 		</section>
 	);
 };
