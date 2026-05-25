@@ -1,12 +1,15 @@
+import type { MouseEvent as ReactMouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, useSpring } from 'framer-motion';
 import { fadeUp, heroLetter, staggerParent } from '@lib/motion';
 import './introduction.scss';
 
 const HERO_NAME = "Hi, I'm Thomas.";
-const HERO_ROLE = 'Full-Stack Software Engineer.';
-const ROLE_LINE = 'Software Engineer at Envoy · React, TypeScript, Rails, Python, MCP';
+const HERO_ROLE = 'Full-Stack AI Engineer.';
+const ROLE_LINE = 'AI Engineer at Envoy · RAG · MCP · Claude · React 19 · TypeScript · Python';
 const ACCESSIBLE_HEADING = `${HERO_NAME} ${HERO_ROLE}`;
+const MAGNET_RANGE = 8;        // max translation (px)
+const MAGNET_RESPONSE = 0.22;  // % of cursor-offset that becomes translation
 
 const Introduction = () => {
 	const reduced = useReducedMotion();
@@ -14,6 +17,23 @@ const Introduction = () => {
 	const nameLetters = [...HERO_NAME];
 	const parent = reduced ? { hidden: {}, visible: {} } : staggerParent;
 	const letter = reduced ? { hidden: { opacity: 0 }, visible: { opacity: 1 } } : heroLetter;
+
+	// Magnetic CTA — Get-in-touch button translates toward cursor (max 8px)
+	const magnetX = useSpring(0, { stiffness: 150, damping: 15 });
+	const magnetY = useSpring(0, { stiffness: 150, damping: 15 });
+
+	const handleMagnet = (e: ReactMouseEvent<HTMLDivElement>) => {
+		if (reduced) return;
+		const r = e.currentTarget.getBoundingClientRect();
+		const dx = e.clientX - (r.left + r.width / 2);
+		const dy = e.clientY - (r.top + r.height / 2);
+		magnetX.set(Math.max(-MAGNET_RANGE, Math.min(MAGNET_RANGE, dx * MAGNET_RESPONSE)));
+		magnetY.set(Math.max(-MAGNET_RANGE, Math.min(MAGNET_RANGE, dy * MAGNET_RESPONSE)));
+	};
+	const resetMagnet = () => {
+		magnetX.set(0);
+		magnetY.set(0);
+	};
 
 	return (
 		<section className='intro' aria-labelledby='hero-heading'>
@@ -59,10 +79,31 @@ const Introduction = () => {
 					{ROLE_LINE}
 				</motion.p>
 				<motion.div
+					className='intro__badge'
 					variants={fadeUp}
 					initial='hidden'
 					animate='visible'
-					transition={{ delay: 0.85 }}
+					transition={{ delay: 0.78 }}
+					role='status'
+					aria-label='Currently building production AI: RAG, MCP, and Claude Agents at Envoy'
+				>
+					<span className='intro__badgeDot' aria-hidden='true' />
+					<span className='intro__badgeLabel'>
+						<span className='intro__badgePrefix'>Currently building</span>
+						<span className='intro__badgeText'>
+							Production AI · RAG · MCP · Claude Agents @ Envoy
+						</span>
+					</span>
+				</motion.div>
+				<motion.div
+					className='intro__cta'
+					variants={fadeUp}
+					initial='hidden'
+					animate='visible'
+					transition={{ delay: 0.95 }}
+					style={{ x: magnetX, y: magnetY }}
+					onMouseMove={handleMagnet}
+					onMouseLeave={resetMagnet}
 				>
 					<Link to='/contact' className='intro__button'>
 						Get in touch

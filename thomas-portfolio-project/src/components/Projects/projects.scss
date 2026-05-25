@@ -83,6 +83,48 @@
 		margin-bottom: 8rem;
 		gap: 3rem;
 		align-items: center;
+		padding: 2rem;
+		border-radius: 1.2rem;
+		border: 1px solid transparent;
+		transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 0.3s ease;
+
+		// Cursor-tracked spotlight — radial gold gradient follows the mouse.
+		// Inline --mx/--my CSS vars are written by the onMouseMove handler.
+		// Falls back to a centered subtle gradient when mouse is not over.
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			border-radius: inherit;
+			background: radial-gradient(
+				620px circle at var(--mx, 50%) var(--my, 50%),
+				rgba(255, 215, 0, 0.07),
+				transparent 38%
+			);
+			opacity: 0;
+			transition: opacity 0.25s ease;
+			pointer-events: none;
+			z-index: 0;
+		}
+
+		// Lift everything inside the card above the spotlight pseudo
+		& > * { position: relative; z-index: 1; }
+
+		&:hover {
+			transform: translateY(-2px);
+			border-color: rgba(255, 215, 0, 0.22);
+			box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.28),
+				0 0 0 1px rgba(255, 215, 0, 0.08);
+
+			&::before { opacity: 1; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+			&:hover { transform: none; }
+			&::before { display: none; }
+		}
 
 		// Hide desktop sections on smaller screens
 		@include respond(phone) {

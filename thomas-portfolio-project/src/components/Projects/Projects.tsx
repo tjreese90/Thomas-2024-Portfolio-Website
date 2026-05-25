@@ -1,5 +1,23 @@
+import type { MouseEvent as ReactMouseEvent } from 'react';
 import './projects.scss';
 
+// Cursor-tracked spotlight on each project card — writes --mx/--my CSS
+// vars that the SCSS uses to position a radial gradient via ::before.
+// No re-render. Reduced-motion bails out before writing the vars.
+const handleSpotlight = (e: ReactMouseEvent<HTMLElement>) => {
+	if (
+		typeof window !== 'undefined' &&
+		window.matchMedia('(prefers-reduced-motion: reduce)').matches
+	)
+		return;
+	const r = e.currentTarget.getBoundingClientRect();
+	e.currentTarget.style.setProperty('--mx', `${e.clientX - r.left}px`);
+	e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`);
+};
+const handleSpotlightLeave = (e: ReactMouseEvent<HTMLElement>) => {
+	e.currentTarget.style.removeProperty('--mx');
+	e.currentTarget.style.removeProperty('--my');
+};
 
 const Project = () => {
 	return (
@@ -12,7 +30,7 @@ const Project = () => {
 			{/* ----------------------------------------- for desktops -------------------------- */}
 
 			
-				<article className='project__section'>
+				<article className='project__section' onMouseMove={handleSpotlight} onMouseLeave={handleSpotlightLeave}>
 					<a
 						className='project__left project__imgLink'
 						href='https://github.com/tjreese90'
@@ -78,7 +96,7 @@ const Project = () => {
 			
 
 			
-				<article className='project__section'>
+				<article className='project__section' onMouseMove={handleSpotlight} onMouseLeave={handleSpotlightLeave}>
 					<div className='project__left1'>
 						<p className='project__headingTertiary'>Featured Project</p>
 						<span className='project__status project__status--live'>
@@ -144,7 +162,7 @@ const Project = () => {
 			
 
 			
-				<article className='project__section'>
+				<article className='project__section' onMouseMove={handleSpotlight} onMouseLeave={handleSpotlightLeave}>
 					<div className='project__left1'>
 						<p className='project__headingTertiary'>Featured Project</p>
 						<span className='project__status project__status--live'>
@@ -210,7 +228,7 @@ const Project = () => {
 			
 
 			
-				<article className='project__section project__section3'>
+				<article className='project__section project__section3' onMouseMove={handleSpotlight} onMouseLeave={handleSpotlightLeave}>
 					<a
 						className='project__left project__imgLink'
 						href='https://github.com/tjreese90/UFC-Blog-Web-App'
