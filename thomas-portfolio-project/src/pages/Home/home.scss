@@ -19,6 +19,11 @@
 
 	&__center {
 		flex: 1;
+		// Critical: flex items default to min-width: auto which makes them
+		// grow to fit their content. Without this, a horizontally-scrolling
+		// child (like the Other Projects carousel) pushes this column to
+		// the full content width and breaks every other section's layout.
+		min-width: 0;
 	}
 }
 
